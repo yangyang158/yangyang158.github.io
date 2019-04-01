@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>mac操作linux | Learning Forever</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="连接linux服务器ssh 账户名@ip地址  （ssh root@199.12.345.678） ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678） 上传文件到linux服务器——scp方式1、mac上传文件到Linux服务器     scp -p 端口号 文件路径 用户名@服务器ip:目标路径     如：scp -P10086 /">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mac操作linux">
+<meta property="og:url" content="http://yoursite.com/2019/02/27/mac操作linux/index.html">
+<meta property="og:site_name" content="Learning Forever">
+<meta property="og:description" content="连接linux服务器ssh 账户名@ip地址  （ssh root@199.12.345.678） ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678） 上传文件到linux服务器——scp方式1、mac上传文件到Linux服务器     scp -p 端口号 文件路径 用户名@服务器ip:目标路径     如：scp -P10086 /">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-01T09:48:30.622Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mac操作linux">
+<meta name="twitter:description" content="连接linux服务器ssh 账户名@ip地址  （ssh root@199.12.345.678） ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678） 上传文件到linux服务器——scp方式1、mac上传文件到Linux服务器     scp -p 端口号 文件路径 用户名@服务器ip:目标路径     如：scp -P10086 /">
+  
+    <link rel="alternate" href="/atom.xml" title="Learning Forever" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Learning Forever</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-mac操作linux" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/27/mac操作linux/" class="article-date">
+  <time datetime="2019-02-27T03:14:31.000Z" itemprop="datePublished">2019-02-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mac操作linux
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="连接linux服务器"><a href="#连接linux服务器" class="headerlink" title="连接linux服务器"></a>连接linux服务器</h2><pre><code>ssh 账户名@ip地址  （ssh root@199.12.345.678）
+ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678）
+</code></pre><h2 id="上传文件到linux服务器——scp方式"><a href="#上传文件到linux服务器——scp方式" class="headerlink" title="上传文件到linux服务器——scp方式"></a>上传文件到linux服务器——scp方式</h2><pre><code>1、mac上传文件到Linux服务器
+    scp -p 端口号 文件路径 用户名@服务器ip:目标路径
+    如：scp -P10086 /Users/candy/testScp/src.zip root@xxx.xx.xxx.xxx:/root/testScp/server
+2、mac上传文件夹到Linux服务器，与上传文件相比多加了-r
+    scp -r 文件路径 用户名@服务器ip:目标路径
+    如：scp -r /Users/test/testFolder test@www.linuxidc.com:/test/
+3、Linux服务器下载文件到mac
+    scp 用户名@服务器ip:文件路径 目标路径
+    如：scp root@12.122.34.567:/root/node-v8.9.3-linux-x64.tar  /Users/candy
+4、Linux服务器下载文件夹到mac，与下载文件相比多加了-r
+    scp -r 用户名@服务器ip:文件路径 目标路径
+    如：scp -r root@12.122.34.567:/root/node-v8.9.3-linux-x64.tar  /Users/candy
+</code></pre><h2 id="上传文件到linux服务器——sftp方式"><a href="#上传文件到linux服务器——sftp方式" class="headerlink" title="上传文件到linux服务器——sftp方式"></a>上传文件到linux服务器——sftp方式</h2><pre><code>选择Shell ----&gt; 选择新建远程连接 ----&gt; 选择安全文件传输 ----&gt; 添加 用户名、ip---&gt; 点击连接 ----&gt; 会弹出窗口，然后执行命令
+命令格式：put 本地文件目录 远程主机路径
+如：put /Users/candy/testScp/src.zip /root/testScp/server
+</code></pre><h2 id="下载-node（7以上版本"><a href="#下载-node（7以上版本" class="headerlink" title="下载 node（7以上版本)"></a>下载 node（7以上版本)</h2><pre><code>方式一：
+    1、执行命令  wget https://npm.taobao.org/mirrors/node/v8.11.3/node-v8.11.3-linux-x64.tar.xz
+    2、解压 tar xvJf  node-v8.11.3-linux-x64.tar.xz
+    3、配置node环境变量
+    在根目录 执行 (软连接)  
+    ln -s 原路径   目标路径
+    例如：
+        ln -s /root/node-v8.11.3-linux-x64/bin/node  /usr/local/bin/node
+        ln -s /root/node-v8.11.3-linux-x64/bin/npm  /usr/local/bin/npm
+方式二：
+    执行： curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash
+    sudo yum -y install nodejs
+    此命令会安装8版本中最高的那个版本
+</code></pre><h2 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h2><p>1、linux 窗口 长时间 不动，就会自动中断<br>解决: 使用pm2 <a href="http://www.cnblogs.com/zhongweiv/p/pm2.html#pm2_start" target="_blank" rel="noopener">原文</a><br>PM2 是一个带有负载均衡功能的 Node 应用的进程管理器。<br>安装：npm install pm2 -g  —&gt;软连接<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">pm2相关命令： </span><br><span class="line">a、基本命令</span><br><span class="line">    //app.js页面</span><br><span class="line">    启动进程  pm2 start (node) app.js  //node 可以省略，如果是ts-node</span><br><span class="line">    启动进程  pm2 start ts-node app.js </span><br><span class="line">    停止进程  pm2 stop app.js</span><br><span class="line">    删除进程  pm2 delete app.js</span><br><span class="line">    重载进程  pm2 reload app.js* </span><br><span class="line">    重启进程  pm2 restart app.js</span><br><span class="line">    查看详情  pm2 show <span class="built_in">test</span></span><br><span class="line">    清除日志  pm2 flush</span><br><span class="line">    查看日志  pm2 <span class="built_in">log</span></span><br><span class="line">    命名进程  pm2 start app.js --name device-cloud</span><br><span class="line">    列出由PM2管理的所有进程信息      pm2 list</span><br><span class="line">    打开实时监视器去查看资源占用情况  pm2 monit</span><br><span class="line">b、运行多个项目——批量操作相关命令</span><br><span class="line">    全部重载 pm2 reload all</span><br><span class="line">    全部停止 pm2 stop all</span><br><span class="line">    全部重启 pm2 restart all</span><br><span class="line">    全部删除 pm2 delete all</span><br><span class="line">注意：reload可以做到0秒宕机加载新的代码，restart则是重新启动，生产环境中多用reload来完成代码更新</span><br><span class="line">c、集群——mode模式</span><br><span class="line">    开发环境中mode多以fork的方式启动，生产环境中多用cluster方式启动</span><br><span class="line">    pm2 start app.js -i 数字 --name <span class="built_in">test</span></span><br><span class="line">　　表示在后台以cluster方式运行<span class="built_in">test</span>，数字表示要启动的工作线程的数量</span><br><span class="line">d、监听</span><br><span class="line">    这个项默认是disabled，可以通过如下命令开启</span><br><span class="line">    pm2 start app.js --name <span class="built_in">test</span> --watch</span><br><span class="line">    用处：主要更新代码后，不用重载或重启项目即可以立即让更新的代码起作用</span><br><span class="line">    注意：适合在开发时用，可以省不少时间，生产环境下最好不要用</span><br></pre></td></tr></table></figure></p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><pre><code>1、ls       列出文件或文件目录
+2、cd       切换目录
+3、mkdir    创建文件夹
+4、unzip ***.zip    解压 .zip文件到当前目录（若提示找不到命令unzip，需要执行yum install -y unzip zip）
+5、tar -xvf  ***.tar        解压 .tar文件到当前目录
+6、tar xvJf  ***.tar.xz     解压 .tar.xz文件到当前目录
+7、rm -r 文件夹名称 -f        强制删除文件夹 
+8、rm  文件名   删除文件
+9、cat 文件名   查看文件内容
+10、vi 文件名   进入文件,按下 i 键 ，出现 -- INSERT-- 就可以编辑了,按esc之后输入:wq, 保存并退出编辑模式 
+11、lsof -i:端口号   查看端口号 被哪个进程占用 （yum install lsof）
+    kill -9 端口号   杀掉进程
+12、pwd             查看当前文件的目录
+13、lsb_release -a  获取linux操作系统
+14、df -h           磁盘空间
+15、echo $LANG      查看linux下当前使用语言命令
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/27/mac操作linux/" data-id="cjty6etyx000330uvj6jlzv9l" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/04/01/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          hexo基本命令
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/25/flutter移动框架学习/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">flutter移动框架学习</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/01/hello-world/">hexo基本命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/27/mac操作linux/">mac操作linux</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/25/flutter移动框架学习/">flutter移动框架学习</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/20/模块化/">模块化</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/31/常用git命令/">常用git命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Candy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

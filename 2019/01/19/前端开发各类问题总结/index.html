@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>前端开发各类问题总结 | Learning Forever</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、非浏览器兼容性问题1、iframe在ipad等移动端下 子页面的宽度不受父页面控制, 出现横向滚动条解决: 在iframe标签中，加上scrolling=”no”强制没有滚动条, 设置iframe样式 width: 1px; min-width:100%; 2、行内元素和块级元素的区别块级元素各占一行，行内元素设置width无效，height无效(可以设置line-height)，margin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端开发各类问题总结">
+<meta property="og:url" content="http://yoursite.com/2019/01/19/前端开发各类问题总结/index.html">
+<meta property="og:site_name" content="Learning Forever">
+<meta property="og:description" content="一、非浏览器兼容性问题1、iframe在ipad等移动端下 子页面的宽度不受父页面控制, 出现横向滚动条解决: 在iframe标签中，加上scrolling=”no”强制没有滚动条, 设置iframe样式 width: 1px; min-width:100%; 2、行内元素和块级元素的区别块级元素各占一行，行内元素设置width无效，height无效(可以设置line-height)，margin">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-01T09:48:30.623Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端开发各类问题总结">
+<meta name="twitter:description" content="一、非浏览器兼容性问题1、iframe在ipad等移动端下 子页面的宽度不受父页面控制, 出现横向滚动条解决: 在iframe标签中，加上scrolling=”no”强制没有滚动条, 设置iframe样式 width: 1px; min-width:100%; 2、行内元素和块级元素的区别块级元素各占一行，行内元素设置width无效，height无效(可以设置line-height)，margin">
+  
+    <link rel="alternate" href="/atom.xml" title="Learning Forever" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Learning Forever</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-前端开发各类问题总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/19/前端开发各类问题总结/" class="article-date">
+  <time datetime="2019-01-19T09:26:12.000Z" itemprop="datePublished">2019-01-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端开发各类问题总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、非浏览器兼容性问题"><a href="#一、非浏览器兼容性问题" class="headerlink" title="一、非浏览器兼容性问题"></a>一、非浏览器兼容性问题</h2><h3 id="1、iframe在ipad等移动端下-子页面的宽度不受父页面控制-出现横向滚动条"><a href="#1、iframe在ipad等移动端下-子页面的宽度不受父页面控制-出现横向滚动条" class="headerlink" title="1、iframe在ipad等移动端下 子页面的宽度不受父页面控制, 出现横向滚动条"></a>1、iframe在ipad等移动端下 子页面的宽度不受父页面控制, 出现横向滚动条</h3><p>解决: 在iframe标签中，加上scrolling=”no”强制没有滚动条, 设置iframe样式 width: 1px; min-width:100%;</p>
+<h3 id="2、行内元素和块级元素的区别"><a href="#2、行内元素和块级元素的区别" class="headerlink" title="2、行内元素和块级元素的区别"></a>2、行内元素和块级元素的区别</h3><p>块级元素各占一行，行内元素设置width无效，height无效(可以设置line-height)，margin上下无效，padding上下无效</p>
+<h2 id="二、浏览器兼容性问题"><a href="#二、浏览器兼容性问题" class="headerlink" title="二、浏览器兼容性问题"></a>二、浏览器兼容性问题</h2><h3 id="1、2个或多个img并排显示，图片之间会有默认的间距-图片距离下方有间距（google也有此问题）"><a href="#1、2个或多个img并排显示，图片之间会有默认的间距-图片距离下方有间距（google也有此问题）" class="headerlink" title="1、2个或多个img并排显示，图片之间会有默认的间距,图片距离下方有间距（google也有此问题）"></a>1、2个或多个img并排显示，图片之间会有默认的间距,图片距离下方有间距（google也有此问题）</h3><p>解决: float布局去除间隙；vertical-align可以去除距离下方的间距</p>
+<h3 id="2、设置滚动条的样式，兼容IE"><a href="#2、设置滚动条的样式，兼容IE" class="headerlink" title="2、设置滚动条的样式，兼容IE"></a>2、设置滚动条的样式，兼容IE</h3><p><strong>a、webkit下面的CSS设置滚动条，主要有下面7个属性：</strong><br>::-webkit-scrollbar 滚动条整体部分，可以设置宽度啥的<br>::-webkit-scrollbar-button 滚动条两端的按钮<br>::-webkit-scrollbar-track  外层轨道<br>::-webkit-scrollbar-track-piece  内层滚动槽<br>::-webkit-scrollbar-thumb 滚动的滑块<br>::-webkit-scrollbar-corner 边角<br>::-webkit-resizer 定义右下角拖动块的样式<br><strong>b、IE下面就比较简单那了，自定义的项目比较少，全是颜色</strong><br>scrollbar-arrow-color: color; /<em>三角箭头的颜色</em>/<br>scrollbar-face-color: color; /<em>立体滚动条的颜色（包括箭头部分的背景色）</em>/<br>scrollbar-3dlight-color: color; /<em>立体滚动条亮边的颜色</em>/<br>scrollbar-highlight-color: color; /<em>滚动条的高亮颜色（左阴影？）</em>/<br>scrollbar-shadow-color: color; /<em>立体滚动条阴影的颜色</em>/<br>scrollbar-darkshadow-color: color; /<em>立体滚动条外阴影的颜色</em>/<br>scrollbar-track-color: color; /<em>立体滚动条背景颜色</em>/<br>scrollbar-base-color:color; /<em>滚动条的基色</em>/</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/19/前端开发各类问题总结/" data-id="cjty6etz0000630uvuop9hvrc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/31/常用git命令/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          常用git命令
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/01/15/jsvascript易混淆点/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">jsvascript易混淆点</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/01/hello-world/">hexo基本命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/27/mac操作linux/">mac操作linux</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/25/flutter移动框架学习/">flutter移动框架学习</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/20/模块化/">模块化</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/31/常用git命令/">常用git命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Candy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
