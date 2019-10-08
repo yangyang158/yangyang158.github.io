@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>console用法 | Learning Forever</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、输出一个变量或者输出一个字符串123let name1 = &apos;yy&apos;let name2 = &apos;zs&apos;console.log(name1, name2); // yy zs 二、支持占位符, 不过其支持的占位符种类较少, 只支持字符串（%s）\整数（%d或%i）、浮点数（%f）和对象（%o）1console.log(&quot;%d年%d月%d日&quot;, 2019, 09, 22); // 2019年09月2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="console用法">
+<meta property="og:url" content="http://yoursite.com/2019/07/16/console用法/index.html">
+<meta property="og:site_name" content="Learning Forever">
+<meta property="og:description" content="一、输出一个变量或者输出一个字符串123let name1 = &apos;yy&apos;let name2 = &apos;zs&apos;console.log(name1, name2); // yy zs 二、支持占位符, 不过其支持的占位符种类较少, 只支持字符串（%s）\整数（%d或%i）、浮点数（%f）和对象（%o）1console.log(&quot;%d年%d月%d日&quot;, 2019, 09, 22); // 2019年09月2">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-47e42c76d29825ad76e0f8db651be5b0_hd.png">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-696609e37fad3a14b054285c57172aae_hd.png">
+<meta property="og:updated_time" content="2019-07-16T03:08:26.843Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="console用法">
+<meta name="twitter:description" content="一、输出一个变量或者输出一个字符串123let name1 = &apos;yy&apos;let name2 = &apos;zs&apos;console.log(name1, name2); // yy zs 二、支持占位符, 不过其支持的占位符种类较少, 只支持字符串（%s）\整数（%d或%i）、浮点数（%f）和对象（%o）1console.log(&quot;%d年%d月%d日&quot;, 2019, 09, 22); // 2019年09月2">
+<meta name="twitter:image" content="https://pic1.zhimg.com/80/v2-47e42c76d29825ad76e0f8db651be5b0_hd.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Learning Forever" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Learning Forever</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-console用法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/16/console用法/" class="article-date">
+  <time datetime="2019-07-16T02:04:11.000Z" itemprop="datePublished">2019-07-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      console用法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、输出一个变量或者输出一个字符串"><a href="#一、输出一个变量或者输出一个字符串" class="headerlink" title="一、输出一个变量或者输出一个字符串"></a>一、输出一个变量或者输出一个字符串</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> name1 = <span class="string">'yy'</span></span><br><span class="line"><span class="built_in">let</span> name2 = <span class="string">'zs'</span></span><br><span class="line">console.log(name1, name2); // yy zs</span><br></pre></td></tr></table></figure>
+<h2 id="二、支持占位符-不过其支持的占位符种类较少-只支持字符串（-s）-整数（-d或-i）、浮点数（-f）和对象（-o）"><a href="#二、支持占位符-不过其支持的占位符种类较少-只支持字符串（-s）-整数（-d或-i）、浮点数（-f）和对象（-o）" class="headerlink" title="二、支持占位符, 不过其支持的占位符种类较少, 只支持字符串（%s）\整数（%d或%i）、浮点数（%f）和对象（%o）"></a>二、支持占位符, 不过其支持的占位符种类较少, 只支持字符串（%s）\整数（%d或%i）、浮点数（%f）和对象（%o）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(<span class="string">"%d年%d月%d日"</span>, 2019, 09, 22); // 2019年09月22日</span><br></pre></td></tr></table></figure>
+<h2 id="三、console-log-、console-warn-、console-error-打印的颜色不一样"><a href="#三、console-log-、console-warn-、console-error-打印的颜色不一样" class="headerlink" title="三、console.log()、console.warn()、console.error() 打印的颜色不一样"></a>三、console.log()、console.warn()、console.error() 打印的颜色不一样</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.warn(<span class="string">'warn'</span>); // 黄色</span><br><span class="line">console.error(<span class="string">'error'</span>); // 红色</span><br><span class="line">console.log(<span class="string">'log'</span>); // 正常黑色</span><br></pre></td></tr></table></figure>
+<h2 id="四、console-table-以表格形式输出"><a href="#四、console-table-以表格形式输出" class="headerlink" title="四、console.table() 以表格形式输出"></a>四、console.table() 以表格形式输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const people = &#123;</span><br><span class="line">    <span class="string">"person1"</span>: &#123;<span class="string">"fname"</span>: <span class="string">"san"</span>, <span class="string">"lname"</span>: <span class="string">"zhang"</span>&#125;, </span><br><span class="line">    <span class="string">"person2"</span>: &#123;<span class="string">"fname"</span>: <span class="string">"si"</span>, <span class="string">"lname"</span>: <span class="string">"li"</span>&#125;, </span><br><span class="line">    <span class="string">"person3"</span>: &#123;<span class="string">"fname"</span>: <span class="string">"wu"</span>, <span class="string">"lname"</span>: <span class="string">"wang"</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line">console.table(people)</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic1.zhimg.com/80/v2-47e42c76d29825ad76e0f8db651be5b0_hd.png" alt="效果"></p>
+<h2 id="五、console-time-与-console-timeEnd-测试代码运行时间"><a href="#五、console-time-与-console-timeEnd-测试代码运行时间" class="headerlink" title="五、console.time() 与 console.timeEnd() 测试代码运行时间"></a>五、console.time() 与 console.timeEnd() 测试代码运行时间</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">console.time(<span class="string">"for-test"</span>);</span><br><span class="line">const arr = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i = 0; i &lt; 100000; i++) &#123;</span><br><span class="line">    arr.push(&#123;<span class="string">"key"</span>: i&#125;);</span><br><span class="line">&#125;</span><br><span class="line">console.timeEnd(<span class="string">"for-test"</span>);</span><br><span class="line">// <span class="keyword">for</span>-test: 10.705810546875ms</span><br></pre></td></tr></table></figure>
+<h2 id="六、console-assert-断言-当表达式为-false-时，输出错误信息Assertion-failed-console-assert"><a href="#六、console-assert-断言-当表达式为-false-时，输出错误信息Assertion-failed-console-assert" class="headerlink" title="六、console.assert() 断言, 当表达式为 false 时，输出错误信息Assertion failed: console.assert"></a>六、console.assert() 断言, 当表达式为 false 时，输出错误信息Assertion failed: console.assert</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> arr = [1, 2, 3, 4]</span><br><span class="line">console.assert(arr.length === 2); // Assertion failed: console.assert</span><br><span class="line">console.assert(arr.length === 4); // undefined</span><br></pre></td></tr></table></figure>
+<h2 id="七、console-count-计算代码被执行了多少次"><a href="#七、console-count-计算代码被执行了多少次" class="headerlink" title="七、console.count() 计算代码被执行了多少次"></a>七、console.count() 计算代码被执行了多少次</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">func</span></span>() &#123;</span><br><span class="line">    console.count(<span class="string">"次数"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i = 0; i &lt; 3; i++) &#123;</span><br><span class="line">    func();</span><br><span class="line">&#125;</span><br><span class="line">// 输出</span><br><span class="line">次数: 1</span><br><span class="line">次数: 2</span><br><span class="line">次数: 3</span><br></pre></td></tr></table></figure>
+<h2 id="八、console-group-、-console-groupEnd-与-console-groupCollapsed-可以展示层级关系"><a href="#八、console-group-、-console-groupEnd-与-console-groupCollapsed-可以展示层级关系" class="headerlink" title="八、console.group()、 console.groupEnd() 与 console.groupCollapsed() 可以展示层级关系"></a>八、console.group()、 console.groupEnd() 与 console.groupCollapsed() 可以展示层级关系</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">console.group(<span class="string">"1"</span>); // 层级默认展开</span><br><span class="line">console.log(<span class="string">"1-1"</span>);</span><br><span class="line">console.log(<span class="string">"1-2"</span>);</span><br><span class="line">console.log(<span class="string">"1-3"</span>);</span><br><span class="line">console.groupEnd();</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">console.groupCollapsed(<span class="string">"2"</span>); // 层级默认折叠</span><br><span class="line">console.log(<span class="string">"2-1"</span>);</span><br><span class="line">console.log(<span class="string">"2-2"</span>);</span><br><span class="line">console.log(<span class="string">"2-3"</span>);</span><br><span class="line">console.groupEnd();</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic3.zhimg.com/80/v2-696609e37fad3a14b054285c57172aae_hd.png" alt="效果"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/16/console用法/" data-id="ck14cxav50003hkuv8va2rse8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/09/29/搭建静态服务器/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          搭建静态服务器
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/24/css-grid/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">css-grid</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/09/29/搭建静态服务器/">搭建静态服务器</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/16/console用法/">console用法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/24/css-grid/">css-grid</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/12/构造函数及原型链/">构造函数及原型链</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/01/hello-world/">hexo基本命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Candy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>构造函数及原型链 | Learning Forever</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、es5 最简单的构造函数和原型链123456789101112131415161718192021222324function Person () &amp;#123;    // 构造函数的属性和方法    this.name = &apos;张三&apos;;    this.age = 15;    // 实例方法    this.run = function () &amp;#123;        alert(this">
+<meta property="og:type" content="article">
+<meta property="og:title" content="构造函数及原型链">
+<meta property="og:url" content="http://yoursite.com/2019/05/12/构造函数及原型链/index.html">
+<meta property="og:site_name" content="Learning Forever">
+<meta property="og:description" content="一、es5 最简单的构造函数和原型链123456789101112131415161718192021222324function Person () &amp;#123;    // 构造函数的属性和方法    this.name = &apos;张三&apos;;    this.age = 15;    // 实例方法    this.run = function () &amp;#123;        alert(this">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-04T01:58:10.663Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="构造函数及原型链">
+<meta name="twitter:description" content="一、es5 最简单的构造函数和原型链123456789101112131415161718192021222324function Person () &amp;#123;    // 构造函数的属性和方法    this.name = &apos;张三&apos;;    this.age = 15;    // 实例方法    this.run = function () &amp;#123;        alert(this">
+  
+    <link rel="alternate" href="/atom.xml" title="Learning Forever" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Learning Forever</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-构造函数及原型链" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/12/构造函数及原型链/" class="article-date">
+  <time datetime="2019-05-12T12:18:11.000Z" itemprop="datePublished">2019-05-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      构造函数及原型链
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、es5-最简单的构造函数和原型链"><a href="#一、es5-最简单的构造函数和原型链" class="headerlink" title="一、es5 最简单的构造函数和原型链"></a>一、es5 最简单的构造函数和原型链</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">Person</span></span> () &#123;</span><br><span class="line">    // 构造函数的属性和方法</span><br><span class="line">    this.name = <span class="string">'张三'</span>;</span><br><span class="line">    this.age = 15;</span><br><span class="line">    // 实例方法</span><br><span class="line">    this.run = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        alert(this.name + <span class="string">'正在运动'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">// 原型链上添加方法和属性(会被多个实例共享, 构造函数不会)</span><br><span class="line">Person.prototype.sex = <span class="string">'男'</span></span><br><span class="line">Person.prototype.work = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    alert(this.name + <span class="string">'正在工作'</span>)</span><br><span class="line">&#125;</span><br><span class="line">// 静态方法(不需要实例化就可以调用)</span><br><span class="line">Person.getInfo = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    alert(<span class="string">'获取我的信息'</span>)</span><br><span class="line">&#125;</span><br><span class="line">// 调用静态方法</span><br><span class="line">Person.getInfo();// 获取我的信息</span><br><span class="line">// 实例化</span><br><span class="line">var p = new Person()</span><br><span class="line">p.run(); // 张三正在运动</span><br><span class="line">p.work(); // 张三正在工作</span><br></pre></td></tr></table></figure>
+<h2 id="二、es5-继承，实现一个web类继承Person"><a href="#二、es5-继承，实现一个web类继承Person" class="headerlink" title="二、es5 继承，实现一个web类继承Person"></a>二、es5 继承，实现一个web类继承Person</h2><p>实现继承的方法：原型链+对象冒充<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Person (name, age) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.age = age;</span><br><span class="line">    this.run = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        alert(this.name + <span class="string">'正在运动'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.sex = <span class="string">'男'</span></span><br><span class="line">Person.prototype.work = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    alert(this.name + <span class="string">'正在工作'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> Web (name, age) &#123;</span><br><span class="line">    // 对象冒充可以继承构造函数里面的属性和方法, 没法继承原型链上的属性和方法</span><br><span class="line">    Person.call(this, name, age);</span><br><span class="line">&#125;</span><br><span class="line">// 原型链继承：可以继承原型链上的属性和方法; 也可以继承构造函数里面的属性和方法, 但是实例化子类时没法给父类传参, 即：w1.name = undefined</span><br><span class="line">Web.prototype = new Person(); =&gt; Web.prototype = Person.prototype;</span><br><span class="line"></span><br><span class="line">var w1 = new Web(<span class="string">'张三'</span>, 12)</span><br></pre></td></tr></table></figure></p>
+<h2 id="三、es6的class、继承：super、extends"><a href="#三、es6的class、继承：super、extends" class="headerlink" title="三、es6的class、继承：super、extends"></a>三、es6的class、继承：super、extends</h2><p>将上述的构造函数用class实现<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">    // 实例化的时候调用</span><br><span class="line">    constructor (name, age) &#123;</span><br><span class="line">        // 类似上述的Person构造函数</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">        this.run = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">            alert(this.name + <span class="string">'正在运动'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    // 类的所有方法|属性都是定义在类的prototype属性上面</span><br><span class="line">    sex: <span class="string">'男'</span>,</span><br><span class="line">    <span class="function"><span class="title">work</span></span>() &#123;</span><br><span class="line">        alert(this.name + <span class="string">'正在工作'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var p1 = new Person(<span class="string">'李四'</span>, 12)</span><br><span class="line"></span><br><span class="line">class Web extends Person &#123;</span><br><span class="line">    constructor(name, age) &#123;</span><br><span class="line">        super(name, age);// 调用父类的构造函数constructor</span><br><span class="line">    &#125;</span><br><span class="line">    // 扩充自己的方法和属性, 如果子类和父类拥有共同的方法则调用自己的方法</span><br><span class="line">    <span class="function"><span class="title">study</span></span>() &#123;</span><br><span class="line">        alert(this.name, <span class="string">'在学习'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var w1= new Web(<span class="string">'wuwu'</span>, 12)</span><br><span class="line">w1.work();// wuwu正在工作</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/12/构造函数及原型链/" data-id="ck14cxavi000ahkuv4lwgks24" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/06/24/css-grid/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          css-grid
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/04/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hexo基本命令</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/09/29/搭建静态服务器/">搭建静态服务器</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/16/console用法/">console用法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/24/css-grid/">css-grid</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/12/构造函数及原型链/">构造函数及原型链</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/01/hello-world/">hexo基本命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Candy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
