@@ -97,11 +97,12 @@
 <h2 id="二、window下nginx搭建"><a href="#二、window下nginx搭建" class="headerlink" title="二、window下nginx搭建"></a>二、window下nginx搭建</h2><p>如：nginx安装目录 E:\application\nginx-1.16.1<br>1、安装nginx<br>    安装地址：<a href="https://nginx.org/en/download.html" target="_blank" rel="noopener">https://nginx.org/en/download.html</a><br>2、常用命令<br>打开cmd, 进入E:\application\nginx-1.16.1 执行以下命令<br>停止：nginx -s stop<br>开启：start nginx<br>重启：nginx -s reload<br>3、部署前端页面<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       7006;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   G:/tomcat-web/G-dxs;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">    location /api&#123;</span><br><span class="line">        proxy_pass http://192.168.140.196:22224/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>参考文档：<a href="https://blog.csdn.net/qq_23974323/article/details/80067250" target="_blank" rel="noopener">https://blog.csdn.net/qq_23974323/article/details/80067250</a></p>
 <p>4、部署静态文件<br>配置docx、xlsx、txt等文件可以下载, 其他格式的文件可以通过浏览器预览<br><strong>注意</strong>：文件名不能含中文<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       7007;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    location /files &#123;</span><br><span class="line">        <span class="built_in">alias</span>   G:/tomcat-web/files;</span><br><span class="line">        autoindex on;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$request_filename</span> ~* ^.*?\.(txt|docx|xlsx)$) &#123; </span><br><span class="line">            add_header Content-Type <span class="string">"application/octet-stream"</span>;</span><br><span class="line">            add_header Content-Disposition: <span class="string">'p_w_upload;'</span>;</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="三、IIS搭建"><a href="#三、IIS搭建" class="headerlink" title="三、IIS搭建"></a>三、IIS搭建</h2><p><strong>前提</strong>：IIS已经搭建成功<br>1、搭建web项目<br>打开IIS, 右击添加网站 -&gt; 填写网站名称, 物理路径(放前端项目的位置), ip地址, 端口 -&gt; 点击确定 -&gt; 点击浏览网站即可<br>2、搭建http文件服务<br>打开IIS, 右击添加网站 -&gt; 填写网站名称, 物理路径(放文件的位置), ip地址, 端口 -&gt; 点击确定 -&gt; 找到目录浏览, 点击开启 -&gt; 点击浏览网站即可</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/29/搭建静态服务器/" data-id="ck14cxava0007hkuvpg4zcs2h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/29/搭建静态服务器/" data-id="ck1hf4lya00090wuv0y25pts3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -148,7 +149,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/console用法/" data-id="ck14cxav50003hkuv8va2rse8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/console用法/" data-id="ck1hf4lxy00000wuvoi22ftxh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -190,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/24/css-grid/" data-id="ck14cxav20001hkuvb82didke" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/24/css-grid/" data-id="ck1hf4ly100010wuv5ilqf1lx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -229,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/12/构造函数及原型链/" data-id="ck14cxavi000ahkuv4lwgks24" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/12/构造函数及原型链/" data-id="ck1hf4lyd000b0wuvzu3evc07" class="article-share-link">Share</a>
       
       
     </footer>
@@ -274,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/01/hello-world/" data-id="ck14cxaux0000hkuve11xy60u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/01/hello-world/" data-id="ck1hf4ly300020wuvk7pd31vz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -357,7 +358,7 @@ ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/27/mac操作linux/" data-id="ck14cxav80005hkuvjw9t3whl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/27/mac操作linux/" data-id="ck1hf4ly500040wuvge67kwmb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -430,7 +431,7 @@ ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/25/flutter移动框架学习/" data-id="ck14cxav40002hkuvdfvwxit1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/25/flutter移动框架学习/" data-id="ck1hf4lye000c0wuv3634zf9e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -487,7 +488,7 @@ ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/20/模块化/" data-id="ck14cxavl000chkuv301p5kc4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/20/模块化/" data-id="ck1hf4lyb000a0wuvmecmwfpu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -591,7 +592,7 @@ nrm add 仓库名     添加仓库
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/31/常用git命令/" data-id="ck14cxavq000dhkuvj81xqyca" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/31/常用git命令/" data-id="ck1hf4ly900080wuvhmiyna3y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -631,7 +632,7 @@ nrm add 仓库名     添加仓库
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/19/前端开发各类问题总结/" data-id="ck14cxav90006hkuvn1qd8qkm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/19/前端开发各类问题总结/" data-id="ck1hf4ly700060wuvpskgo5ls" class="article-share-link">Share</a>
       
       
     </footer>
