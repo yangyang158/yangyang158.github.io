@@ -5,21 +5,21 @@
   
 
   
-  <title>搭建静态服务器 | Learning Forever</title>
+  <title>搭建静态服务器 | 学无止境</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="一、tomcat搭建安装环境1、安装apcha-tomcat2、安装jdk    下载地址https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html3、配置系统环境变量    添加 JAVA_HOME：C:\Program Files\Java\jdk1.8.0_221 (jdk的安装目录">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建静态服务器">
 <meta property="og:url" content="http://yoursite.com/2019/09/29/搭建静态服务器/index.html">
-<meta property="og:site_name" content="Learning Forever">
+<meta property="og:site_name" content="学无止境">
 <meta property="og:description" content="一、tomcat搭建安装环境1、安装apcha-tomcat2、安装jdk    下载地址https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html3、配置系统环境变量    添加 JAVA_HOME：C:\Program Files\Java\jdk1.8.0_221 (jdk的安装目录">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-08T05:42:13.716Z">
+<meta property="og:updated_time" content="2019-11-13T01:19:51.456Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建静态服务器">
 <meta name="twitter:description" content="一、tomcat搭建安装环境1、安装apcha-tomcat2、安装jdk    下载地址https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html3、配置系统环境变量    添加 JAVA_HOME：C:\Program Files\Java\jdk1.8.0_221 (jdk的安装目录">
   
-    <link rel="alternate" href="/atom.xml" title="Learning Forever" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="学无止境" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -38,7 +38,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Learning Forever</a>
+        <a href="/" id="logo">学无止境</a>
       </h1>
       
     </div>
@@ -100,11 +100,12 @@
 <p>参考文档：<a href="https://blog.csdn.net/qq_23974323/article/details/80067250" target="_blank" rel="noopener">https://blog.csdn.net/qq_23974323/article/details/80067250</a></p>
 <p>4、部署静态文件<br>配置docx、xlsx、txt等文件可以下载, 其他格式的文件可以通过浏览器预览<br><strong>注意</strong>：文件名不能含中文<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       7007;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    location /files &#123;</span><br><span class="line">        <span class="built_in">alias</span>   G:/tomcat-web/files;</span><br><span class="line">        autoindex on;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$request_filename</span> ~* ^.*?\.(txt|docx|xlsx)$) &#123; </span><br><span class="line">            add_header Content-Type <span class="string">"application/octet-stream"</span>;</span><br><span class="line">            add_header Content-Disposition: <span class="string">'p_w_upload;'</span>;</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="三、IIS搭建"><a href="#三、IIS搭建" class="headerlink" title="三、IIS搭建"></a>三、IIS搭建</h2><p><strong>前提</strong>：IIS已经搭建成功<br>1、搭建web项目<br>打开IIS, 右击添加网站 -&gt; 填写网站名称, 物理路径(放前端项目的位置), ip地址, 端口 -&gt; 点击确定 -&gt; 点击浏览网站即可<br>2、搭建http文件服务<br>打开IIS, 右击添加网站 -&gt; 填写网站名称, 物理路径(放文件的位置), ip地址, 端口 -&gt; 点击确定 -&gt; 找到目录浏览, 点击开启 -&gt; 点击浏览网站即可</p>
+<p>3、安装Application Request Route<br>    请求转发<br>    <a href="https://www.iis.net/downloads/microsoft/application-request-routing" target="_blank" rel="noopener">https://www.iis.net/downloads/microsoft/application-request-routing</a><br>    参考文档：<br>    <a href="https://www.cnblogs.com/yanyangtian/archive/2012/03/26/2417552.html" target="_blank" rel="noopener">https://www.cnblogs.com/yanyangtian/archive/2012/03/26/2417552.html</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/29/搭建静态服务器/" data-id="ck1hf4lya00090wuv0y25pts3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/29/搭建静态服务器/" data-id="ck1k13z7h0005aouvy7c0621u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -112,6 +113,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/10/10/面试问题总结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          面试问题总结
+        
+      </div>
+    </a>
   
   
     <a href="/2019/07/16/console用法/" id="article-nav-older" class="article-nav-link-wrap">
@@ -140,7 +150,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -151,6 +161,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/10/10/面试问题总结/">面试问题总结</a>
+          </li>
         
           <li>
             <a href="/2019/09/29/搭建静态服务器/">搭建静态服务器</a>
@@ -166,10 +180,6 @@
         
           <li>
             <a href="/2019/05/12/构造函数及原型链/">构造函数及原型链</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/01/hello-world/">hexo基本命令</a>
           </li>
         
       </ul>
