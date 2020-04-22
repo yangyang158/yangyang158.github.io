@@ -91,7 +91,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typeof [] === <span class="string">'object'</span></span><br><span class="line">typeof &#123;&#125; === <span class="string">'object'</span></span><br><span class="line">typeof alert === <span class="string">'function'</span></span><br><span class="line">typeof null === <span class="string">'object'</span> (一个存在很久的bug)</span><br></pre></td></tr></table></figure>
 </code></pre><h4 id="3、判断是不是某构造函数的实例"><a href="#3、判断是不是某构造函数的实例" class="headerlink" title="3、判断是不是某构造函数的实例"></a>3、判断是不是某构造函数的实例</h4><pre><code>instanceof：通过原型链判断
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Person (name) &#123;</span><br><span class="line">    this.name = name</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">let</span> p1 = new Person(<span class="string">'张三'</span>)</span><br><span class="line">p1 instanceof Person // <span class="literal">true</span> p1是构造函数Person的实例</span><br><span class="line">Person[Symbol.hasInstance](p1) // <span class="literal">true</span> 与上面等价</span><br></pre></td></tr></table></figure>
-</code></pre><h4 id="4、等号赋值、浅拷贝、深拷贝的区别"><a href="#4、等号赋值、浅拷贝、深拷贝的区别" class="headerlink" title="4、等号赋值、浅拷贝、深拷贝的区别"></a>4、等号赋值、浅拷贝、深拷贝的区别</h4><p><a href="https://www.haorooms.com/post/js_copy_sq" target="_blank" rel="noopener">https://www.haorooms.com/post/js_copy_sq</a><br>等号赋值：新数据和原数据指向同一引用<br>浅拷贝：新数据和原数据不指向同一个引用, 如果原数据里包含子对象, 新旧子对象共享同一块内存<br>深拷贝：会另外创造一个一模一样的对象, 新对象跟原对象不共享内存, 修改新对象不会改到原对象<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#####浅拷贝的实现方式:</span></span><br><span class="line"></span><br><span class="line">第一种：lodash的方法_.cclone</span><br><span class="line">第二种：... </span><br><span class="line">第三种：Object.assgin(), 注意：obj里必须含有子对象</span><br><span class="line">var obj = &#123; a: &#123;msg: <span class="string">"hello"</span>, num: 21&#125;, b:3 &#125;;</span><br><span class="line">var cloneObj = Object.assign(&#123;&#125;, obj);</span><br><span class="line">obj === cloneObj; // <span class="literal">false</span></span><br><span class="line">obj.a.num = 66;</span><br><span class="line">obj.b = 10;</span><br><span class="line">console.log(cloneObj.a.num); // 66</span><br><span class="line">console.log(cloneObj.b); // 3</span><br><span class="line">第四种：自定义方法</span><br><span class="line"><span class="keyword">function</span> shallowClone(initalObj) &#123;    </span><br><span class="line">    var obj = &#123;&#125;;    </span><br><span class="line">    <span class="keyword">for</span> ( var i <span class="keyword">in</span> initalObj) &#123;</span><br><span class="line">        obj[i] = initalObj[i];</span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="built_in">return</span> obj;</span><br><span class="line">&#125;</span><br><span class="line">var obj = &#123;</span><br><span class="line">    a: <span class="string">"hello"</span>,</span><br><span class="line">    b: &#123;</span><br><span class="line">        a: <span class="string">"world"</span>,</span><br><span class="line">        b: 21</span><br><span class="line">    &#125;,</span><br><span class="line">    c: [<span class="string">"Bob"</span>, <span class="string">"Tom"</span>, <span class="string">"Jenny"</span>],</span><br><span class="line">    d: <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        alert(<span class="string">"hello world"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var cloneObj = shallowClone(obj); </span><br><span class="line">cloneObj === obj; // <span class="literal">false</span></span><br><span class="line">// 新数据和原数据的b、c、d指向同一引用</span><br><span class="line">cloneObj.b.a = <span class="string">"changed"</span>; // obj和cloneObj都改变</span><br><span class="line">cloneObj.c[0] = 6; // obj和cloneObj都改变</span><br><span class="line">cloneObj.d = <span class="function"><span class="title">function</span></span>() &#123; alert(<span class="string">"changed"</span>); &#125; // obj的d属性不改变</span><br><span class="line"></span><br><span class="line"><span class="comment">#####深拷贝的实现方式:</span></span><br><span class="line">第一种：用JSON.stringify把对象转成字符串，再用JSON.parse把字符串转成新的对象</span><br><span class="line">第二种：对象只有一层的话可以使用上面的：Object.assign()函数</span><br><span class="line">第三种：自定义方法，递归拷贝</span><br><span class="line">第四种：lodash的_.cloneDeep</span><br></pre></td></tr></table></figure></p>
+</code></pre><h4 id="4、等号赋值、浅拷贝、深拷贝的区别"><a href="#4、等号赋值、浅拷贝、深拷贝的区别" class="headerlink" title="4、等号赋值、浅拷贝、深拷贝的区别"></a>4、等号赋值、浅拷贝、深拷贝的区别</h4><p><a href="https://www.haorooms.com/post/js_copy_sq" target="_blank" rel="noopener">https://www.haorooms.com/post/js_copy_sq</a><br>等号赋值：新数据和原数据指向同一引用<br>浅拷贝：新数据和原数据不指向同一个引用, 如果原数据里包含子对象, 新旧子对象共享同一块内存<br>深拷贝：会另外创造一个一模一样的对象, 新对象跟原对象不共享内存, 修改新对象不会改到原对象<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#####浅拷贝的实现方式:</span></span><br><span class="line"></span><br><span class="line">第一种：lodash的方法_.cclone</span><br><span class="line">第二种：... </span><br><span class="line">第三种：Object.assgin(), 注意：obj里必须含有子对象</span><br><span class="line">var obj = &#123; a: &#123;msg: <span class="string">"hello"</span>, num: 21&#125;, b:3 &#125;;</span><br><span class="line">var cloneObj = Object.assign(&#123;&#125;, obj);</span><br><span class="line">obj === cloneObj; // <span class="literal">false</span></span><br><span class="line">obj.a.num = 66;</span><br><span class="line">obj.b = 10;</span><br><span class="line">console.log(cloneObj.a.num); // 66</span><br><span class="line">console.log(cloneObj.b); // 3</span><br><span class="line">第四种：自定义方法</span><br><span class="line"><span class="keyword">function</span> shallowClone(initalObj) &#123;    </span><br><span class="line">    var obj = &#123;&#125;;    </span><br><span class="line">    <span class="keyword">for</span> ( var i <span class="keyword">in</span> initalObj) &#123;</span><br><span class="line">        obj[i] = initalObj[i];</span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="built_in">return</span> obj;</span><br><span class="line">&#125;</span><br><span class="line">var obj = &#123;</span><br><span class="line">    a: <span class="string">"hello"</span>,</span><br><span class="line">    b: &#123;</span><br><span class="line">        a: <span class="string">"world"</span>,</span><br><span class="line">        b: 21</span><br><span class="line">    &#125;,</span><br><span class="line">    c: [<span class="string">"Bob"</span>, <span class="string">"Tom"</span>, <span class="string">"Jenny"</span>],</span><br><span class="line">    d: <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        alert(<span class="string">"hello world"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var cloneObj = shallowClone(obj); </span><br><span class="line">cloneObj === obj; // <span class="literal">false</span></span><br><span class="line">// 新数据和原数据的b、c、d指向同一引用</span><br><span class="line">cloneObj.b.a = <span class="string">"changed"</span>; // obj和cloneObj都改变</span><br><span class="line">cloneObj.c[0] = 6; // obj和cloneObj都改变</span><br><span class="line">cloneObj.d = <span class="function"><span class="title">function</span></span>() &#123; alert(<span class="string">"changed"</span>); &#125; // obj的d属性不改变</span><br><span class="line"></span><br><span class="line"><span class="comment">#####深拷贝的实现方式:</span></span><br><span class="line">第一种：用JSON.stringify把对象转成字符串，再用JSON.parse把字符串转成新的对象</span><br><span class="line">第二种：对象只有一层的话可以使用上面的：Object.assign()函数</span><br><span class="line">第三种：lodash的_.cloneDeep</span><br><span class="line">第四种：自定义方法，递归拷贝</span><br><span class="line">//  使用递归的方式实现数组、对象的深拷贝</span><br><span class="line"><span class="keyword">function</span> deepClone(obj) &#123;</span><br><span class="line">    //判断拷贝的要进行深拷贝的是数组还是对象，是数组的话进行数组拷贝，对象的话进行对象拷贝</span><br><span class="line">    var objClone = Array.isArray(obj) ? [] : &#123;&#125;</span><br><span class="line">    //进行深拷贝的不能为空，并且是对象或者是</span><br><span class="line">    <span class="keyword">if</span> (obj &amp;&amp; typeof obj === <span class="string">"object"</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">let</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">            <span class="keyword">if</span> (obj.hasOwnProperty(key)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (obj[key] &amp;&amp; typeof obj[key] === <span class="string">"object"</span>) &#123;</span><br><span class="line">                    objClone[key] = deepClone1(obj[key])</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    objClone[key] = obj[key]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> objClone;</span><br><span class="line">&#125;</span><br><span class="line">deepClone(&#123;name: <span class="string">'yy'</span>, age: 12, obj: &#123;color: <span class="string">'res'</span>, big: <span class="literal">true</span>&#125;, arr: [1, 2, 3]&#125;)</span><br></pre></td></tr></table></figure></p>
 <h4 id="5、什么是闭包-闭包的作用-为什么要使用闭包"><a href="#5、什么是闭包-闭包的作用-为什么要使用闭包" class="headerlink" title="5、什么是闭包, 闭包的作用, 为什么要使用闭包"></a>5、什么是闭包, 闭包的作用, 为什么要使用闭包</h4><pre><code>匿名函数本身也是一个闭包
 闭包：函数A里面有一个函数B, 函数B可以访问到函数A里面的局部变量, 函数B就是闭包
 本质：闭包是将函数内部和函数外部连接起来的桥梁
@@ -354,7 +354,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/10/面试问题总结/" data-id="ck1k13z7k0008aouvdmyj04m9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/10/面试问题总结/" data-id="ck9b5od8v000eskuvl1lto6sv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -405,7 +405,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/29/搭建静态服务器/" data-id="ck1k13z7h0005aouvy7c0621u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/29/搭建静态服务器/" data-id="ck9b5od8c0009skuvz2fy9c5c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -452,7 +452,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/console用法/" data-id="ck1k13z6t0000aouvqpt7wul7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/console用法/" data-id="ck9b5od7y0000skuvs0x1w3ov" class="article-share-link">Share</a>
       
       
     </footer>
@@ -494,7 +494,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/24/css-grid/" data-id="ck1k13z7f0003aouvtwq1bdwm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/24/css-grid/" data-id="ck9b5od850003skuvml915m44" class="article-share-link">Share</a>
       
       
     </footer>
@@ -533,7 +533,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/12/构造函数及原型链/" data-id="ck1k13z8g000eaouvshyfomqy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/12/构造函数及原型链/" data-id="ck9b5od8d000askuvs5q2jjqv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -578,7 +578,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/01/hello-world/" data-id="ck1k13z700001aouvugvflx18" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/01/hello-world/" data-id="ck9b5od840002skuvdlc80nl2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -661,7 +661,7 @@ ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/27/mac操作linux/" data-id="ck1k13z7i0006aouvbrfhjhxs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/27/mac操作linux/" data-id="ck9b5od890006skuvzrhr618q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -734,7 +734,7 @@ ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/25/flutter移动框架学习/" data-id="ck1k13z720002aouvveyj8kg2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/25/flutter移动框架学习/" data-id="ck9b5od820001skuv0rx0xpg2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -791,7 +791,7 @@ ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/20/模块化/" data-id="ck1k13z7t000baouvyx26azx2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/20/模块化/" data-id="ck9b5od8f000bskuvucchp33u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -901,7 +901,7 @@ npm set init-license &apos;MIT&apos;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/31/常用git命令/" data-id="ck1k13z7l0009aouv1t53l3ci" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/31/常用git命令/" data-id="ck9b5od8b0008skuvtcgcs60x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -978,7 +978,7 @@ npm set init-license &apos;MIT&apos;
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 Candy<br>
+      &copy; 2020 Candy<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
