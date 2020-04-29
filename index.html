@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/10/面试问题总结/">面试问题总结</a>
+      <a class="article-title" href="/2019/10/10/面试问题总结/">问题总结</a>
     </h1>
   
 
@@ -324,6 +324,7 @@ static：会按照正常的文档流进行排列
 </code></pre><h4 id="3、组件深度嵌套时-从顶层组件向最内层组件传递数据-使用新版-Context-API"><a href="#3、组件深度嵌套时-从顶层组件向最内层组件传递数据-使用新版-Context-API" class="headerlink" title="3、组件深度嵌套时, 从顶层组件向最内层组件传递数据, 使用新版 Context API"></a>3、组件深度嵌套时, 从顶层组件向最内层组件传递数据, 使用新版 Context API</h4><pre><code>a: React.createContext 方法用于创建一个 Context 对象。该对象包含 Provider 和 Consumer两个属性，分别为两个 React 组件。
 b: Provider 组件。用在组件树中更外层的位置。它接受一个名为 value 的 prop，其值可以是任何 JavaScript 中的数据类型。
 c: Consumer 组件。可以在 Provider 组件内部的任何一层使用。它接收一个名为 children 值为一个函数的 prop。这个函数的参数是 Provider 组件接收的那个 value prop 的值，返回值是一个 React 元素（一段 JSX 代码）。
+</code></pre><h4 id="4、Hooks"><a href="#4、Hooks" class="headerlink" title="4、Hooks"></a>4、Hooks</h4><pre><code>函数式组件
 </code></pre><h2 id="六、webpack打包相关"><a href="#六、webpack打包相关" class="headerlink" title="六、webpack打包相关"></a>六、webpack打包相关</h2><h4 id="1、打包原理"><a href="#1、打包原理" class="headerlink" title="1、打包原理"></a>1、打包原理</h4><h4 id="2、background引用图片和img引用图片的区别"><a href="#2、background引用图片和img引用图片的区别" class="headerlink" title="2、background引用图片和img引用图片的区别"></a>2、background引用图片和img引用图片的区别</h4><pre><code>当我们要引用一个图片时，在js文件中要以引用它的html的路径为准；而在css文件中，要以该css的路径为准
 </code></pre><p>参考文献<a href="https://www.jianshu.com/p/794c5f301169" title="Webpack打包图片路径问题" target="_blank" rel="noopener">Webpack打包图片路径问题</a></p>
 <h4 id="3、contentBase"><a href="#3、contentBase" class="headerlink" title="3、contentBase"></a>3、contentBase</h4><pre><code>安装了html-webpack-plugin后, 此参数可不需要。
@@ -355,7 +356,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/10/面试问题总结/" data-id="ck9gde1z9000ek8uv5xhs9m69" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/10/面试问题总结/" data-id="ck9ksildx0008x0uv5tptbmmq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -399,14 +400,15 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
 </code></pre><h3 id="开启命令"><a href="#开启命令" class="headerlink" title="开启命令"></a>开启命令</h3><p>点击bin目录下的startup.bat 开启服务</p>
 <h2 id="二、window下nginx搭建"><a href="#二、window下nginx搭建" class="headerlink" title="二、window下nginx搭建"></a>二、window下nginx搭建</h2><p>如：nginx安装目录 E:\application\nginx-1.16.1<br>1、安装nginx<br>    安装地址：<a href="https://nginx.org/en/download.html" target="_blank" rel="noopener">https://nginx.org/en/download.html</a><br>2、常用命令<br>打开cmd, 进入E:\application\nginx-1.16.1 执行以下命令<br>停止：nginx -s stop<br>开启：start nginx<br>重启：nginx -s reload<br>3、部署前端页面<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       7006;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   G:/tomcat-web/G-dxs;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">    location /api&#123;</span><br><span class="line">        proxy_pass http://192.168.140.196:22224/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>参考文档：<a href="https://blog.csdn.net/qq_23974323/article/details/80067250" target="_blank" rel="noopener">https://blog.csdn.net/qq_23974323/article/details/80067250</a></p>
-<p>4、部署静态文件<br>配置docx、xlsx、txt等文件可以下载, 其他格式的文件可以通过浏览器预览<br><strong>注意</strong>：文件名不能含中文<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       7007;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    location /files &#123;</span><br><span class="line">        <span class="built_in">alias</span>   G:/tomcat-web/files;</span><br><span class="line">        autoindex on;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$request_filename</span> ~* ^.*?\.(txt|docx|xlsx)$) &#123; </span><br><span class="line">            add_header Content-Type <span class="string">"application/octet-stream"</span>;</span><br><span class="line">            add_header Content-Disposition: <span class="string">'p_w_upload;'</span>;</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>4、部署静态文件<br>配置docx、xlsx、txt等文件可以下载, 其他格式的文件可以通过浏览器预览<br><strong>注意</strong>：文件名不能含中文<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       7007;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    location /files &#123;</span><br><span class="line">        <span class="built_in">alias</span>   G:/tomcat-web/files;</span><br><span class="line">        autoindex on;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$request_filename</span> ~* ^.*?\.(txt|docx|xlsx)$) &#123; </span><br><span class="line">            add_header Content-Type <span class="string">"application/octet-stream"</span>;</span><br><span class="line">            add_header Content-Disposition: <span class="string">'p_w_upload;'</span>;</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>5、root 和alias的区别<br>nginx指定文件路径有两种方式root和alias<br>root的处理结果是：root路径 ＋ location路径。<br>alias的处理结果是：使用alias路径替换location路径。location后面的路径若加了/, alias的路径后面必须加/; location后面的路径若不加/, alias的路径后面加不加/都可以<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location /files &#123;</span><br><span class="line">    <span class="built_in">alias</span>  G:/tomcat-web/files; // 实际访问路径是   G:/tomcat-web/files</span><br><span class="line">&#125;</span><br><span class="line">location /files &#123;</span><br><span class="line">    root  G:/tomcat-web/files; // 实际访问路径是  G:/tomcat-web/files/files</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="三、IIS搭建"><a href="#三、IIS搭建" class="headerlink" title="三、IIS搭建"></a>三、IIS搭建</h2><p><strong>前提</strong>：IIS已经搭建成功<br>1、搭建web项目<br>打开IIS, 右击添加网站 -&gt; 填写网站名称, 物理路径(放前端项目的位置), ip地址, 端口 -&gt; 点击确定 -&gt; 点击浏览网站即可<br>2、搭建http文件服务<br>打开IIS, 右击添加网站 -&gt; 填写网站名称, 物理路径(放文件的位置), ip地址, 端口 -&gt; 点击确定 -&gt; 找到目录浏览, 点击开启 -&gt; 点击浏览网站即可</p>
 <p>3、安装Application Request Route<br>    请求转发<br>    <a href="https://www.iis.net/downloads/microsoft/application-request-routing" target="_blank" rel="noopener">https://www.iis.net/downloads/microsoft/application-request-routing</a><br>    参考文档：<br>    <a href="https://www.cnblogs.com/yanyangtian/archive/2012/03/26/2417552.html" target="_blank" rel="noopener">https://www.cnblogs.com/yanyangtian/archive/2012/03/26/2417552.html</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/29/搭建静态服务器/" data-id="ck9gde1zd000fk8uvq7b2eynk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/29/搭建静态服务器/" data-id="ck9ksildu0005x0uvn66wtcdm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -453,7 +455,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/console用法/" data-id="ck9gde1y90002k8uvmoyuo832" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/console用法/" data-id="ck9ksilcx0000x0uvgtz30pcb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -495,7 +497,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/24/css-grid/" data-id="ck9gde1y70001k8uvucrqqm0o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/24/css-grid/" data-id="ck9ksilds0004x0uvhk24orj0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -538,7 +540,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/12/构造函数及原型链/" data-id="ck9gde1ye0007k8uvc4rp7awx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/12/构造函数及原型链/" data-id="ck9ksilen000ax0uvw0ekur6o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -583,7 +585,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/01/hello-world/" data-id="ck9gde1y30000k8uvonkjmpnp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/01/hello-world/" data-id="ck9ksild20002x0uv5u3cq39a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -666,7 +668,7 @@ ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/27/mac操作linux/" data-id="ck9gde1yc0005k8uv5qw519zm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/27/mac操作linux/" data-id="ck9ksildw0007x0uv078m6w0z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -739,7 +741,7 @@ ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/25/flutter移动框架学习/" data-id="ck9gde1yf0008k8uv0qjj8dbu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/25/flutter移动框架学习/" data-id="ck9ksild10001x0uvj6bboy95" class="article-share-link">Share</a>
       
       
     </footer>
@@ -796,7 +798,7 @@ ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/20/模块化/" data-id="ck9gde1yp000ak8uvwocarw1u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/20/模块化/" data-id="ck9ksilf1000ex0uvur4ojzaw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -906,7 +908,7 @@ npm set init-license &apos;MIT&apos;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/31/常用git命令/" data-id="ck9gde1yr000bk8uv76k91dty" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/31/常用git命令/" data-id="ck9ksilet000dx0uv11oviaul" class="article-share-link">Share</a>
       
       
     </footer>
@@ -952,7 +954,7 @@ npm set init-license &apos;MIT&apos;
       <ul>
         
           <li>
-            <a href="/2019/10/10/面试问题总结/">面试问题总结</a>
+            <a href="/2019/10/10/面试问题总结/">问题总结</a>
           </li>
         
           <li>
