@@ -62,6 +62,116 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-常用git命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/31/常用git命令/" class="article-date">
+  <time datetime="2019-01-31T05:44:14.000Z" itemprop="datePublished">2019-01-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/31/常用git命令/">常用git命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="合并代码"><a href="#合并代码" class="headerlink" title="合并代码"></a>合并代码</h2><pre><code>合并某次提交： git cherry-pick commitid
+合并某个分支： git merge 分支
+</code></pre><h2 id="操作分支"><a href="#操作分支" class="headerlink" title="操作分支"></a>操作分支</h2><pre><code>删除远程分支：git push origin --delete  name
+删除本地分支：git branch -D name
+查看当前分支：git branch
+查看所有分支：git branch -a
+切换分支：git checkout name
+创建分支：git branch name
+</code></pre><h2 id="操作tag"><a href="#操作tag" class="headerlink" title="操作tag"></a>操作tag</h2><pre><code>创建：git tag -a name -m “描述”
+推送：git push origin name
+删除本地：git tag -d name
+删除远程：git push origin --delete tag  name
+</code></pre><h2 id="暂存"><a href="#暂存" class="headerlink" title="暂存"></a>暂存</h2><pre><code>将当前分支修改的内容放到缓存区中, 并会自动建立一个缓存的list集合：git stash
+查看list集合下的所有缓存: git stash list
+将编号x的缓存释放出来, 释放之后该缓存还存在于list中: git stash apply @{x} 
+将当前分支的最后一次暂存的内容释放出来, 该缓存还存在于list中：git stash apply
+将当前分支的最后一次暂存的内容释放出来, 该缓存会从list中删除：git stash pop
+</code></pre><h2 id="改变项目引用地址"><a href="#改变项目引用地址" class="headerlink" title="改变项目引用地址"></a>改变项目引用地址</h2><pre><code>改变：git remote set-url origin 地址
+查看：git remote -v
+单个删除：git remote remove 地址
+全部删除：git remote remove origin
+</code></pre><h2 id="共钥、私钥"><a href="#共钥、私钥" class="headerlink" title="共钥、私钥"></a>共钥、私钥</h2><pre><code>检查SSH keys是否存在：ls -al ~/.ssh
+生成共钥：ssh-keygen -t rsa -C &quot;邮箱&quot; / ssh-keygen
+查看公钥：cat ~/.ssh/id_rsa.pub
+查看私钥：cat ~/.ssh/id_rsa
+</code></pre><p><strong>注意1</strong>：生成公钥时，按照默认提示要输入两次密码，但是如果输入了，每次操作操作git库时都要输入密码，所以选择不输入密码<br><strong>注意2</strong>：生成公钥时，报错 bash:ssh-keygen command not found，解决办法：配置系统环境变量Path, 添加ssh-keygen.exe的路径(默认在Git/usr/bin)</p>
+<h2 id="杀死进程"><a href="#杀死进程" class="headerlink" title="杀死进程"></a>杀死进程</h2><pre><code>查看占用端口：lsof -i tcp:8080
+杀死进程：kill -9 750
+</code></pre><h2 id="提交文件"><a href="#提交文件" class="headerlink" title="提交文件"></a>提交文件</h2><pre><code>查看修改的文件：git diff
+提交到暂存区：git add
+提交：git commit -m&apos;描述&apos;
+</code></pre><h2 id="本地代码回滚"><a href="#本地代码回滚" class="headerlink" title="本地代码回滚"></a>本地代码回滚</h2><pre><code>查看commit id：git log
+代码回滚：git reset --hard  commitId
+</code></pre><h2 id="执行一次git-pull-后-获取有更改的文件列表"><a href="#执行一次git-pull-后-获取有更改的文件列表" class="headerlink" title="执行一次git pull 后 获取有更改的文件列表"></a>执行一次git pull 后 获取有更改的文件列表</h2><pre><code>git diff HEAD
+</code></pre><h2 id="上传本地项目到github"><a href="#上传本地项目到github" class="headerlink" title="上传本地项目到github"></a>上传本地项目到github</h2><pre><code>1. 进入到上传的文件的目录下，使用命令初始化本地仓库
+    git init
+2. 把本地仓库和远程仓库相关联，其中origin是远程仓库的别名，可以自己改变。
+    git remote add origin [url]
+3. 如果远程仓库不为空，要把本地仓库和远程仓库做同步。否则可以省略此步骤，其中master为远程仓库的分支名。
+    git pull --rebase origin master
+4. 提交代码
+    git commit -m&apos;描述&apos;
+5. 把本地仓库中的文件同步到远程仓库中。其中master为远程仓库的分支名。
+    git push -u origin master
+</code></pre><h2 id="git-配置项（git-默认对文件名大小写不敏感-不区分文件名大小写-）"><a href="#git-配置项（git-默认对文件名大小写不敏感-不区分文件名大小写-）" class="headerlink" title="git 配置项（git 默认对文件名大小写不敏感 (不区分文件名大小写)）"></a>git 配置项（git 默认对文件名大小写不敏感 (不区分文件名大小写)）</h2><p><a href="https://www.worldhello.net/gotgit/08-git-misc/030-case-insensitive.html" target="_blank" rel="noopener">原文链接</a></p>
+<pre><code>git config --list    获取git的所有配置项
+git config core.ignorecase false     配置git 使其对文件名大小写敏感
+</code></pre><h2 id="同步vscode配置项到其他电脑"><a href="#同步vscode配置项到其他电脑" class="headerlink" title="同步vscode配置项到其他电脑"></a>同步vscode配置项到其他电脑</h2><pre><code>一、上传配置到github
+    1. vscode 安装 Settings Sync 插件
+    2. 登陆GitHub 进入Settings\Developer settings\Personal access tokens 界面，点击 Generate new token, 输入 Token description, 勾选 gist, 点击 Generate token。
+    3. 复制生成的token，回到vscode，在任意界面按 Alt + Shift + U，在对话框中输入该token, 回车, 等待配置上传成功。
+    4. 在用户设置中可以查看, 打开 setting.json, 可以看到 sync.gist 字段。
+二、在另一台电脑下载配置
+    1. 安装Settings Sync插件
+    2. 按快捷键Alt + Shift + d, 会弹出一个输入框, 根据提示，先输入GitHub Token, 再输入GitHub Gist, 回车后将会自动下载之前上传的配置
+</code></pre><h2 id="安装包"><a href="#安装包" class="headerlink" title="安装包"></a>安装包</h2><pre><code>把名字添加到dependencies：npm install XX --save
+把名字添加到devDependencies：npm install XX -D
+</code></pre><h2 id="安装cnpm"><a href="#安装cnpm" class="headerlink" title="安装cnpm"></a>安装cnpm</h2><pre><code>npm install -g cnpm --registry=https://registry.npm.taobao.org
+</code></pre><h2 id="node版本管理及切换—-Nodejs-版本管理器-mac"><a href="#node版本管理及切换—-Nodejs-版本管理器-mac" class="headerlink" title="node版本管理及切换—-Nodejs 版本管理器(mac)"></a>node版本管理及切换—-Nodejs 版本管理器(mac)</h2><pre><code>npm install -g n
+n latest    下载最近版本的node
+n lts       下载最近最稳定的node
+n ls        列出所有的node版本
+n  版本号    切换node 版本
+</code></pre><h2 id="nrm-管理源—npm的镜像源管理工具"><a href="#nrm-管理源—npm的镜像源管理工具" class="headerlink" title="nrm 管理源—npm的镜像源管理工具"></a>nrm 管理源—npm的镜像源管理工具</h2><pre><code>npm install -g nrm
+nrm ls                  列出所有可切换的源
+nrm use taobao          切换镜像
+nrm add 仓库名 地址     添加仓库
+</code></pre><h2 id="初始化package-json文件"><a href="#初始化package-json文件" class="headerlink" title="初始化package.json文件"></a>初始化package.json文件</h2><pre><code>npm init
+</code></pre><h2 id="npm-set用来设置环境变量"><a href="#npm-set用来设置环境变量" class="headerlink" title="npm set用来设置环境变量"></a>npm set用来设置环境变量</h2><pre><code>npm set init-author-name &apos;Your name&apos;
+npm set init-author-email &apos;Your email&apos;
+npm set init-author-url &apos;http://yourdomain.com&apos;
+npm set init-license &apos;MIT&apos;
+面命令等于为 npm init 设置了默认值，以后执行 npm init 的时候，package.json 的作者姓名、邮件、主页、许可证字段就会自动写入预设的值。这些信息会存放在用户主目录的 ~/.npmrc文件，使得用户不用每个项目都输入。如果某个项目有不同的设置，可以针对该项目运行 npm config。
+</code></pre><h2 id="npm-清楚缓存"><a href="#npm-清楚缓存" class="headerlink" title="npm 清楚缓存"></a>npm 清楚缓存</h2><pre><code>npm cache verify
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/31/常用git命令/" data-id="ck9m4ufrx0004f0uvwsmsfwov" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-前端开发各类问题总结" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/19/前端开发各类问题总结/" class="article-date">
@@ -92,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/19/前端开发各类问题总结/" data-id="ck9ksldeb0007o4uvzaww3vnq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/19/前端开发各类问题总结/" data-id="ck9m4ufs20009f0uvo0otpi7q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -177,7 +287,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/15/jsvascript易混淆点/" data-id="ck9kslden000do4uvrk38nivd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/15/jsvascript易混淆点/" data-id="ck9m4ufry0005f0uvedqj9mdm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -215,7 +325,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/15/浏览器渲染机制/" data-id="ck9ksldel000co4uvgvb1xbok" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/15/浏览器渲染机制/" data-id="ck9m4ufsu000ef0uvxrzh6p6z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -299,7 +409,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/15/js中的作用域/" data-id="ck9kslde70005o4uv1q068lce" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/15/js中的作用域/" data-id="ck9m4ufs00007f0uvq2swysu3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -396,7 +506,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/08/http缓存/" data-id="ck9ksldfc000fo4uvh03ezg4s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/08/http缓存/" data-id="ck9m4uft3000gf0uvejqh7trm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -500,7 +610,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/05/markdown-grammar/" data-id="ck9kslde70004o4uv4kbnuwb6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/05/markdown-grammar/" data-id="ck9m4ufs10008f0uv9nlcz7au" class="article-share-link">Share</a>
       
       
     </footer>
@@ -533,7 +643,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -544,6 +654,10 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/04/30/微信公众号/">微信公众号</a>
+          </li>
         
           <li>
             <a href="/2019/10/10/问题总结/">问题总结</a>
@@ -559,10 +673,6 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
         
           <li>
             <a href="/2019/06/24/css-grid/">css-grid</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/12/构造函数及原型链/">构造函数及原型链</a>
           </li>
         
       </ul>

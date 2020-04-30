@@ -62,6 +62,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-微信公众号" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/30/微信公众号/" class="article-date">
+  <time datetime="2020-04-30T01:57:09.000Z" itemprop="datePublished">2020-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/30/微信公众号/">微信公众号</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、配置菜单"><a href="#一、配置菜单" class="headerlink" title="一、配置菜单"></a>一、配置菜单</h2><p>登录微信平台, 点击 功能 &lt;&lt; 自定义菜单, 即可编辑菜单及其页面url<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">菜单配置demo:</span><br><span class="line">菜单名称：我要投诉</span><br><span class="line">菜单url: https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf94fa6e7efee9a63&amp;redirect_uri=http%3A%2F%2Fwww.ashzz.com%2Fpages%2Fcomplaints.html&amp;response_type=code&amp;scope=snsapi_userinfo&amp;state=STATE<span class="comment">#wechat_redirect  </span></span><br><span class="line">授权通过后 回跳页面 http://www.ashzz.com/pages/complaints.html?code=011j5WXW0tM6402zSNXW0bG8YW0j5WXY&amp;state=STATE<span class="comment">#</span></span><br><span class="line"></span><br><span class="line">解释：</span><br><span class="line">1、redirect_uri的页面路径必须通过该函数进行编码-&gt;encodeURIComponent(页面url)</span><br><span class="line">2、授权成功后, 会回跳redirect_uri指向的页面, 并拼上code和state参数</span><br><span class="line">3、在页面中可以从url上获取code</span><br></pre></td></tr></table></figure></p>
+<h2 id="二、微信授权的两种方式"><a href="#二、微信授权的两种方式" class="headerlink" title="二、微信授权的两种方式"></a>二、微信授权的两种方式</h2><p>1、静默授权(scope=snsapi_base)<br>    只能获取到用户的唯一标识openid,无法获取用户的个人信息, 静默授权不需要用户确认, 是无感知的, 用户感知的就是直接进入了回调页<br>2、网页授权(scope=snsapi_userinfo)<br>    获取用户的openid、个人信息、关注信息等以接口返回形式; 如果已经关注过, 用户也是无感知访问页面; 如果未关注, 则需要用户手动确认授权</p>
+<h2 id="三、开发调试及部署"><a href="#三、开发调试及部署" class="headerlink" title="三、开发调试及部署"></a>三、开发调试及部署</h2><p>1、微信开发者工具里调试页面<br>必须通过ip访问html页面, 可以使用nginx部署静态资源服务器<br>2、部署测试及微信后台配置<br>登录微信平台, 点击 设置 &lt;&lt; 公众号设置 &lt;&lt; 点击功能设置tab &lt;&lt; <strong>配置JS接口安全域名和网页授权域名</strong><br>&lt;&lt; 将.txt文件放置在域名根目录下</p>
+<p>若无 网页授权, 则需要去 开发 &lt;&lt; 接口权限 &lt;&lt; 找到网页服务里的网页授权 去获取权限</p>
+<p><strong>注:</strong><br>1、必须部署在带域名的服务器上测试<br>2、域名必须通过ICP备案, 备案大概需要1个月<br>3、可以将一个本地ip映射到一个备案的域名上<br>4、redirect_uri参数错误的原因是由于在微信后台未设置安全域名</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/30/微信公众号/" data-id="ck9m4ufrz0006f0uv5qd8wiow" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-问题总结" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/10/10/问题总结/" class="article-date">
@@ -356,7 +397,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/10/问题总结/" data-id="ck9ksldep000eo4uv55nn1evo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/10/问题总结/" data-id="ck9m4ufsf000cf0uvwi9xvul2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -408,7 +449,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/29/搭建静态服务器/" data-id="ck9ksldeg000bo4uvnz29qryn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/29/搭建静态服务器/" data-id="ck9m4ufsg000df0uv6idju052" class="article-share-link">Share</a>
       
       
     </footer>
@@ -455,7 +496,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/console用法/" data-id="ck9kslde10001o4uvyyldr84e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/console用法/" data-id="ck9m4ufrp0000f0uvf2tjaxfj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -497,7 +538,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/24/css-grid/" data-id="ck9kslde60003o4uvhfplbudq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/24/css-grid/" data-id="ck9m4ufs7000af0uvnxuf41qh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -540,7 +581,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/12/构造函数及原型链/" data-id="ck9ksldec0009o4uvrx6a6sv9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/12/构造函数及原型链/" data-id="ck9m4ufsd000bf0uvyhzxp7wh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -585,7 +626,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/01/hello-world/" data-id="ck9kslde40002o4uvd25dcsf4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/01/hello-world/" data-id="ck9m4ufrv0002f0uvkhgujglv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -668,7 +709,7 @@ ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/27/mac操作linux/" data-id="ck9ksldea0006o4uv9nlahble" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/27/mac操作linux/" data-id="ck9m4ufrw0003f0uv1rz4ybkx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -741,7 +782,7 @@ ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/25/flutter移动框架学习/" data-id="ck9kslddx0000o4uv2f75l587" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/25/flutter移动框架学习/" data-id="ck9m4ufrt0001f0uv02wwzzm1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -798,117 +839,7 @@ ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/20/模块化/" data-id="ck9ksldeb0008o4uv3q2hl0bc" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-常用git命令" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/31/常用git命令/" class="article-date">
-  <time datetime="2019-01-31T05:44:14.000Z" itemprop="datePublished">2019-01-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/31/常用git命令/">常用git命令</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="合并代码"><a href="#合并代码" class="headerlink" title="合并代码"></a>合并代码</h2><pre><code>合并某次提交： git cherry-pick commitid
-合并某个分支： git merge 分支
-</code></pre><h2 id="操作分支"><a href="#操作分支" class="headerlink" title="操作分支"></a>操作分支</h2><pre><code>删除远程分支：git push origin --delete  name
-删除本地分支：git branch -D name
-查看当前分支：git branch
-查看所有分支：git branch -a
-切换分支：git checkout name
-创建分支：git branch name
-</code></pre><h2 id="操作tag"><a href="#操作tag" class="headerlink" title="操作tag"></a>操作tag</h2><pre><code>创建：git tag -a name -m “描述”
-推送：git push origin name
-删除本地：git tag -d name
-删除远程：git push origin --delete tag  name
-</code></pre><h2 id="暂存"><a href="#暂存" class="headerlink" title="暂存"></a>暂存</h2><pre><code>将当前分支修改的内容放到缓存区中, 并会自动建立一个缓存的list集合：git stash
-查看list集合下的所有缓存: git stash list
-将编号x的缓存释放出来, 释放之后该缓存还存在于list中: git stash apply @{x} 
-将当前分支的最后一次暂存的内容释放出来, 该缓存还存在于list中：git stash apply
-将当前分支的最后一次暂存的内容释放出来, 该缓存会从list中删除：git stash pop
-</code></pre><h2 id="改变项目引用地址"><a href="#改变项目引用地址" class="headerlink" title="改变项目引用地址"></a>改变项目引用地址</h2><pre><code>改变：git remote set-url origin 地址
-查看：git remote -v
-单个删除：git remote remove 地址
-全部删除：git remote remove origin
-</code></pre><h2 id="共钥、私钥"><a href="#共钥、私钥" class="headerlink" title="共钥、私钥"></a>共钥、私钥</h2><pre><code>检查SSH keys是否存在：ls -al ~/.ssh
-生成共钥：ssh-keygen -t rsa -C &quot;邮箱&quot; / ssh-keygen
-查看公钥：cat ~/.ssh/id_rsa.pub
-查看私钥：cat ~/.ssh/id_rsa
-</code></pre><p><strong>注意1</strong>：生成公钥时，按照默认提示要输入两次密码，但是如果输入了，每次操作操作git库时都要输入密码，所以选择不输入密码<br><strong>注意2</strong>：生成公钥时，报错 bash:ssh-keygen command not found，解决办法：配置系统环境变量Path, 添加ssh-keygen.exe的路径(默认在Git/usr/bin)</p>
-<h2 id="杀死进程"><a href="#杀死进程" class="headerlink" title="杀死进程"></a>杀死进程</h2><pre><code>查看占用端口：lsof -i tcp:8080
-杀死进程：kill -9 750
-</code></pre><h2 id="提交文件"><a href="#提交文件" class="headerlink" title="提交文件"></a>提交文件</h2><pre><code>查看修改的文件：git diff
-提交到暂存区：git add
-提交：git commit -m&apos;描述&apos;
-</code></pre><h2 id="本地代码回滚"><a href="#本地代码回滚" class="headerlink" title="本地代码回滚"></a>本地代码回滚</h2><pre><code>查看commit id：git log
-代码回滚：git reset --hard  commitId
-</code></pre><h2 id="执行一次git-pull-后-获取有更改的文件列表"><a href="#执行一次git-pull-后-获取有更改的文件列表" class="headerlink" title="执行一次git pull 后 获取有更改的文件列表"></a>执行一次git pull 后 获取有更改的文件列表</h2><pre><code>git diff HEAD
-</code></pre><h2 id="上传本地项目到github"><a href="#上传本地项目到github" class="headerlink" title="上传本地项目到github"></a>上传本地项目到github</h2><pre><code>1. 进入到上传的文件的目录下，使用命令初始化本地仓库
-    git init
-2. 把本地仓库和远程仓库相关联，其中origin是远程仓库的别名，可以自己改变。
-    git remote add origin [url]
-3. 如果远程仓库不为空，要把本地仓库和远程仓库做同步。否则可以省略此步骤，其中master为远程仓库的分支名。
-    git pull --rebase origin master
-4. 提交代码
-    git commit -m&apos;描述&apos;
-5. 把本地仓库中的文件同步到远程仓库中。其中master为远程仓库的分支名。
-    git push -u origin master
-</code></pre><h2 id="git-配置项（git-默认对文件名大小写不敏感-不区分文件名大小写-）"><a href="#git-配置项（git-默认对文件名大小写不敏感-不区分文件名大小写-）" class="headerlink" title="git 配置项（git 默认对文件名大小写不敏感 (不区分文件名大小写)）"></a>git 配置项（git 默认对文件名大小写不敏感 (不区分文件名大小写)）</h2><p><a href="https://www.worldhello.net/gotgit/08-git-misc/030-case-insensitive.html" target="_blank" rel="noopener">原文链接</a></p>
-<pre><code>git config --list    获取git的所有配置项
-git config core.ignorecase false     配置git 使其对文件名大小写敏感
-</code></pre><h2 id="同步vscode配置项到其他电脑"><a href="#同步vscode配置项到其他电脑" class="headerlink" title="同步vscode配置项到其他电脑"></a>同步vscode配置项到其他电脑</h2><pre><code>一、上传配置到github
-    1. vscode 安装 Settings Sync 插件
-    2. 登陆GitHub 进入Settings\Developer settings\Personal access tokens 界面，点击 Generate new token, 输入 Token description, 勾选 gist, 点击 Generate token。
-    3. 复制生成的token，回到vscode，在任意界面按 Alt + Shift + U，在对话框中输入该token, 回车, 等待配置上传成功。
-    4. 在用户设置中可以查看, 打开 setting.json, 可以看到 sync.gist 字段。
-二、在另一台电脑下载配置
-    1. 安装Settings Sync插件
-    2. 按快捷键Alt + Shift + d, 会弹出一个输入框, 根据提示，先输入GitHub Token, 再输入GitHub Gist, 回车后将会自动下载之前上传的配置
-</code></pre><h2 id="安装包"><a href="#安装包" class="headerlink" title="安装包"></a>安装包</h2><pre><code>把名字添加到dependencies：npm install XX --save
-把名字添加到devDependencies：npm install XX -D
-</code></pre><h2 id="安装cnpm"><a href="#安装cnpm" class="headerlink" title="安装cnpm"></a>安装cnpm</h2><pre><code>npm install -g cnpm --registry=https://registry.npm.taobao.org
-</code></pre><h2 id="node版本管理及切换—-Nodejs-版本管理器-mac"><a href="#node版本管理及切换—-Nodejs-版本管理器-mac" class="headerlink" title="node版本管理及切换—-Nodejs 版本管理器(mac)"></a>node版本管理及切换—-Nodejs 版本管理器(mac)</h2><pre><code>npm install -g n
-n latest    下载最近版本的node
-n lts       下载最近最稳定的node
-n ls        列出所有的node版本
-n  版本号    切换node 版本
-</code></pre><h2 id="nrm-管理源—npm的镜像源管理工具"><a href="#nrm-管理源—npm的镜像源管理工具" class="headerlink" title="nrm 管理源—npm的镜像源管理工具"></a>nrm 管理源—npm的镜像源管理工具</h2><pre><code>npm install -g nrm
-nrm ls                  列出所有可切换的源
-nrm use taobao          切换镜像
-nrm add 仓库名 地址     添加仓库
-</code></pre><h2 id="初始化package-json文件"><a href="#初始化package-json文件" class="headerlink" title="初始化package.json文件"></a>初始化package.json文件</h2><pre><code>npm init
-</code></pre><h2 id="npm-set用来设置环境变量"><a href="#npm-set用来设置环境变量" class="headerlink" title="npm set用来设置环境变量"></a>npm set用来设置环境变量</h2><pre><code>npm set init-author-name &apos;Your name&apos;
-npm set init-author-email &apos;Your email&apos;
-npm set init-author-url &apos;http://yourdomain.com&apos;
-npm set init-license &apos;MIT&apos;
-面命令等于为 npm init 设置了默认值，以后执行 npm init 的时候，package.json 的作者姓名、邮件、主页、许可证字段就会自动写入预设的值。这些信息会存放在用户主目录的 ~/.npmrc文件，使得用户不用每个项目都输入。如果某个项目有不同的设置，可以针对该项目运行 npm config。
-</code></pre><h2 id="npm-清楚缓存"><a href="#npm-清楚缓存" class="headerlink" title="npm 清楚缓存"></a>npm 清楚缓存</h2><pre><code>npm cache verify
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/31/常用git命令/" data-id="ck9kslded000ao4uvvodd8tui" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/20/模块化/" data-id="ck9m4ufsw000ff0uvuzf5l8ym" class="article-share-link">Share</a>
       
       
     </footer>
@@ -941,7 +872,7 @@ npm set init-license &apos;MIT&apos;
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -952,6 +883,10 @@ npm set init-license &apos;MIT&apos;
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/04/30/微信公众号/">微信公众号</a>
+          </li>
         
           <li>
             <a href="/2019/10/10/问题总结/">问题总结</a>
@@ -967,10 +902,6 @@ npm set init-license &apos;MIT&apos;
         
           <li>
             <a href="/2019/06/24/css-grid/">css-grid</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/12/构造函数及原型链/">构造函数及原型链</a>
           </li>
         
       </ul>
