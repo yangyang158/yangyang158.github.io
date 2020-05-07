@@ -93,7 +93,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/30/微信公众号/" data-id="ck9m4ufrz0006f0uv5qd8wiow" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/30/微信公众号/" data-id="ck9w2pasj000cpguvwklke5xx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -271,6 +271,8 @@ sort()并不是按照数值进行排序，而是按字符串字母的ASCII码值
 <h4 id="19、栈、堆、队列"><a href="#19、栈、堆、队列" class="headerlink" title="19、栈、堆、队列"></a>19、栈、堆、队列</h4><p>栈: 先进后出的有序集合，js的基本数据类型都存放在栈中，栈由编译器自动分配释放，调用完毕自动释放。<br>堆：一般由操作人员（程序员）分配释放，若操作人员不分配释放，将由OS回收释放，js的引用数据类型都存放在栈中<br>队列：先进先出的有序集合<br><strong>为什么会有堆内存、栈内存之分？</strong><br>通常与垃圾回收机制有关。为了使程序运行时占用的内存最小。<br>当一个方法执行时，每个方法都会建立自己的内存栈，在这个方法内定义的变量将会逐个放入这块栈内存里，随着方法的执行结束，这个方法的内存栈也将自然销毁了。因此，所有在方法中定义的变量都是放在栈内存中的；<br>当我们在程序中创建一个对象时，这个对象将被保存到运行时数据区中，以便反复利用（因为对象的创建成本通常较大），这个运行时数据区就是堆内存。堆内存中的对象不会随方法的结束而销毁，即使方法结束后，这个对象还可能被另一个引用变量所引用（方法的参数传递时很常见），则这个对象依然不会被销毁，只有当一个对象没有任何引用变量引用它时，系统的垃圾回收机制才会在核实的时候回收它。</p>
 <h4 id="20、JavaScript-运行机制"><a href="#20、JavaScript-运行机制" class="headerlink" title="20、JavaScript 运行机制"></a>20、JavaScript 运行机制</h4><p><a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html" title="阮一峰" target="_blank" rel="noopener">参考文献</a></p>
 <p><strong>宏任务、微任务</strong><br>宏任务：可以理解是每次执行栈执行的代码就是一个宏任务(包括每次从事件队列中获取一个事件回调并放到执行栈中执行)。主要场景有：主代码块、setTimeout、setInterval等<br>微任务：可以理解是在当前task执行结束后立即执行的任务。主要场景有：Promise、process.nextTick等。<br><strong>运行机制</strong><br>js是单线程，分为同步任务和异步任务<br>（1）所有同步任务都在主线程上执行，形成一个执行栈（execution context stack）。<br>（2）主线程之外，还存在一个”任务队列”（task queue）。只要异步任务有了运行结果，就在”任务队列”之中放置一个事件。<br>（3）一旦”执行栈”中的所有同步任务执行完毕，系统就会读取”任务队列”，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。<br>（4）主线程不断重复上面的第三步。(事件循环)<br>setTimeout(fn,0)的含义是，指定某个任务在主线程最早可得的空闲时间执行，也就是说，尽可能早得执行。它在”任务队列”的尾部添加一个事件，因此要等到同步任务和”任务队列”现有的事件都处理完，才会得到执行。所以并没有办法保证，回调函数一定会在setTimeout()指定的时间执行。</p>
+<h4 id="21、防抖和节流：减少不必要的损耗"><a href="#21、防抖和节流：减少不必要的损耗" class="headerlink" title="21、防抖和节流：减少不必要的损耗"></a>21、防抖和节流：减少不必要的损耗</h4><p>防抖：动作触发后间隔一段时间 触发某个事件，如果在这段时间内又触发了该动作，则从此刻起 计算间隔时间<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> debounce(fn, time) &#123;</span><br><span class="line">    <span class="built_in">let</span> timerId: any = null</span><br><span class="line">    <span class="built_in">return</span> () =&gt; &#123;</span><br><span class="line">        clearTimeout(timerId)</span><br><span class="line">        timerId = setTimeout(() =&gt; &#123;</span><br><span class="line">            fn(<span class="string">'yy'</span>, 12)</span><br><span class="line">        &#125;, time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">sayHello</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'test'</span>, arguments)</span><br><span class="line">&#125;</span><br><span class="line">// 效果: 点击一个按钮, 4秒后触发sayHello函数</span><br><span class="line"><span class="built_in">let</span> btn: any = document.querySelector(<span class="string">'.tets'</span>)</span><br><span class="line">btn.addEventListener(<span class="string">'click'</span>, debounce(sayHello, 4000))</span><br></pre></td></tr></table></figure></p>
+<p>节流：动作触发后间隔一段时间 触发某个事件，如果在这段时间内又触发了该动作，则无视该动作<br>例如：8s内无论重复触发多少次该动作，都只触发一次该事件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> throtte(fn, time) &#123;</span><br><span class="line">    <span class="built_in">let</span> preTime = 0</span><br><span class="line">    <span class="built_in">return</span> () =&gt; &#123;</span><br><span class="line">        // 时间戳</span><br><span class="line">        <span class="built_in">let</span> now = Date.now()</span><br><span class="line">        <span class="keyword">if</span> (now - preTime &gt; time) &#123;</span><br><span class="line">            fn()</span><br><span class="line">            preTime = now</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span>  <span class="function"><span class="title">sayHello</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'节流'</span>)</span><br><span class="line">&#125;</span><br><span class="line">// 效果: 重复点击一个按钮, 8秒后只会触发一次sayHello函数</span><br><span class="line"><span class="built_in">let</span> btn: any = document.querySelector(<span class="string">'.tets'</span>)</span><br><span class="line">btn.addEventListener(<span class="string">'click'</span>, this.throtte(this.sayHello, 8000))</span><br></pre></td></tr></table></figure></p>
 <h2 id="二、ajax请求相关"><a href="#二、ajax请求相关" class="headerlink" title="二、ajax请求相关"></a>二、ajax请求相关</h2><h4 id="1、post和get的区别"><a href="#1、post和get的区别" class="headerlink" title="1、post和get的区别"></a>1、post和get的区别</h4><pre><code>post：url在body体中, url长度限制是特定的浏览器及服务器对它的限制
 get：参数拼接在url上, 出于安全考虑, 服务器端在实现时会做一定限制, nginix默认限制1M, Tomcat 默认是2M
 </code></pre><p><strong>注意1:</strong> HTTP 协议规范没有对 get和post的URL 长度进行限制<br><strong>注意2:</strong> 不同浏览器对url长度的限制<br>IE: 2803<br>Firefox: 65536<br>Chrome: 8182<br>Safari: 80000<br>Opera: 190000</p>
@@ -355,6 +357,19 @@ static：会按照正常的文档流进行排列
         @import url(&quot;css文件路径&quot;);
     &lt;/style&gt;
 优先级：行内样式 &gt; 内部样式 &gt; 外部引入
+</code></pre><h4 id="10、html有哪些空标签"><a href="#10、html有哪些空标签" class="headerlink" title="10、html有哪些空标签"></a>10、html有哪些空标签</h4><pre><code>没有闭合的标签称为空标签
+如: &lt;img /&gt;  &lt;hr /&gt;  &lt;br /&gt;  &lt;input /&gt; &lt;meta /&gt; &lt;link /&gt;等
+</code></pre><h4 id="11、h5有哪些"><a href="#11、h5有哪些" class="headerlink" title="11、h5有哪些"></a>11、h5有哪些</h4><p><strong>注： HTML5是HTML的第五个版本</strong><br>    <strong>html5 ≈ html + css3 + js + api</strong><br>    新增了一些标签、表单控件、样式选择器、伪类、表单校验<br>    localstorage、sessionStorage、离线存储<br>    map、地理位置<br>    canvas<br>    音频、视频<br>    Web SQL 数据库<br>    动画<br>    WebSocket<br>    拖拽</p>
+<h4 id="12、html和xhtml的区别"><a href="#12、html和xhtml的区别" class="headerlink" title="12、html和xhtml的区别"></a>12、html和xhtml的区别</h4><pre><code>xhtml语法更严格
+a、元素语法
+    XHTML 元素必须正确嵌套
+    XHTML 元素必须始终关闭
+    XHTML 元素必须小写
+    XHTML 文档必须有一个根元素
+b、属性语法
+    XHTML 属性必须使用小写
+    XHTML 属性值必须用引号包围
+    XHTML 属性简写也是禁止的 错误：&lt;input checked&gt; 正确：&lt;input checked=&apos;checked&apos;&gt;
 </code></pre><h2 id="五、React框架相关"><a href="#五、React框架相关" class="headerlink" title="五、React框架相关"></a>五、React框架相关</h2><h4 id="1、生命周期"><a href="#1、生命周期" class="headerlink" title="1、生命周期"></a>1、生命周期</h4><h4 id="2、代码分割"><a href="#2、代码分割" class="headerlink" title="2、代码分割"></a>2、代码分割</h4><pre><code>方法一：react的新特性
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123;lazy, Suspense&#125; from <span class="string">'react'</span></span><br><span class="line">const LayoutPage = lazy(() =&gt; import(/* webpackChunkName: <span class="string">'Layout'</span> */ <span class="string">'layout/index.jsx'</span>))</span><br><span class="line">const Layout = <span class="keyword">function</span> (props) &#123;</span><br><span class="line">    <span class="built_in">return</span> (</span><br><span class="line">        &lt;Suspense fallback=&#123;&lt;div&gt;Loading...&lt;/div&gt;&#125;&gt;</span><br><span class="line">            &lt;LayoutPage /&gt;</span><br><span class="line">        &lt;/Suspense&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -397,7 +412,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/10/问题总结/" data-id="ck9m4ufsf000cf0uvwi9xvul2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/10/问题总结/" data-id="ck9w2paso000fpguvgtre3mij" class="article-share-link">Share</a>
       
       
     </footer>
@@ -449,7 +464,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/29/搭建静态服务器/" data-id="ck9m4ufsg000df0uv6idju052" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/29/搭建静态服务器/" data-id="ck9w2pas1000apguvbxra50jo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -496,7 +511,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/console用法/" data-id="ck9m4ufrp0000f0uvf2tjaxfj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/console用法/" data-id="ck9w2parm0000pguvwj8v82yq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -538,7 +553,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/24/css-grid/" data-id="ck9m4ufs7000af0uvnxuf41qh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/24/css-grid/" data-id="ck9w2parq0001pguvpcajzff0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -581,7 +596,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/12/构造函数及原型链/" data-id="ck9m4ufsd000bf0uvyhzxp7wh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/12/构造函数及原型链/" data-id="ck9w2pas3000bpguvw3lhegz3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -626,7 +641,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/01/hello-world/" data-id="ck9m4ufrv0002f0uvkhgujglv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/01/hello-world/" data-id="ck9w2pars0002pguvge0qouqq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -709,7 +724,7 @@ ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/27/mac操作linux/" data-id="ck9m4ufrw0003f0uv1rz4ybkx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/27/mac操作linux/" data-id="ck9w2parv0004pguvcuyalq1g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -782,7 +797,7 @@ ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/25/flutter移动框架学习/" data-id="ck9m4ufrt0001f0uv02wwzzm1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/25/flutter移动框架学习/" data-id="ck9w2part0003pguvrctku28d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -839,7 +854,7 @@ ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/20/模块化/" data-id="ck9m4ufsw000ff0uvuzf5l8ym" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/20/模块化/" data-id="ck9w2pask000dpguvt81d0t77" class="article-share-link">Share</a>
       
       
     </footer>
