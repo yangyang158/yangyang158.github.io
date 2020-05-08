@@ -162,7 +162,7 @@ npm set init-license &apos;MIT&apos;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/31/常用git命令/" data-id="ck9w2pas00008pguvla72ania" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/31/常用git命令/" data-id="ck9xiy4yb000fwkuvdeoiuhjq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -196,13 +196,15 @@ npm set init-license &apos;MIT&apos;
       
         <h2 id="一、非浏览器兼容性问题"><a href="#一、非浏览器兼容性问题" class="headerlink" title="一、非浏览器兼容性问题"></a>一、非浏览器兼容性问题</h2><h3 id="1、iframe在ipad等移动端下-子页面的宽度不受父页面控制-出现横向滚动条"><a href="#1、iframe在ipad等移动端下-子页面的宽度不受父页面控制-出现横向滚动条" class="headerlink" title="1、iframe在ipad等移动端下 子页面的宽度不受父页面控制, 出现横向滚动条"></a>1、iframe在ipad等移动端下 子页面的宽度不受父页面控制, 出现横向滚动条</h3><p>解决: 在iframe标签中，加上scrolling=”no”强制没有滚动条, 设置iframe样式 width: 1px; min-width:100%;</p>
 <h3 id="2、行内元素和块级元素的区别"><a href="#2、行内元素和块级元素的区别" class="headerlink" title="2、行内元素和块级元素的区别"></a>2、行内元素和块级元素的区别</h3><p>块级元素各占一行，行内元素设置width无效，height无效(可以设置line-height)，margin上下无效，padding上下无效</p>
-<h2 id="二、浏览器兼容性问题"><a href="#二、浏览器兼容性问题" class="headerlink" title="二、浏览器兼容性问题"></a>二、浏览器兼容性问题</h2><h3 id="1、2个或多个img并排显示，图片之间会有默认的间距-图片距离下方有间距（google也有此问题）"><a href="#1、2个或多个img并排显示，图片之间会有默认的间距-图片距离下方有间距（google也有此问题）" class="headerlink" title="1、2个或多个img并排显示，图片之间会有默认的间距,图片距离下方有间距（google也有此问题）"></a>1、2个或多个img并排显示，图片之间会有默认的间距,图片距离下方有间距（google也有此问题）</h3><p>解决: float布局去除间隙；vertical-align可以去除距离下方的间距</p>
-<h3 id="2、设置滚动条的样式，兼容IE"><a href="#2、设置滚动条的样式，兼容IE" class="headerlink" title="2、设置滚动条的样式，兼容IE"></a>2、设置滚动条的样式，兼容IE</h3><p><strong>a、webkit下面的CSS设置滚动条，主要有下面7个属性：</strong><br>::-webkit-scrollbar 滚动条整体部分，可以设置宽度啥的<br>::-webkit-scrollbar-button 滚动条两端的按钮<br>::-webkit-scrollbar-track  外层轨道<br>::-webkit-scrollbar-track-piece  内层滚动槽<br>::-webkit-scrollbar-thumb 滚动的滑块<br>::-webkit-scrollbar-corner 边角<br>::-webkit-resizer 定义右下角拖动块的样式<br><strong>b、IE下面就比较简单那了，自定义的项目比较少，全是颜色</strong><br>scrollbar-arrow-color: color; /<em>三角箭头的颜色</em>/<br>scrollbar-face-color: color; /<em>立体滚动条的颜色（包括箭头部分的背景色）</em>/<br>scrollbar-3dlight-color: color; /<em>立体滚动条亮边的颜色</em>/<br>scrollbar-highlight-color: color; /<em>滚动条的高亮颜色（左阴影？）</em>/<br>scrollbar-shadow-color: color; /<em>立体滚动条阴影的颜色</em>/<br>scrollbar-darkshadow-color: color; /<em>立体滚动条外阴影的颜色</em>/<br>scrollbar-track-color: color; /<em>立体滚动条背景颜色</em>/<br>scrollbar-base-color:color; /<em>滚动条的基色</em>/</p>
+<h2 id="二、浏览器兼容性问题"><a href="#二、浏览器兼容性问题" class="headerlink" title="二、浏览器兼容性问题"></a>二、浏览器兼容性问题</h2><h3 id="1、2个或多个img并排显示，图片距离下方有间距（google也有此问题）"><a href="#1、2个或多个img并排显示，图片距离下方有间距（google也有此问题）" class="headerlink" title="1、2个或多个img并排显示，图片距离下方有间距（google也有此问题）"></a>1、2个或多个img并排显示，图片距离下方有间距（google也有此问题）</h3><p>解决: vertical-align可以去除距离下方的间距</p>
+<h3 id="2、不同浏览器-标签的默认padding、margin不一致"><a href="#2、不同浏览器-标签的默认padding、margin不一致" class="headerlink" title="2、不同浏览器 标签的默认padding、margin不一致"></a>2、不同浏览器 标签的默认padding、margin不一致</h3><p>解决: *{margin: 0; padding: 0;}</p>
+<h3 id="3、谷歌浏览器-font-size-小于12-按12px显示"><a href="#3、谷歌浏览器-font-size-小于12-按12px显示" class="headerlink" title="3、谷歌浏览器 font-size 小于12 按12px显示"></a>3、谷歌浏览器 font-size 小于12 按12px显示</h3><p>解析：谷歌浏览器默认的字体大小为16px, 当设置到12px以下的时候字体大小不再改变。<br>    使用css缩放解决：transform: scale(0.8); -&gt; 9.6px</p>
+<h3 id="4、设置滚动条的样式，兼容IE"><a href="#4、设置滚动条的样式，兼容IE" class="headerlink" title="4、设置滚动条的样式，兼容IE"></a>4、设置滚动条的样式，兼容IE</h3><p><strong>a、webkit下面的CSS设置滚动条，主要有下面7个属性：</strong><br>::-webkit-scrollbar 滚动条整体部分，可以设置宽度啥的<br>::-webkit-scrollbar-button 滚动条两端的按钮<br>::-webkit-scrollbar-track  外层轨道<br>::-webkit-scrollbar-track-piece  内层滚动槽<br>::-webkit-scrollbar-thumb 滚动的滑块<br>::-webkit-scrollbar-corner 边角<br>::-webkit-resizer 定义右下角拖动块的样式<br><strong>b、IE下面就比较简单那了，自定义的项目比较少，全是颜色</strong><br>scrollbar-arrow-color: color; /<em>三角箭头的颜色</em>/<br>scrollbar-face-color: color; /<em>立体滚动条的颜色（包括箭头部分的背景色）</em>/<br>scrollbar-3dlight-color: color; /<em>立体滚动条亮边的颜色</em>/<br>scrollbar-highlight-color: color; /<em>滚动条的高亮颜色（左阴影？）</em>/<br>scrollbar-shadow-color: color; /<em>立体滚动条阴影的颜色</em>/<br>scrollbar-darkshadow-color: color; /<em>立体滚动条外阴影的颜色</em>/<br>scrollbar-track-color: color; /<em>立体滚动条背景颜色</em>/<br>scrollbar-base-color:color; /<em>滚动条的基色</em>/</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/19/前端开发各类问题总结/" data-id="ck9w2pary0007pguv9uzhsl8v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/19/前端开发各类问题总结/" data-id="ck9xiy4ww0007wkuvacej0njv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -287,7 +289,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/15/jsvascript易混淆点/" data-id="ck9w2parw0005pguvmzbm28ow" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/15/jsvascript易混淆点/" data-id="ck9xiy4wo0001wkuv6ur1wkz8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -325,7 +327,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/15/浏览器渲染机制/" data-id="ck9w2pasm000epguv0spxfmsu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/15/浏览器渲染机制/" data-id="ck9xiy4yb000ewkuvfzdtpco6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -409,7 +411,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/15/js中的作用域/" data-id="ck9w2parx0006pguvpqsqi555" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/15/js中的作用域/" data-id="ck9xiy4ws0004wkuvi24hdc8h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -506,7 +508,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/08/http缓存/" data-id="ck9w2pat0000gpguvw439j49m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/08/http缓存/" data-id="ck9xiy4ya000dwkuvhmgymi7x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -610,7 +612,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/05/markdown-grammar/" data-id="ck9w2pas10009pguvq7qy8hmg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/05/markdown-grammar/" data-id="ck9xiy4ws0005wkuv122gz2jj" class="article-share-link">Share</a>
       
       
     </footer>
