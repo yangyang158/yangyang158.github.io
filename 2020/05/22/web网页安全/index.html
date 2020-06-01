@@ -5,19 +5,19 @@
   
 
   
-  <title>hexo基本命令 | 学无止境</title>
+  <title>web网页安全 | 学无止境</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="一、XSS 跨站脚本攻击原理：通过在web网页里植入可执行的脚本 盗取信息防御：    1、HttpOnly Cookie    2、不信任用户输入, 对特殊字符进行转义    3、建立白名单, 配置规则, 告诉浏览器可以加载和执行哪些资源, 设置meta标签的方式 或 HTTP Header 中的 Content-Security-Policy 二、CSRF(Cross Site Request">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo基本命令">
-<meta property="og:url" content="http://yoursite.com/2019/04/01/hello-world/index.html">
+<meta property="og:title" content="web网页安全">
+<meta property="og:url" content="http://yoursite.com/2020/05/22/web网页安全/index.html">
 <meta property="og:site_name" content="学无止境">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="一、XSS 跨站脚本攻击原理：通过在web网页里植入可执行的脚本 盗取信息防御：    1、HttpOnly Cookie    2、不信任用户输入, 对特殊字符进行转义    3、建立白名单, 配置规则, 告诉浏览器可以加载和执行哪些资源, 设置meta标签的方式 或 HTTP Header 中的 Content-Security-Policy 二、CSRF(Cross Site Request">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-01T09:48:30.620Z">
+<meta property="og:updated_time" content="2020-05-22T07:11:22.096Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo基本命令">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="web网页安全">
+<meta name="twitter:description" content="一、XSS 跨站脚本攻击原理：通过在web网页里植入可执行的脚本 盗取信息防御：    1、HttpOnly Cookie    2、不信任用户输入, 对特殊字符进行转义    3、建立白名单, 配置规则, 告诉浏览器可以加载和执行哪些资源, 设置meta标签的方式 或 HTTP Header 中的 Content-Security-Policy 二、CSRF(Cross Site Request">
   
     <link rel="alternate" href="/atom.xml" title="学无止境" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-web网页安全" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/04/01/hello-world/" class="article-date">
-  <time datetime="2019-04-01T09:48:30.620Z" itemprop="datePublished">2019-04-01</time>
+    <a href="/2020/05/22/web网页安全/" class="article-date">
+  <time datetime="2020-05-22T06:02:51.000Z" itemprop="datePublished">2020-05-22</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      hexo基本命令
+      web网页安全
     </h1>
   
 
@@ -86,20 +86,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post-创建新页面"><a href="#Create-a-new-post-创建新页面" class="headerlink" title="Create a new post 创建新页面"></a>Create a new post 创建新页面</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server-启动项目"><a href="#Run-server-启动项目" class="headerlink" title="Run server 启动项目"></a>Run server 启动项目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites-部署"><a href="#Deploy-to-remote-sites-部署" class="headerlink" title="Deploy to remote sites 部署"></a>Deploy to remote sites 部署</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+        <h2 id="一、XSS-跨站脚本攻击"><a href="#一、XSS-跨站脚本攻击" class="headerlink" title="一、XSS 跨站脚本攻击"></a>一、XSS 跨站脚本攻击</h2><p>原理：通过在web网页里植入可执行的脚本 盗取信息<br>防御：<br>    1、HttpOnly Cookie<br>    2、不信任用户输入, 对特殊字符进行转义<br>    3、建立白名单, 配置规则, 告诉浏览器可以加载和执行哪些资源, 设置meta标签的方式 或 HTTP Header 中的 Content-Security-Policy</p>
+<h2 id="二、CSRF-Cross-Site-Request-Forgery-，即跨站请求伪造"><a href="#二、CSRF-Cross-Site-Request-Forgery-，即跨站请求伪造" class="headerlink" title="二、CSRF(Cross Site Request Forgery)，即跨站请求伪造"></a>二、CSRF(Cross Site Request Forgery)，即跨站请求伪造</h2><p>原理: 盗用了用户的身份, 以用户的名义发请求<br>场景: 用户登录了某网站且未退出, 被诱惑访问了其他网站<br>防御:<br>    1、检查 header中的refer字段<br>    2、get请求比较好伪造, get请求不要对数据做修改<br>    3、对账户交易的要加上验证码或token</p>
+<p>疑问：cookie是不能跨域访问的，为什么会有csrf攻击？<br>浏览器会依据加载的域名附带上对应域名cookie。<br>就是如果用户在a网站登录且生成了授权的cookies，然后访问b网站，b站故意构造请求a站的请求，用script，img或者iframe之类的加载a站着个地址，浏览器会附带上a站此登录用户的授权cookie信息，这样就构成crsf</p>
+<h2 id="三、点击劫持"><a href="#三、点击劫持" class="headerlink" title="三、点击劫持"></a>三、点击劫持</h2><p>原理：一种视觉上的欺骗手段, 如：在页面上覆盖一个透明的iframe, 此时用户将在不知情的情况下点击透明的iframe里的页面<br>防御：<br>    1、设置请求头的X-FRAME-OPTIONS字段, 控制访问iframe的来源</p>
+<h2 id="四、URL跳转漏洞"><a href="#四、URL跳转漏洞" class="headerlink" title="四、URL跳转漏洞"></a>四、URL跳转漏洞</h2><p>原理: 攻击者做一个恶意链接，比如：qq号被盗 就是打开了一个恶意链接<br>eg: <a href="http://www.XX.XX.com/index?url=http://XXXXX" target="_blank" rel="noopener">http://www.XX.XX.com/index?url=http://XXXXX</a><br>前面看着是安全的链接, 参数url是一个恶意网址<br>防御：<br>    1、加入token对生成的链接进行校验<br>    2、对referer的限制</p>
+<h2 id="五、SQL注入"><a href="#五、SQL注入" class="headerlink" title="五、SQL注入"></a>五、SQL注入</h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/01/hello-world/" data-id="ckahv5o9a00044kuv2vhdgcku" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/22/web网页安全/" data-id="ckahv5o9d00074kuv6by3wlrq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -108,19 +104,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/05/12/构造函数及原型链/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          构造函数及原型链
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/02/27/mac操作linux/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/05/22/http/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">mac操作linux</div>
+      <div class="article-nav-title">http</div>
     </a>
   
 </nav>

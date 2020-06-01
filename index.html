@@ -62,6 +62,335 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-web网页安全" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/22/web网页安全/" class="article-date">
+  <time datetime="2020-05-22T06:02:51.000Z" itemprop="datePublished">2020-05-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/22/web网页安全/">web网页安全</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、XSS-跨站脚本攻击"><a href="#一、XSS-跨站脚本攻击" class="headerlink" title="一、XSS 跨站脚本攻击"></a>一、XSS 跨站脚本攻击</h2><p>原理：通过在web网页里植入可执行的脚本 盗取信息<br>防御：<br>    1、HttpOnly Cookie<br>    2、不信任用户输入, 对特殊字符进行转义<br>    3、建立白名单, 配置规则, 告诉浏览器可以加载和执行哪些资源, 设置meta标签的方式 或 HTTP Header 中的 Content-Security-Policy</p>
+<h2 id="二、CSRF-Cross-Site-Request-Forgery-，即跨站请求伪造"><a href="#二、CSRF-Cross-Site-Request-Forgery-，即跨站请求伪造" class="headerlink" title="二、CSRF(Cross Site Request Forgery)，即跨站请求伪造"></a>二、CSRF(Cross Site Request Forgery)，即跨站请求伪造</h2><p>原理: 盗用了用户的身份, 以用户的名义发请求<br>场景: 用户登录了某网站且未退出, 被诱惑访问了其他网站<br>防御:<br>    1、检查 header中的refer字段<br>    2、get请求比较好伪造, get请求不要对数据做修改<br>    3、对账户交易的要加上验证码或token</p>
+<p>疑问：cookie是不能跨域访问的，为什么会有csrf攻击？<br>浏览器会依据加载的域名附带上对应域名cookie。<br>就是如果用户在a网站登录且生成了授权的cookies，然后访问b网站，b站故意构造请求a站的请求，用script，img或者iframe之类的加载a站着个地址，浏览器会附带上a站此登录用户的授权cookie信息，这样就构成crsf</p>
+<h2 id="三、点击劫持"><a href="#三、点击劫持" class="headerlink" title="三、点击劫持"></a>三、点击劫持</h2><p>原理：一种视觉上的欺骗手段, 如：在页面上覆盖一个透明的iframe, 此时用户将在不知情的情况下点击透明的iframe里的页面<br>防御：<br>    1、设置请求头的X-FRAME-OPTIONS字段, 控制访问iframe的来源</p>
+<h2 id="四、URL跳转漏洞"><a href="#四、URL跳转漏洞" class="headerlink" title="四、URL跳转漏洞"></a>四、URL跳转漏洞</h2><p>原理: 攻击者做一个恶意链接，比如：qq号被盗 就是打开了一个恶意链接<br>eg: <a href="http://www.XX.XX.com/index?url=http://XXXXX" target="_blank" rel="noopener">http://www.XX.XX.com/index?url=http://XXXXX</a><br>前面看着是安全的链接, 参数url是一个恶意网址<br>防御：<br>    1、加入token对生成的链接进行校验<br>    2、对referer的限制</p>
+<h2 id="五、SQL注入"><a href="#五、SQL注入" class="headerlink" title="五、SQL注入"></a>五、SQL注入</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/22/web网页安全/" data-id="ckahv5o9d00074kuv6by3wlrq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-http" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/22/http/" class="article-date">
+  <time datetime="2020-05-22T05:41:46.000Z" itemprop="datePublished">2020-05-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/22/http/">http</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、常用的状态码"><a href="#一、常用的状态码" class="headerlink" title="一、常用的状态码"></a>一、常用的状态码</h2><p>200：请求成功<br>304：Not Modified 请求资源从缓存里拿<br>400：坏的请求, 客户端请求的语法不对<br>401：身份未认证<br>403：服务器端拒绝客户端请求<br>404：客户端静态资源不存在<br>405：请求方式被禁止<br>500：服务端出错</p>
+<h2 id="二、常用的状态码"><a href="#二、常用的状态码" class="headerlink" title="二、常用的状态码"></a>二、常用的状态码</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/22/http/" data-id="ckahv5o9200004kuv8sr9emcv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-vue框架" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/21/vue框架/" class="article-date">
+  <time datetime="2020-05-21T05:57:45.000Z" itemprop="datePublished">2020-05-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/21/vue框架/">vue框架</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、数据双向绑定"><a href="#一、数据双向绑定" class="headerlink" title="一、数据双向绑定"></a>一、数据双向绑定</h2><pre><code>1、标签内：使用{{}}
+eg：&lt;p&gt;{{message}}&lt;/p&gt;
+2、标签的属性值：v-bind:属性名(v-bind可以省略)
+eg：&lt;p v-bind:title=&quot;message&quot;&gt;热烈欢迎&lt;/p&gt;
+eg：&lt;p :title=&quot;message&quot;&gt;热烈欢迎&lt;/p&gt;
+eg：&lt;p :title=&quot;index === 0 ? &apos;我是title&apos; : &apos;&apos;&quot;&gt;热烈欢迎&lt;/p&gt;
+</code></pre><h2 id="二、条件渲染"><a href="#二、条件渲染" class="headerlink" title="二、条件渲染"></a>二、条件渲染</h2><pre><code>1、控制元素显示与隐藏: 使用v-if、v-else、v-else-if
+eg：
+&lt;div&gt;
+    &lt;div v-if=&quot;num &gt; 5&quot;&gt;{{num}}大于5&lt;/div&gt;
+    &lt;div v-else-if=&quot;num &gt; 2&quot;&gt;{{num}}大于2小于5&lt;/div&gt;
+    &lt;div v-else&gt;{{num}}小于2&lt;/div&gt;
+&lt;/div&gt;
+2、控制元素显示与隐藏: v-show
+eg: 
+&lt;p v-show=&quot;false&quot;&gt;隐藏&lt;/p&gt;
+&lt;p v-show=&quot;true&quot;&gt;显示&lt;/p&gt;
+</code></pre><h2 id="三、循环"><a href="#三、循环" class="headerlink" title="三、循环"></a>三、循环</h2><pre><code>使用: v-for, 形式: site in sites
+eg：
+&lt;div&gt;
+    &lt;div v-for=&quot;(itemNum, index) in numLists&quot; :key=&quot;index&quot;&gt;
+        {{ index+1 }}、{{ itemNum }}
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><h2 id="四、事件绑定"><a href="#四、事件绑定" class="headerlink" title="四、事件绑定"></a>四、事件绑定</h2><pre><code>1、绑定使用：v-on, 简写：@click
+eg：
+&lt;Template&gt;
+    &lt;div&gt;
+        &lt;div v-for=&quot;(itemNum, index) in numLists&quot; :key=&quot;index&quot; @click=&quot;sayNum(itemNum)&quot;&gt;
+            {{ index+1 }}、{{ itemNum }}
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/Template&gt;
+&lt;script&gt;
+    export default {
+        &quot;name&quot;: &apos;App&apos;,
+        data: function() {
+            return {
+                numLists: [200, 121, 4343, 456]
+            }
+        },
+        methods:  {
+            sayNum(itemNum) {
+                this.numLists.push(itemNum)
+            }
+        }
+    }
+&lt;/script&gt;
+2、事件修饰符
+v-on:click.once: 只调用一次
+v-on:click.stop: 阻止事件冒泡
+v-on:click.self: 只当事件在该元素本身（而不是子元素）时触发 
+v-on:click.prevent
+v-on:click.capture
+</code></pre><h2 id="五、表单与业务数据的双向绑定"><a href="#五、表单与业务数据的双向绑定" class="headerlink" title="五、表单与业务数据的双向绑定"></a>五、表单与业务数据的双向绑定</h2><pre><code>使用: v-modal
+eg:
+&lt;div&gt;
+    &lt;p&gt;{{ test }}&lt;/p&gt;
+    &lt;input v-model=&quot;test&quot;&gt;
+&lt;/div&gt;
+</code></pre><h2 id="六、计算属性computed"><a href="#六、计算属性computed" class="headerlink" title="六、计算属性computed"></a>六、计算属性computed</h2><pre><code>eg：监听到numLists数组发生改变, lastNum 就会重新计算值
+&lt;Template&gt;
+    &lt;div&gt;
+        &lt;div v-for=&quot;(itemNum, index) in numLists&quot; :key=&quot;index&quot; @click=&quot;addNum(itemNum)&quot;&gt;
+            {{ index+1 }}、{{ itemNum }}
+        &lt;/div&gt;
+        &lt;div&gt;获取数组的最后一个元素{{ lastNum }}&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/Template&gt;
+&lt;script&gt;
+    export default {
+        &quot;name&quot;: &apos;App&apos;,
+        data: function() {
+            return {
+                numLists: [200, 121, 4343, 456]
+            }
+        },
+        methods:  {
+            addNum(itemNum) {
+                this.numLists.push(itemNum)
+            }
+        }
+        computed: {
+            lastNum() {
+                const length = this.numLists.length
+                return this.numLists[length -1 ]
+            }
+        }
+    }
+&lt;/script&gt;
+
+computed vs methods 
+我们可以使用 methods 来替代 computed，效果上两个都是一样的，但是 computed 是基于它的依赖缓存，只有相关依赖发生改变时才会重新取值。而使用 methods ，在重新渲染的时候，函数总会重新调用执行。
+</code></pre><h2 id="七、监听属性watch"><a href="#七、监听属性watch" class="headerlink" title="七、监听属性watch"></a>七、监听属性watch</h2><pre><code>eg：监听数据变化, 做出响应
+&lt;template&gt;
+    &lt;div&gt;
+        &lt;input v-model=&quot;meters&quot; type=&quot;text&quot;&gt;米
+        &lt;input v-model=&quot;kilometers&quot; type=&quot;text&quot;&gt;千米
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+    &quot;name&quot;: &apos;App&apos;,
+    data: function() {
+        return {
+            meters: 0,
+            kilometers: 0
+        }
+    },
+    watch: {
+        meters(val) {
+            this.kilometers = val * 1000
+        },
+        kilometers(val) {
+            this.meters = val / 1000
+        }
+    }
+}
+&lt;/script&gt;
+</code></pre><h2 id="八、自定义-全局指令和局部指令"><a href="#八、自定义-全局指令和局部指令" class="headerlink" title="八、自定义 全局指令和局部指令"></a>八、自定义 全局指令和局部指令</h2><pre><code>eg: 注册一个全局指令
+&lt;template&gt;
+    &lt;div&gt;
+        &lt;div v-changeColor=&quot;{text: &apos;使用自定义指令&apos;, color: &apos;red&apos;}&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+    import Vue from &apos;vue&apos;
+    Vue.directive(&apos;changeColor&apos;, function(el, binding){
+        el.innerHTML = text
+        el.style.color = color
+    })
+&lt;/script&gt;
+</code></pre><h2 id="九、生命周期"><a href="#九、生命周期" class="headerlink" title="九、生命周期"></a>九、生命周期</h2><pre><code>beforeCreated —— 创建组件实例之前
+created —— 创建组件实例
+beforeMounted —— 组件挂载到页面之前
+mounted —— 组件挂载到页面, 在此处虚拟的dom节点被替换成真实的dom节点, 并插入dom树中
+beforeUpdated —— 组件更新之前
+updated —— 组件更新
+beforeDestoryed —— 组件销毁之前
+destoryed —— 组件销毁
+activated —— 组件被激活时调用
+deactivated —— 组件被移除时调用
+</code></pre><h2 id="十、注册全局组件和局部组件"><a href="#十、注册全局组件和局部组件" class="headerlink" title="十、注册全局组件和局部组件"></a>十、注册全局组件和局部组件</h2><pre><code>注册：Vue.component(tagName, {
+    // 声明 props集合
+    props: {
+        propA: Number,
+        propB: [String, Number],
+        ...
+    },
+    // 渲染模板
+    template: &apos;&lt;div&gt;&lt;/div&gt;&apos;,
+    data: function () {
+        return {}
+    },
+    methods: {},
+    ...
+})
+调用：&lt;tagName&gt;&lt;/tagName&gt;
+</code></pre><h2 id="十一、组件之间的通信"><a href="#十一、组件之间的通信" class="headerlink" title="十一、组件之间的通信"></a>十一、组件之间的通信</h2><pre><code>1、父传子：
+    a、通过props——单向传递, 子组件不能修改
+    b、通过this.$children[0]字段 获取子组件的属性和方法
+    c、在子组件上声明ref, 通过this.$refs字段 获取子组件的属性和方法
+2、子传父
+    a、通过$emit派发事件
+    b、通过this.$parent字段 获取父组件的属性和方法
+3、隔代通信
+    $attrs可以获取父作用域传入的值(不包括props中的).
+    $listeners相当于父作用域的事件监听器
+4、兄弟组件之间的通信
+    a、先子传父, 再父传子
+    b、借助中央事件总线
+        var bus = new Vue();
+        A组件发送事件: bus.$emit(&apos;test&apos;, &apos;我是A组件&apos;);
+        B组件监听: bus.$on(&apos;test&apos;, (params)=&gt; {});
+5、嵌套很深的组件之间的通信
+    父组件中通过provide来提供变量。子组件中通过inject来注入变量
+6、状态管理-vuex
+    Mutation集合：声明一系列方法 操作修改state中的值 .....
+</code></pre><h2 id="十一、-vue文件代码模板"><a href="#十一、-vue文件代码模板" class="headerlink" title="十一、.vue文件代码模板"></a>十一、.vue文件代码模板</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">        &lt;router-view /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    import userImg from <span class="string">'../assets/img/user-unknown.png'</span></span><br><span class="line">    <span class="built_in">export</span> default &#123;</span><br><span class="line">        <span class="string">"name"</span>: <span class="string">'App'</span>,</span><br><span class="line">        // 页面绑定的数据</span><br><span class="line">        data: <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">            <span class="built_in">return</span> &#123;&#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        // 计算属性</span><br><span class="line">        computed: &#123;&#125;,</span><br><span class="line">        // 监听属性</span><br><span class="line">        watch: &#123;&#125;,</span><br><span class="line">        // 方法集合</span><br><span class="line">        methods: &#123;&#125;,</span><br><span class="line">        // 局部自定义指令</span><br><span class="line">        directives: &#123;&#125;,</span><br><span class="line">        // 封装局部组件</span><br><span class="line">        components: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style lang=<span class="string">'less'</span>&gt;</span><br><span class="line">    @import <span class="string">'./index.less'</span>;</span><br><span class="line">    .photo &#123;</span><br><span class="line">        height: 20px;</span><br><span class="line">        background: red;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/21/vue框架/" data-id="ckahv5o9b00054kuv26er1hiu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-算法题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/13/算法题/" class="article-date">
+  <time datetime="2020-05-13T08:26:21.000Z" itemprop="datePublished">2020-05-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/13/算法题/">算法题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="1、编写一个函数，输入两个数组，输出它们的交集。输出数组中不含重复的元素，元素排列顺序可随意。"><a href="#1、编写一个函数，输入两个数组，输出它们的交集。输出数组中不含重复的元素，元素排列顺序可随意。" class="headerlink" title="1、编写一个函数，输入两个数组，输出它们的交集。输出数组中不含重复的元素，元素排列顺序可随意。"></a>1、编写一个函数，输入两个数组，输出它们的交集。输出数组中不含重复的元素，元素排列顺序可随意。</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="built_in">test</span> (arr1, arr2) &#123;</span><br><span class="line">    <span class="built_in">let</span> newArr = []</span><br><span class="line">    arr1.forEach(<span class="keyword">function</span>(item)&#123;</span><br><span class="line">        <span class="keyword">if</span> (arr2.includes(item)) &#123;</span><br><span class="line">           newArr.push(item) </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="built_in">return</span> newArr</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">test</span>([1,2,3,3,6,8,0], [2,2,5,9,4,8])</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/13/算法题/" data-id="ckahv5oau000f4kuv7f0somqr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-微信公众号" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/30/微信公众号/" class="article-date">
@@ -93,7 +422,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/30/微信公众号/" data-id="ck9xiy4xt000cwkuv5d99vkzo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/30/微信公众号/" data-id="ckahv5o9i000b4kuvv4l9mdke" class="article-share-link">Share</a>
       
       
     </footer>
@@ -276,7 +605,7 @@ close(): 关闭连接
 <h4 id="18、浅比较和深比较的区别"><a href="#18、浅比较和深比较的区别" class="headerlink" title="18、浅比较和深比较的区别"></a>18、浅比较和深比较的区别</h4><p>浅比较：判断2个对象的引用地址是否一样<br>深比较：判断2个对象的所有属性值是否一样<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 浅比较</span><br><span class="line">const obj1 = &#123;age: 12&#125;</span><br><span class="line">const obj2 = &#123;age: 12&#125;</span><br><span class="line">const obj3 = obj1</span><br><span class="line">obj1 === obj2; // <span class="literal">false</span></span><br><span class="line">obj3 === obj1; // <span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
 <h4 id="19、栈、堆、队列"><a href="#19、栈、堆、队列" class="headerlink" title="19、栈、堆、队列"></a>19、栈、堆、队列</h4><p>栈: 先进后出的有序集合，js的基本数据类型都存放在栈中，栈由编译器自动分配释放，调用完毕自动释放。<br>堆：一般由操作人员（程序员）分配释放，若操作人员不分配释放，将由OS回收释放，js的引用数据类型都存放在堆中<br>队列：先进先出的有序集合<br><strong>为什么会有堆内存、栈内存之分？</strong><br>通常与垃圾回收机制有关。为了使程序运行时占用的内存最小。<br>当一个方法执行时，每个方法都会建立自己的内存栈，在这个方法内定义的变量将会逐个放入这块栈内存里，随着方法的执行结束，这个方法的内存栈也将自然销毁了。因此，所有在方法中定义的变量都是放在栈内存中的；<br>当我们在程序中创建一个对象时，这个对象将被保存到运行时数据区中，以便反复利用（因为对象的创建成本通常较大），这个运行时数据区就是堆内存。堆内存中的对象不会随方法的结束而销毁，即使方法结束后，这个对象还可能被另一个引用变量所引用（方法的参数传递时很常见），则这个对象依然不会被销毁，只有当一个对象没有任何引用变量引用它时，系统的垃圾回收机制才会在核实的时候回收它。</p>
 <h4 id="20、JavaScript-运行机制"><a href="#20、JavaScript-运行机制" class="headerlink" title="20、JavaScript 运行机制"></a>20、JavaScript 运行机制</h4><p><a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html" title="阮一峰" target="_blank" rel="noopener">参考文献</a></p>
-<p><strong>宏任务、微任务</strong><br>宏任务：可以理解是每次执行栈执行的代码就是一个宏任务(包括每次从事件队列中获取一个事件回调并放到执行栈中执行)。主要场景有：主代码块、setTimeout、setInterval等<br>微任务：可以理解是在当前task执行结束后立即执行的任务。主要场景有：Promise、process.nextTick等。<br><strong>运行机制</strong><br>js是单线程，分为同步任务和异步任务<br>（1）所有同步任务都在主线程上执行，形成一个执行栈（execution context stack）。<br>（2）主线程之外，还存在一个”任务队列”（task queue）。只要异步任务有了运行结果，就在”任务队列”之中放置一个事件。<br>（3）一旦”执行栈”中的所有同步任务执行完毕，系统就会读取”任务队列”，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。<br>（4）主线程不断重复上面的第三步。(事件循环)<br>setTimeout(fn,0)的含义是，指定某个任务在主线程最早可得的空闲时间执行，也就是说，尽可能早得执行。它在”任务队列”的尾部添加一个事件，因此要等到同步任务和”任务队列”现有的事件都处理完，才会得到执行。所以并没有办法保证，回调函数一定会在setTimeout()指定的时间执行。</p>
+<p><strong>宏任务、微任务</strong><br>宏任务：可以理解是每次执行栈执行的代码就是一个宏任务(包括每次从事件队列中获取一个事件回调并放到执行栈中执行)。主要场景有：主代码块script、setTimeout、setInterval等<br>微任务：可以理解是在当前task执行结束后立即执行的任务。主要场景有：Promise、process.nextTick等。<br><strong>运行机制</strong><br>js是单线程，分为同步任务和异步任务<br>（1）所有同步任务都在主线程上执行，形成一个执行栈（execution context stack）。<br>（2）主线程之外，还存在一个”任务队列”（task queue）。只要异步任务有了运行结果，就在”任务队列”之中放置一个事件。<br>（3）一旦”执行栈”中的所有同步任务执行完毕，系统就会读取”任务队列”，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。<br>（4）主线程不断重复上面的第三步。(事件循环)<br>setTimeout(fn,0)的含义是，指定某个任务在主线程最早可得的空闲时间执行，也就是说，尽可能早得执行。它在”任务队列”的尾部添加一个事件，因此要等到同步任务和”任务队列”现有的事件都处理完，才会得到执行。所以并没有办法保证，回调函数一定会在setTimeout()指定的时间执行。</p>
 <h4 id="21、防抖和节流：减少不必要的损耗"><a href="#21、防抖和节流：减少不必要的损耗" class="headerlink" title="21、防抖和节流：减少不必要的损耗"></a>21、防抖和节流：减少不必要的损耗</h4><p>防抖：动作触发后间隔一段时间 触发某个事件，如果在这段时间内又触发了该动作，则从此刻起 计算间隔时间<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> debounce(fn, time) &#123;</span><br><span class="line">    <span class="built_in">let</span> timerId: any = null</span><br><span class="line">    <span class="built_in">return</span> () =&gt; &#123;</span><br><span class="line">        clearTimeout(timerId)</span><br><span class="line">        timerId = setTimeout(() =&gt; &#123;</span><br><span class="line">            fn(<span class="string">'yy'</span>, 12)</span><br><span class="line">        &#125;, time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">sayHello</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'test'</span>, arguments)</span><br><span class="line">&#125;</span><br><span class="line">// 效果: 点击一个按钮, 4秒后触发sayHello函数</span><br><span class="line"><span class="built_in">let</span> btn: any = document.querySelector(<span class="string">'.tets'</span>)</span><br><span class="line">btn.addEventListener(<span class="string">'click'</span>, debounce(sayHello, 4000))</span><br></pre></td></tr></table></figure></p>
 <p>节流：动作触发后间隔一段时间 触发某个事件，如果在这段时间内又触发了该动作，则无视该动作<br>例如：8s内无论重复触发多少次该动作，都只触发一次该事件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> throtte(fn, time) &#123;</span><br><span class="line">    <span class="built_in">let</span> preTime = 0</span><br><span class="line">    <span class="built_in">return</span> () =&gt; &#123;</span><br><span class="line">        // 时间戳</span><br><span class="line">        <span class="built_in">let</span> now = Date.now()</span><br><span class="line">        <span class="keyword">if</span> (now - preTime &gt; time) &#123;</span><br><span class="line">            fn()</span><br><span class="line">            preTime = now</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span>  <span class="function"><span class="title">sayHello</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'节流'</span>)</span><br><span class="line">&#125;</span><br><span class="line">// 效果: 重复点击一个按钮, 8秒后只会触发一次sayHello函数</span><br><span class="line"><span class="built_in">let</span> btn: any = document.querySelector(<span class="string">'.tets'</span>)</span><br><span class="line">btn.addEventListener(<span class="string">'click'</span>, this.throtte(this.sayHello, 8000))</span><br></pre></td></tr></table></figure></p>
 <h5 id="22、JavaScript设计模式"><a href="#22、JavaScript设计模式" class="headerlink" title="22、JavaScript设计模式"></a>22、JavaScript设计模式</h5><pre><code>单例模式：保证一个类只有一个实例
@@ -286,6 +615,10 @@ close(): 关闭连接
 </code></pre><h5 id="23、JavaScript架构模式"><a href="#23、JavaScript架构模式" class="headerlink" title="23、JavaScript架构模式"></a>23、JavaScript架构模式</h5><pre><code>MVC: 数据层 + 视图层 + 控制器
 MVP: 数据层 + 视图层 + 展示器
 MVVM: Model + View + ViewModel, 是基于MVC和MVP的架构模式, Angular、Vue
+</code></pre><h5 id="24、script异步加载的方法"><a href="#24、script异步加载的方法" class="headerlink" title="24、script异步加载的方法"></a>24、script异步加载的方法</h5><pre><code>1、script标签的defer属性：页面渲染 和 脚本的加载 并行执行， 脚本的执行需要等所有元素解析完成后
+2、script标签的async属性: 页面渲染 和 脚本的加载、执行 并行执行 ---html5提出
+3、script标签设置type=&quot;module&quot;, 类似defer
+4、动态创建script脚本
 </code></pre><h2 id="二、ajax请求相关"><a href="#二、ajax请求相关" class="headerlink" title="二、ajax请求相关"></a>二、ajax请求相关</h2><h4 id="1、post和get的区别"><a href="#1、post和get的区别" class="headerlink" title="1、post和get的区别"></a>1、post和get的区别</h4><pre><code>post：url在body体中, url长度限制是特定的浏览器及服务器对它的限制
 get：参数拼接在url上, 出于安全考虑, 服务器端在实现时会做一定限制, nginix默认限制1M, Tomcat 默认是2M
 </code></pre><p><strong>注意1:</strong> HTTP 协议规范没有对 get和post的URL 长度进行限制<br><strong>注意2:</strong> 不同浏览器对url长度的限制<br>IE: 2803<br>Firefox: 65536<br>Chrome: 8182<br>Safari: 80000<br>Opera: 190000</p>
@@ -295,12 +628,16 @@ get：参数拼接在url上, 出于安全考虑, 服务器端在实现时会做�
 2、CORS：只需服务端设置Access-Control-Allow-Origin即可, 若要带cookie请求, 前后端都需要设置
 </code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 前端设置是否带cookie</span><br><span class="line">xhr.withCredentials = <span class="literal">true</span>;</span><br><span class="line">// 允许跨域访问的域名：若有端口需写全（协议+域名+端口），若没有端口末尾不用加<span class="string">'/'</span></span><br><span class="line">response.setHeader(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"http://www.domain1.com"</span>); </span><br><span class="line">// 允许前端带认证cookie：启用此项后，上面的域名不能为<span class="string">'*'</span>，必须指定具体的域名，否则浏览器会提示</span><br><span class="line">response.setHeader(<span class="string">"Access-Control-Allow-Credentials"</span>, <span class="string">"true"</span>); </span><br><span class="line">// 提示OPTIONS预检时，后端需要设置的两个常用自定义头</span><br><span class="line">response.setHeader(<span class="string">"Access-Control-Allow-Headers"</span>, <span class="string">"Content-Type,X-Requested-With"</span>);</span><br></pre></td></tr></table></figure>
 <pre><code>3、JSONP, 借助script标签
-</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    // 请求地址后面加一个callback=函数名, 后台返回 函数名(<span class="string">'我请求到了'</span>), 就能调用到该函数</span><br><span class="line">    var script = document.createElement(<span class="string">'script'</span>);</span><br><span class="line">    script.type = <span class="string">'text/javascript'</span>;</span><br><span class="line">    var showData = <span class="keyword">function</span>(res)&#123;</span><br><span class="line">        console.log(res)</span><br><span class="line">    &#125;</span><br><span class="line">    script.src = <span class="string">'http://192.168.141.210:7310/api/home/cardList?callback=showData'</span>;</span><br><span class="line">    document.head.appendChild(script);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    // 请求地址后面加一个callback=函数名, 后台返回 函数名(<span class="string">'我请求到了'</span>), 就能调用到该函数</span><br><span class="line">    var script = document.createElement(<span class="string">'script'</span>);</span><br><span class="line">    script.type = <span class="string">'text/javascript'</span>;</span><br><span class="line">    window.showData = <span class="keyword">function</span>(res)&#123;</span><br><span class="line">        console.log(res)</span><br><span class="line">    &#125;</span><br><span class="line">    script.src = <span class="string">'http://192.168.141.210:7310/api/home/cardList?callback=showData'</span>;</span><br><span class="line">    document.head.appendChild(script);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">koa 模拟后端处理</span><br><span class="line">@get(<span class="string">'/home/cardList'</span>)</span><br><span class="line">async GetCardeList(ctx)&#123;</span><br><span class="line">    // 获取请参参数</span><br><span class="line">    <span class="built_in">let</span> func = ctx.query.callback</span><br><span class="line">    // 复杂的响应</span><br><span class="line">    ctx.body = func + `(<span class="variable">$&#123;JSON.stringify(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'])&#125;</span>)`</span><br><span class="line">    // 简单的响应</span><br><span class="line">    ctx.body = func + `(<span class="string">'哈哈哈哈'</span>)`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <pre><code>4、后端不存在跨域, 让后端处理
 5、借助无跨域的标签，比如img、script
 6、设置domain
 两个网页一级域名相同，只是二级域名不同，浏览器允许通过设置document.domain共Cookie。
 举例来说，A网站是:http:weibo.qq.com，B网站是:http:lol.qq.com，只需设置document.domain=&apos;qq.com&apos;,两个网页就可共享Cookie。
+</code></pre><h5 id="4、两个tab之间进行通信"><a href="#4、两个tab之间进行通信" class="headerlink" title="4、两个tab之间进行通信"></a>4、两个tab之间进行通信</h5><pre><code>1、两个打开的tab页面属于同源范畴
+    localStorage、sessionStorage、Cookie
+2、完全没有关系的两个浏览器的tab通信
+    A、B Tab 引入iframe 并且指向同一个页面, 利用postMessage通信
 </code></pre><h2 id="二、性能优化相关"><a href="#二、性能优化相关" class="headerlink" title="二、性能优化相关"></a>二、性能优化相关</h2><h4 id="1、如何优化性能"><a href="#1、如何优化性能" class="headerlink" title="1、如何优化性能"></a>1、如何优化性能</h4><pre><code>网页方面
 * 减少http请求次数
     合并文件、css雪碧图
@@ -325,6 +662,7 @@ await关键字只能在async函数内使用, await后面跟着的应该是一个
 Map: 类似对象, 键值对的集合, 各种类型的值（包括对象）都可以当作键。使用方法set(), get(), delete(), has(), clear(), size
 </code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// Set</span><br><span class="line">const s = new Set();</span><br><span class="line">s.add([1,2,3]);</span><br><span class="line">s.add(&#123;age: 5&#125;);</span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">let</span> i of s) &#123;</span><br><span class="line">    console.log(i); // [1,2,3], &#123;age: 5&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">let</span> arr = [...s]; // [[1,2,3], &#123;age: 5&#125;]</span><br><span class="line">// Map</span><br><span class="line">const m = new Map()</span><br><span class="line">const o = &#123;p: <span class="string">'Hello World'</span>&#125;;</span><br><span class="line">const o2 = <span class="string">'职位'</span>;</span><br><span class="line">m.set(o, <span class="string">'打招呼'</span>);</span><br><span class="line">m.set(<span class="string">'o2'</span>, o2); </span><br><span class="line">m.get(<span class="string">'o2'</span>); // 职位</span><br><span class="line">m.get(o); // 打招呼</span><br></pre></td></tr></table></figure>
 <h4 id="6、为什么会有es6"><a href="#6、为什么会有es6" class="headerlink" title="6、为什么会有es6"></a>6、为什么会有es6</h4><pre><code>对es5的不足进行补充, 添加新特性
+</code></pre><h4 id="7、promise的原理是什么-手写一个promise"><a href="#7、promise的原理是什么-手写一个promise" class="headerlink" title="7、promise的原理是什么, 手写一个promise"></a>7、promise的原理是什么, 手写一个promise</h4><pre><code>Promise有pedding、fulfilled、rejected 3种状态, 可以从pedding转fulfilled, 也可以从pedding转rejected, 且状态不可逆,  fulfilled、rejected之间不能相互转换
 </code></pre><h2 id="四、css、html相关"><a href="#四、css、html相关" class="headerlink" title="四、css、html相关"></a>四、css、html相关</h2><h4 id="1、什么是盒模型-IE盒模型和标准盒模型的区别"><a href="#1、什么是盒模型-IE盒模型和标准盒模型的区别" class="headerlink" title="1、什么是盒模型, IE盒模型和标准盒模型的区别"></a>1、什么是盒模型, IE盒模型和标准盒模型的区别</h4><pre><code>盒模型：元素的外边距（margin）、边框（border）、内边距（padding）、内容（content）组成。
 IE模型：width / height = content + padding + border
 标准盒模型：width / height = content
@@ -403,8 +741,14 @@ c: Consumer 组件。可以在 Provider 组件内部的任何一层使用。它�
 当启动webpack-dev-server的时候, 会在内存中创建dest文件, 在浏览器中访问可以看到跟目录下的所有文件; 
 若设置contentBase为a, 在浏览器中访问可以看到a目录下的所有文件；
 若有html页面, 则默认访问html页面,看不到所有文件。
+</code></pre><h4 id="4、loader和plugin的区别"><a href="#4、loader和plugin的区别" class="headerlink" title="4、loader和plugin的区别"></a>4、loader和plugin的区别</h4><pre><code>loader是一个转换器，可以对文件进行编译、压缩等处理
+plugin是一个扩展器，是在loader结束后运行，基于事件机制工作，会监听webpack打包过程中的某些节点，执行广泛的任务。
+</code></pre><h4 id="5、file-loader-和-url-loader-的区别"><a href="#5、file-loader-和-url-loader-的区别" class="headerlink" title="5、file-loader 和 url-loader 的区别"></a>5、file-loader 和 url-loader 的区别</h4><pre><code>url-loader强大之处：
+1.文件大小小于limit参数，url-loader将会把文件转为DataURL；
+2.文件大小大于limit，url-loader会调用file-loader进行处理，参数也会直接传给file-loader。
+因此我们只需要安装url-loader即可
 </code></pre><h2 id="七、算法"><a href="#七、算法" class="headerlink" title="七、算法"></a>七、算法</h2><h4 id="1、冒泡排序"><a href="#1、冒泡排序" class="headerlink" title="1、冒泡排序"></a>1、冒泡排序</h4><p>原理：对相邻的元素进行两两比较，顺序相反则进行交换，这样，每一趟会将最小(降序)或最大(升序)的元素“浮”到顶端<br>对数子8、70、16、50、6、100、1进行排序<br>第一轮结果：8、16、50、6、70、1、100<br>第二轮结果：8、16、6、50、1、70、100<br>第三轮结果：8、16、6、1、50、70、100<br>第四轮结果：6、8、1、16、50、70、100<br>第五轮结果：6、1、8、16、50、70、100<br>第六轮结果：1、6、8、16、50、70、100<br>总结：N个数字要排序完成，总共进行N-1趟排序，每i趟的排序次数为(N-i)次，所以可以用双重循环语句，外层控制循环多少趟，内层控制每一趟的循环次数，即<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var arr = [8, 70, 16, 50, 6, 100, 1]</span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">let</span> i=0; i &lt; arr.length-1; i++) &#123;//外层循环控制排序趟数</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">let</span> j=0; j &lt; arr.length-1-i; j++) &#123;//内层循环控制每一趟排序多少次</span><br><span class="line">        <span class="keyword">if</span>(arr[j] &gt; arr[j+1]) &#123;</span><br><span class="line">            <span class="built_in">let</span> temp = arr[j];</span><br><span class="line">            arr[j] = arr[j+1];</span><br><span class="line">            arr[j+1] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">console.log(arr) // 升序  [1, 6, 8, 16, 50, 70, 100]</span><br></pre></td></tr></table></figure></p>
-<h2 id="八、js题"><a href="#八、js题" class="headerlink" title="八、js题"></a>八、js题</h2><h4 id="1、数组去重"><a href="#1、数组去重" class="headerlink" title="1、数组去重"></a>1、数组去重</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,1,2,3,4]</span><br><span class="line">1、[...new Set(arr)];</span><br><span class="line">2、_.uniq(arr);</span><br><span class="line">3、var newArr = []</span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">let</span> i of arr) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!newArr.includes(i)) &#123;</span><br><span class="line">        newArr.push(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="八、网页安全"><a href="#八、网页安全" class="headerlink" title="八、网页安全"></a>八、网页安全</h2><h2 id="k、js题"><a href="#k、js题" class="headerlink" title="k、js题"></a>k、js题</h2><h4 id="1、数组去重"><a href="#1、数组去重" class="headerlink" title="1、数组去重"></a>1、数组去重</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,1,2,3,4]</span><br><span class="line">1、[...new Set(arr)];</span><br><span class="line">2、_.uniq(arr);</span><br><span class="line">3、var newArr = []</span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">let</span> i of arr) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!newArr.includes(i)) &#123;</span><br><span class="line">        newArr.push(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="2、字符串转number"><a href="#2、字符串转number" class="headerlink" title="2、字符串转number"></a>2、字符串转number</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str = <span class="string">'12'</span></span><br><span class="line">1、parseInt(str)、parseFloat(str)</span><br><span class="line">2、Number(str)</span><br><span class="line">3、str - 0</span><br><span class="line">4、_.toNumber(str)</span><br></pre></td></tr></table></figure>
 <h4 id="3、-‘1’-‘2’-‘3’-map-parseInt"><a href="#3、-‘1’-‘2’-‘3’-map-parseInt" class="headerlink" title="3、[‘1’, ‘2’, ‘3’].map(parseInt)"></a>3、[‘1’, ‘2’, ‘3’].map(parseInt)</h4><pre><code>结果为：[1, NaN, NaN]
 解析:
@@ -428,7 +772,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/10/问题总结/" data-id="ck9xiy4x0000awkuvxq2khefz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/10/问题总结/" data-id="ckahv5obf000k4kuvt6sp61on" class="article-share-link">Share</a>
       
       
     </footer>
@@ -480,7 +824,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/29/搭建静态服务器/" data-id="ck9xiy4wx0008wkuv2jixxe9j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/29/搭建静态服务器/" data-id="ckahv5o9o000d4kuv8l6i8e7o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -527,7 +871,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/console用法/" data-id="ck9xiy4wr0003wkuvlbjp7sxq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/console用法/" data-id="ckahv5o9600024kuv967pfma8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -569,7 +913,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/24/css-grid/" data-id="ck9xiy4wq0002wkuvowlvw4x9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/24/css-grid/" data-id="ckahv5o9600014kuvh3v84xwz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -612,265 +956,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/12/构造函数及原型链/" data-id="ck9xiy4x1000bwkuvyl2qzzy5" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/01/hello-world/" class="article-date">
-  <time datetime="2019-04-01T09:48:30.620Z" itemprop="datePublished">2019-04-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/01/hello-world/">hexo基本命令</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post-创建新页面"><a href="#Create-a-new-post-创建新页面" class="headerlink" title="Create a new post 创建新页面"></a>Create a new post 创建新页面</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server-启动项目"><a href="#Run-server-启动项目" class="headerlink" title="Run server 启动项目"></a>Run server 启动项目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites-部署"><a href="#Deploy-to-remote-sites-部署" class="headerlink" title="Deploy to remote sites 部署"></a>Deploy to remote sites 部署</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/01/hello-world/" data-id="ck9xiy4wi0000wkuvf0jn1nu9" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-mac操作linux" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/02/27/mac操作linux/" class="article-date">
-  <time datetime="2019-02-27T03:14:31.000Z" itemprop="datePublished">2019-02-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/27/mac操作linux/">mac操作linux</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="连接linux服务器"><a href="#连接linux服务器" class="headerlink" title="连接linux服务器"></a>连接linux服务器</h2><pre><code>ssh 账户名@ip地址  （ssh root@199.12.345.678）
-ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678）
-</code></pre><h2 id="上传文件到linux服务器——scp方式"><a href="#上传文件到linux服务器——scp方式" class="headerlink" title="上传文件到linux服务器——scp方式"></a>上传文件到linux服务器——scp方式</h2><pre><code>1、mac上传文件到Linux服务器
-    scp -p 端口号 文件路径 用户名@服务器ip:目标路径
-    如：scp -P10086 /Users/candy/testScp/src.zip root@xxx.xx.xxx.xxx:/root/testScp/server
-2、mac上传文件夹到Linux服务器，与上传文件相比多加了-r
-    scp -r 文件路径 用户名@服务器ip:目标路径
-    如：scp -r /Users/test/testFolder test@www.linuxidc.com:/test/
-3、Linux服务器下载文件到mac
-    scp 用户名@服务器ip:文件路径 目标路径
-    如：scp root@12.122.34.567:/root/node-v8.9.3-linux-x64.tar  /Users/candy
-4、Linux服务器下载文件夹到mac，与下载文件相比多加了-r
-    scp -r 用户名@服务器ip:文件路径 目标路径
-    如：scp -r root@12.122.34.567:/root/node-v8.9.3-linux-x64.tar  /Users/candy
-</code></pre><h2 id="上传文件到linux服务器——sftp方式"><a href="#上传文件到linux服务器——sftp方式" class="headerlink" title="上传文件到linux服务器——sftp方式"></a>上传文件到linux服务器——sftp方式</h2><pre><code>选择Shell ----&gt; 选择新建远程连接 ----&gt; 选择安全文件传输 ----&gt; 添加 用户名、ip---&gt; 点击连接 ----&gt; 会弹出窗口，然后执行命令
-命令格式：put 本地文件目录 远程主机路径
-如：put /Users/candy/testScp/src.zip /root/testScp/server
-</code></pre><h2 id="下载-node（7以上版本"><a href="#下载-node（7以上版本" class="headerlink" title="下载 node（7以上版本)"></a>下载 node（7以上版本)</h2><pre><code>方式一：
-    1、执行命令  wget https://npm.taobao.org/mirrors/node/v8.11.3/node-v8.11.3-linux-x64.tar.xz
-    2、解压 tar xvJf  node-v8.11.3-linux-x64.tar.xz
-    3、配置node环境变量
-    在根目录 执行 (软连接)  
-    ln -s 原路径   目标路径
-    例如：
-        ln -s /root/node-v8.11.3-linux-x64/bin/node  /usr/local/bin/node
-        ln -s /root/node-v8.11.3-linux-x64/bin/npm  /usr/local/bin/npm
-方式二：
-    执行： curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash
-    sudo yum -y install nodejs
-    此命令会安装8版本中最高的那个版本
-</code></pre><h2 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h2><p>1、linux 窗口 长时间 不动，就会自动中断<br>解决: 使用pm2 <a href="http://www.cnblogs.com/zhongweiv/p/pm2.html#pm2_start" target="_blank" rel="noopener">原文</a><br>PM2 是一个带有负载均衡功能的 Node 应用的进程管理器。<br>安装：npm install pm2 -g  —&gt;软连接<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">pm2相关命令： </span><br><span class="line">a、基本命令</span><br><span class="line">    //app.js页面</span><br><span class="line">    启动进程  pm2 start (node) app.js  //node 可以省略，如果是ts-node</span><br><span class="line">    启动进程  pm2 start ts-node app.js </span><br><span class="line">    停止进程  pm2 stop app.js</span><br><span class="line">    删除进程  pm2 delete app.js</span><br><span class="line">    重载进程  pm2 reload app.js* </span><br><span class="line">    重启进程  pm2 restart app.js</span><br><span class="line">    查看详情  pm2 show <span class="built_in">test</span></span><br><span class="line">    清除日志  pm2 flush</span><br><span class="line">    查看日志  pm2 <span class="built_in">log</span></span><br><span class="line">    命名进程  pm2 start app.js --name device-cloud</span><br><span class="line">    列出由PM2管理的所有进程信息      pm2 list</span><br><span class="line">    打开实时监视器去查看资源占用情况  pm2 monit</span><br><span class="line">b、运行多个项目——批量操作相关命令</span><br><span class="line">    全部重载 pm2 reload all</span><br><span class="line">    全部停止 pm2 stop all</span><br><span class="line">    全部重启 pm2 restart all</span><br><span class="line">    全部删除 pm2 delete all</span><br><span class="line">注意：reload可以做到0秒宕机加载新的代码，restart则是重新启动，生产环境中多用reload来完成代码更新</span><br><span class="line">c、集群——mode模式</span><br><span class="line">    开发环境中mode多以fork的方式启动，生产环境中多用cluster方式启动</span><br><span class="line">    pm2 start app.js -i 数字 --name <span class="built_in">test</span></span><br><span class="line">　　表示在后台以cluster方式运行<span class="built_in">test</span>，数字表示要启动的工作线程的数量</span><br><span class="line">d、监听</span><br><span class="line">    这个项默认是disabled，可以通过如下命令开启</span><br><span class="line">    pm2 start app.js --name <span class="built_in">test</span> --watch</span><br><span class="line">    用处：主要更新代码后，不用重载或重启项目即可以立即让更新的代码起作用</span><br><span class="line">    注意：适合在开发时用，可以省不少时间，生产环境下最好不要用</span><br></pre></td></tr></table></figure></p>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><pre><code>1、ls       列出文件或文件目录
-2、cd       切换目录
-3、mkdir    创建文件夹
-4、unzip ***.zip    解压 .zip文件到当前目录（若提示找不到命令unzip，需要执行yum install -y unzip zip）
-5、tar -xvf  ***.tar        解压 .tar文件到当前目录
-6、tar xvJf  ***.tar.xz     解压 .tar.xz文件到当前目录
-7、rm -r 文件夹名称 -f        强制删除文件夹 
-8、rm  文件名   删除文件
-9、cat 文件名   查看文件内容
-10、vi 文件名   进入文件,按下 i 键 ，出现 -- INSERT-- 就可以编辑了,按esc之后输入:wq, 保存并退出编辑模式 
-11、lsof -i:端口号   查看端口号 被哪个进程占用 （yum install lsof）
-    kill -9 端口号   杀掉进程
-12、pwd             查看当前文件的目录
-13、lsb_release -a  获取linux操作系统
-14、df -h           磁盘空间
-15、echo $LANG      查看linux下当前使用语言命令
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/27/mac操作linux/" data-id="ck9xiy4wv0006wkuv5sevtk6m" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-flutter移动框架学习" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/02/25/flutter移动框架学习/" class="article-date">
-  <time datetime="2019-02-25T08:56:19.000Z" itemprop="datePublished">2019-02-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/25/flutter移动框架学习/">flutter移动框架学习</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、flutter环境搭建-Mac版"><a href="#一、flutter环境搭建-Mac版" class="headerlink" title="一、flutter环境搭建(Mac版)"></a>一、flutter环境搭建(Mac版)</h2><h3 id="认识"><a href="#认识" class="headerlink" title="认识"></a>认识</h3><p>Flutter是谷歌的移动UI框架，可以快速在iOS和Android上构建高质量的原生用户界面。</p>
-<h5 id="1、使用镜像"><a href="#1、使用镜像" class="headerlink" title="1、使用镜像"></a>1、使用镜像</h5><p>由于在国内访问Flutter有时可能会受到限制，Flutter官方为中国开发者搭建了临时镜像，可以将如下环境变量加入到系统环境变量中。</p>
-<ul>
-<li>进入命令窗口</li>
-<li>执行 vi .bash_profile</li>
-<li>输入 以下 内容<br>export PUB_HOSTED_URL=<a href="https://pub.flutter-io.cn" target="_blank" rel="noopener">https://pub.flutter-io.cn</a><br>export FLUTTER_STORAGE_BASE_URL=<a href="https://storage.flutter-io.cn" target="_blank" rel="noopener">https://storage.flutter-io.cn</a><br>按 esc，输入:wq, 按 enter</li>
-<li>执行 source  .bash_profile</li>
-</ul>
-<h5 id="2、安装Flutter-SDK"><a href="#2、安装Flutter-SDK" class="headerlink" title="2、安装Flutter SDK"></a>2、安装Flutter SDK</h5><p>从github拉取代码，在命令行中执行 以下 操作。</p>
-<ul>
-<li>git clone -b beta <a href="https://github.com/flutter/flutter.git" target="_blank" rel="noopener">https://github.com/flutter/flutter.git</a></li>
-<li>获取代码成功后，进入 fluter 目录，执行 vi .bash_profile，添加<br>export PATH_TO_FLUTTER_GIT_DIRECTORY=/Users/candy/flutter(flutter的目录)<br>export PATH=${PATH}:${PATH_TO_FLUTTER_GIT_DIRECTORY}/bin<br>保存后 执行 source  .bash_profile</li>
-<li>执行命令flutter doctor，命令的作用是检测还需要安装的依赖<br>没有出现commond not found：flutter 即是配置成功</li>
-</ul>
-<p><strong>注意</strong>：<br>a. 以上配置 flutter命令只在当前窗口下的flutter目录下生效，关闭窗口，需要重新执行source  .bash_profile<br>b. flutter doctor 非常慢，需耐心等待</p>
-<h5 id="3、配置全局的-flutter-命令"><a href="#3、配置全局的-flutter-命令" class="headerlink" title="3、配置全局的 flutter 命令"></a>3、配置全局的 flutter 命令</h5><ul>
-<li>配置系统环境变量，执行 vi .bash_profile</li>
-<li>输入 以下 内容<br>export PATH=/Users/candy/flutter/bin:$PATH</li>
-<li>保存后 执行 source .bash_profile</li>
-</ul>
-<p><strong>注意</strong>：<br>a. 以上配置 flutter命令只在当前窗口下生效，关闭窗口，需要重新执行source  .bash_profile</p>
-<h5 id="4、Mac-每次都要执行source-bash-profile-配置的环境变量才生效"><a href="#4、Mac-每次都要执行source-bash-profile-配置的环境变量才生效" class="headerlink" title="4、Mac 每次都要执行source ~/.bash_profile 配置的环境变量才生效"></a>4、Mac 每次都要执行source ~/.bash_profile 配置的环境变量才生效</h5><p>解决方案：vi ~/.zshrc, 最后一行加上 source ~/.bash_profile 即可</p>
-<h5 id="5、flutter-doctor报错处理参考原文"><a href="#5、flutter-doctor报错处理参考原文" class="headerlink" title="5、flutter doctor报错处理参考原文"></a>5、flutter doctor报错处理<a href="http://www.cnblogs.com/Free-Thinker/p/10212822.html" target="_blank" rel="noopener">参考原文</a></h5><p>a. 下载安装android studio 地址：<a href="https://developer.android.com/studio/index.html" target="_blank" rel="noopener">https://developer.android.com/studio/index.html</a></p>
-<ul>
-<li>安装成功后 配置系统环境变量<br>进入命令窗口，执行 vi .bash_profile，添加<br>export ANDROID_HOME=”/Users/candy/Library/Android/sdk” //android sdk目录，替换为自己的<br>export PATH=${PATH}:${ANDROID_HOME}/tools<br>export PATH=${PATH}:${ANDROID_HOME}/platform-tools<br>保存后 执行 source  .bash_profile</li>
-<li>执行 flutter doctor –android-licenses </li>
-<li>flutter doctor 检测 是否还有错</li>
-</ul>
-<p>b. 下载安装 Xcode(为了iOS开发)<br>下载地址：<a href="https://developer.apple.com/xcode/download/" target="_blank" rel="noopener">https://developer.apple.com/xcode/download/</a><br><strong>注意</strong>:<br>要为iOS开发Flutter应用程序，需要Xcode 至少9.0.0版本。<br>Xcode对Mac版本有要求，Xcode 9以上版本 需要Mac版本至少 10.13.2。</p>
-<p>安装完之后，按报错的 提示 一步步执行命令即可</p>
-<h2 id="二、编辑器的配置"><a href="#二、编辑器的配置" class="headerlink" title="二、编辑器的配置"></a>二、编辑器的配置</h2><p><strong>推荐使用 VS Code</strong><br>1、需要安装两个插件:<br>    Flutter插件： 支持Flutter开发工作流 (运行、调试、热重载等)。<br>    Dart插件： 提供代码分析 (输入代码时进行验证、代码补全等)。<br>2、点击命令面板 ——&gt; 输入flutter ——&gt; 选择 Flutter：New Project ——&gt; 输入项目名称，不能有大写<br>3、安装模拟器并调试<br>    点击右下角的 No Device，可以 安装模拟器<br>    窗口里 执行命令 flutter run 调试，按 r 键 刷新<br>    获取设备列表：执行 flutter emulator</p>
-<h2 id="三、添加配置项"><a href="#三、添加配置项" class="headerlink" title="三、添加配置项"></a>三、添加配置项</h2><p>1、在pubspec.yaml文件中的dependencies下添加 english_words: ^3.1.0<br>目的：避免引入无用的包</p>
-<h2 id="四、基础知识了解"><a href="#四、基础知识了解" class="headerlink" title="四、基础知识了解"></a>四、基础知识了解</h2><h5 id="A-lib-main-dart"><a href="#A-lib-main-dart" class="headerlink" title="A. lib/main.dart"></a>A. lib/main.dart</h5><p>此文件是每一个flutter项目的默认入口文件，也就是说每个flutter项目启动的时候，默认先运行这个文件的代码。</p>
-<h5 id="B-pubspec-yaml"><a href="#B-pubspec-yaml" class="headerlink" title="B  pubspec.yaml"></a>B  pubspec.yaml</h5><p>此文件为项目配置文件</p>
-<h5 id="C-import-‘package-flutter-material-dart’"><a href="#C-import-‘package-flutter-material-dart’" class="headerlink" title="C. import ‘package:flutter/material.dart’;"></a>C. import ‘package:flutter/material.dart’;</h5><p>每一个.dart文件的第一行都会导入flutter/material.dart包，这个包是Flutter实现Material Design设计风格的基础包，里面有文本输入框(Text)、图标(Icon)、图片(Image)、行排列布局(Align)、列排列布局(Column)、Decoration)、异步、动画等等等等控件，大家可以理解为网页中的按钮、标题、选项框呀等等控件库吧。<br><strong>注意</strong>：Material Design是啥？是谷歌推出的一套视觉设计语言。比如有的APP可以换皮肤，而每一套皮肤就是一种设计语言，有古典风呀炫酷风呀极简风呀等等。</p>
-<h5 id="D-void-main-gt-runApp-new-MyApp"><a href="#D-void-main-gt-runApp-new-MyApp" class="headerlink" title="D. void main() =&gt; runApp(new MyApp())"></a>D. void main() =&gt; runApp(new MyApp())</h5><p>这里的main()函数是Dart程序的入口，也就是说，Flutter程序在运行的时候，第一个执行的函数就是main()函数。</p>
-<h5 id="E-StatelessWidget和StatefulWidget"><a href="#E-StatelessWidget和StatefulWidget" class="headerlink" title="E. StatelessWidget和StatefulWidget"></a>E. StatelessWidget和StatefulWidget</h5><p>这是flutter最基础的的两种控件类，分别叫无状态类和有状态类。<br>两者的差别在于是否有状态，玩家创建的所有控件都继承自这两个控件。当你想展示的内容只需要改动控件本身的配置信息就可以实现时，例如文本、图片等，可以考虑使用无状态控件（StatelessWidget）。如果你想展示的内容是可以动态改变才能实现时，例如滚动列表、动画效果等，可以考虑使用有状态控件（StatefulWidget）。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/25/flutter移动框架学习/" data-id="ck9xiy4wz0009wkuvdg71t8xr" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-模块化" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/02/20/模块化/" class="article-date">
-  <time datetime="2019-02-20T07:14:42.000Z" itemprop="datePublished">2019-02-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/20/模块化/">模块化</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="模块化的好处"><a href="#模块化的好处" class="headerlink" title="模块化的好处"></a>模块化的好处</h2><ul>
-<li>解决命名冲突</li>
-<li>提供复用性</li>
-<li>提高代码可维护性</li>
-</ul>
-<h2 id="模块化的实现"><a href="#模块化的实现" class="headerlink" title="模块化的实现"></a>模块化的实现</h2><p>1、早期，使用立即执行函数，<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span>(globalVariable)&#123;</span><br><span class="line">   globalVariable.test = <span class="function"><span class="title">function</span></span>() &#123;&#125;</span><br><span class="line">   // ... 声明各种变量、函数都不会污染全局作用域</span><br><span class="line">&#125;)(globalVariable)</span><br></pre></td></tr></table></figure></p>
-<p>2、AMD、CMD，已很少见到<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// AMD</span><br><span class="line">define([<span class="string">'./a'</span>, <span class="string">'./b'</span>], <span class="keyword">function</span>(a, b) &#123;</span><br><span class="line">    // 加载模块完毕可以使用</span><br><span class="line">    a.do()</span><br><span class="line">    b.do()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// CMD</span><br><span class="line">define(<span class="keyword">function</span>(require, exports, module) &#123;</span><br><span class="line">    // 加载模块</span><br><span class="line">    // 可以把 require 写在函数体的任意地方实现延迟加载</span><br><span class="line">    var a = require(<span class="string">'./a'</span>)</span><br><span class="line">    a.doSomething()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>3、CommonJS，最早在Node中使用，目前仍然广泛使用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// a.js</span><br><span class="line">//暴露模块</span><br><span class="line">module.exports = &#123;</span><br><span class="line">    a: 1,</span><br><span class="line">    b: 2</span><br><span class="line">&#125;</span><br><span class="line">// or</span><br><span class="line">exports.a = 1;</span><br><span class="line">exports.b = 2;</span><br><span class="line"></span><br><span class="line">// b.js</span><br><span class="line">//引入模块</span><br><span class="line">var module = require(<span class="string">'./a.js'</span>);</span><br><span class="line">console.log(module);//&#123;a: 1, b: 2&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//module的基本实现</span><br><span class="line">module = &#123;</span><br><span class="line">    id: <span class="string">'XXX'</span>,// 我总得知道怎么去找到他吧</span><br><span class="line">    exports: &#123;&#125;,// exports 就是个空对象</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>exports 和 module.exports 的区别<br>1、exports 和 module.exports 指向相同的内存地址<br>2、require() 返回的是 module.exports 而不是 exports<br>3、不能直接对 exports 赋值，因为会导致exports 和 module.exports不再指向同一个内存地址，修改并不会对 module.exports 起效</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'example1:'</span></span><br><span class="line">// a.js</span><br><span class="line">exports.a = 1;</span><br><span class="line">exports.b = 3;//exports 和 module.exports 指向相同的内存地址,所以module.exports = &#123;a: 1, b: 3&#125;</span><br><span class="line">exports = &#123;c: 5&#125;;//exports指向了另一个引用地址，module.exports还是&#123;a: 1, b: 3&#125;</span><br><span class="line">// b.js</span><br><span class="line">//引入模块</span><br><span class="line">var module = require(<span class="string">'./a.js'</span>);//返回的是module.exports = &#123;a: 1, b: 3&#125;</span><br><span class="line">console.log(module);//&#123;a: 1, b: 3&#125;</span><br><span class="line"></span><br><span class="line"><span class="string">'example2:'</span></span><br><span class="line">// a.js</span><br><span class="line">exports = &#123;c: 5&#125;;//exports指向了另一个引用地址，与module.exports互不影响，module.exports是&#123;&#125;</span><br><span class="line">exports.a = 1;</span><br><span class="line">exports.b = 3;</span><br><span class="line">// b.js</span><br><span class="line">//引入模块</span><br><span class="line">var module = require(<span class="string">'./a.js'</span>);//返回的是module.exports = &#123;&#125;</span><br><span class="line">console.log(module);//&#123;&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'example3:'</span></span><br><span class="line">// a.js</span><br><span class="line">exports.a = 1;</span><br><span class="line">exports.b = 3;</span><br><span class="line">console.log(exports);//&#123;a: 1, b: 3&#125;</span><br><span class="line">console.log(module.exports);////&#123;a: 1, b: 3&#125;</span><br><span class="line">console.log(exports === module.exports);//<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="string">'example4:'</span></span><br><span class="line">// a.js</span><br><span class="line">module.exports = &#123;a: 1&#125;;</span><br><span class="line">console.log(exports);//&#123;&#125;</span><br><span class="line">console.log(module.exports);//&#123;a: 1&#125;</span><br><span class="line">console.log(exports === module.exports);//<span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<p>4、es6提出import、export2个命令<br>一个模块就是一个独立的文件。该文件内部的所有变量，外部无法获取。如果希望外部能够读取模块内部的某个变量，就必须使用export关键字输出该变量。</p>
-<p>export命令可以输出 变量、函数或类</p>
-<ul>
-<li>export 与 export default的区别<br> 1、export default命令, import加载模块的时候可以自定义模块名称, 并且不想要使用大括号(与export命令的区别)<br> 2、在一个模块中 只能有一个 export default, 可以有多个export</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">//XX.js</span><br><span class="line">var name = <span class="string">'小红'</span>;</span><br><span class="line">var addFunc = <span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line"></span><br><span class="line">//导出多个模块</span><br><span class="line"><span class="built_in">export</span> &#123;name, addFunc&#125;;</span><br><span class="line">import &#123;name, addFunc&#125; from <span class="string">'XX.js'</span>;</span><br><span class="line">console.log(name, addFunc);//输出 小红 ƒ <span class="function"><span class="title">addFunc</span></span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">//模块整体加载</span><br><span class="line">import * as allVar from <span class="string">'XX.js'</span>;</span><br><span class="line">console.log(allVar.name);// <span class="string">'小红'</span></span><br><span class="line">console.log(allVar.addFunc);// ƒ <span class="function"><span class="title">addFunc</span></span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">//<span class="built_in">export</span> 使用 as 对模块 重命名</span><br><span class="line"><span class="built_in">export</span> &#123;addFunc as add&#125;;</span><br><span class="line">import &#123;add&#125; from <span class="string">'XX.js'</span>;</span><br><span class="line">console.log(add);//输出 ƒ <span class="function"><span class="title">addFunc</span></span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">//import 使用 as 对模块 重命名</span><br><span class="line">import &#123;add as addFunction&#125; from <span class="string">'XX.js'</span>;</span><br><span class="line">console.log(addFunction);//输出 ƒ <span class="function"><span class="title">addFunc</span></span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">//<span class="built_in">export</span>命令中 使用 as default 指定模块的默认输出</span><br><span class="line"><span class="built_in">export</span> &#123;name as default, addFunc&#125;;</span><br><span class="line">import name, &#123;addFunc&#125; from <span class="string">'XX.js'</span>;</span><br><span class="line">console.log(name);//输出 <span class="string">'小红'</span></span><br><span class="line">console.log(addFunc);//输出 ƒ <span class="function"><span class="title">addFunc</span></span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//导入 默认模块</span><br><span class="line"><span class="built_in">export</span> default <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">  console.log(<span class="string">'foo'</span>);</span><br><span class="line">&#125;</span><br><span class="line">import customFunc from <span class="string">'XX.js'</span>;</span><br><span class="line">customFunc();//<span class="string">'foo'</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/20/模块化/" data-id="ck9xiy4yb000gwkuvtik6j9pj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/12/构造函数及原型链/" data-id="ckahv5o9q000e4kuvmadxnh71" class="article-share-link">Share</a>
       
       
     </footer>
@@ -884,7 +970,7 @@ ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678�
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -903,7 +989,7 @@ ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678�
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -916,23 +1002,23 @@ ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678�
       <ul>
         
           <li>
+            <a href="/2020/05/22/web网页安全/">web网页安全</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/22/http/">http</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/21/vue框架/">vue框架</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/13/算法题/">算法题</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/30/微信公众号/">微信公众号</a>
-          </li>
-        
-          <li>
-            <a href="/2019/10/10/问题总结/">问题总结</a>
-          </li>
-        
-          <li>
-            <a href="/2019/09/29/搭建静态服务器/">搭建静态服务器</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/16/console用法/">console用法</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/24/css-grid/">css-grid</a>
           </li>
         
       </ul>

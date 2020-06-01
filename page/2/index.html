@@ -62,6 +62,264 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/01/hello-world/" class="article-date">
+  <time datetime="2019-04-01T09:48:30.620Z" itemprop="datePublished">2019-04-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/01/hello-world/">hexo基本命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post-创建新页面"><a href="#Create-a-new-post-创建新页面" class="headerlink" title="Create a new post 创建新页面"></a>Create a new post 创建新页面</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server-启动项目"><a href="#Run-server-启动项目" class="headerlink" title="Run server 启动项目"></a>Run server 启动项目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites-部署"><a href="#Deploy-to-remote-sites-部署" class="headerlink" title="Deploy to remote sites 部署"></a>Deploy to remote sites 部署</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/01/hello-world/" data-id="ckahv5o9a00044kuv2vhdgcku" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mac操作linux" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/27/mac操作linux/" class="article-date">
+  <time datetime="2019-02-27T03:14:31.000Z" itemprop="datePublished">2019-02-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/27/mac操作linux/">mac操作linux</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="连接linux服务器"><a href="#连接linux服务器" class="headerlink" title="连接linux服务器"></a>连接linux服务器</h2><pre><code>ssh 账户名@ip地址  （ssh root@199.12.345.678）
+ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678）
+</code></pre><h2 id="上传文件到linux服务器——scp方式"><a href="#上传文件到linux服务器——scp方式" class="headerlink" title="上传文件到linux服务器——scp方式"></a>上传文件到linux服务器——scp方式</h2><pre><code>1、mac上传文件到Linux服务器
+    scp -p 端口号 文件路径 用户名@服务器ip:目标路径
+    如：scp -P10086 /Users/candy/testScp/src.zip root@xxx.xx.xxx.xxx:/root/testScp/server
+2、mac上传文件夹到Linux服务器，与上传文件相比多加了-r
+    scp -r 文件路径 用户名@服务器ip:目标路径
+    如：scp -r /Users/test/testFolder test@www.linuxidc.com:/test/
+3、Linux服务器下载文件到mac
+    scp 用户名@服务器ip:文件路径 目标路径
+    如：scp root@12.122.34.567:/root/node-v8.9.3-linux-x64.tar  /Users/candy
+4、Linux服务器下载文件夹到mac，与下载文件相比多加了-r
+    scp -r 用户名@服务器ip:文件路径 目标路径
+    如：scp -r root@12.122.34.567:/root/node-v8.9.3-linux-x64.tar  /Users/candy
+</code></pre><h2 id="上传文件到linux服务器——sftp方式"><a href="#上传文件到linux服务器——sftp方式" class="headerlink" title="上传文件到linux服务器——sftp方式"></a>上传文件到linux服务器——sftp方式</h2><pre><code>选择Shell ----&gt; 选择新建远程连接 ----&gt; 选择安全文件传输 ----&gt; 添加 用户名、ip---&gt; 点击连接 ----&gt; 会弹出窗口，然后执行命令
+命令格式：put 本地文件目录 远程主机路径
+如：put /Users/candy/testScp/src.zip /root/testScp/server
+</code></pre><h2 id="下载-node（7以上版本"><a href="#下载-node（7以上版本" class="headerlink" title="下载 node（7以上版本)"></a>下载 node（7以上版本)</h2><pre><code>方式一：
+    1、执行命令  wget https://npm.taobao.org/mirrors/node/v8.11.3/node-v8.11.3-linux-x64.tar.xz
+    2、解压 tar xvJf  node-v8.11.3-linux-x64.tar.xz
+    3、配置node环境变量
+    在根目录 执行 (软连接)  
+    ln -s 原路径   目标路径
+    例如：
+        ln -s /root/node-v8.11.3-linux-x64/bin/node  /usr/local/bin/node
+        ln -s /root/node-v8.11.3-linux-x64/bin/npm  /usr/local/bin/npm
+方式二：
+    执行： curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash
+    sudo yum -y install nodejs
+    此命令会安装8版本中最高的那个版本
+</code></pre><h2 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h2><p>1、linux 窗口 长时间 不动，就会自动中断<br>解决: 使用pm2 <a href="http://www.cnblogs.com/zhongweiv/p/pm2.html#pm2_start" target="_blank" rel="noopener">原文</a><br>PM2 是一个带有负载均衡功能的 Node 应用的进程管理器。<br>安装：npm install pm2 -g  —&gt;软连接<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">pm2相关命令： </span><br><span class="line">a、基本命令</span><br><span class="line">    //app.js页面</span><br><span class="line">    启动进程  pm2 start (node) app.js  //node 可以省略，如果是ts-node</span><br><span class="line">    启动进程  pm2 start ts-node app.js </span><br><span class="line">    停止进程  pm2 stop app.js</span><br><span class="line">    删除进程  pm2 delete app.js</span><br><span class="line">    重载进程  pm2 reload app.js* </span><br><span class="line">    重启进程  pm2 restart app.js</span><br><span class="line">    查看详情  pm2 show <span class="built_in">test</span></span><br><span class="line">    清除日志  pm2 flush</span><br><span class="line">    查看日志  pm2 <span class="built_in">log</span></span><br><span class="line">    命名进程  pm2 start app.js --name device-cloud</span><br><span class="line">    列出由PM2管理的所有进程信息      pm2 list</span><br><span class="line">    打开实时监视器去查看资源占用情况  pm2 monit</span><br><span class="line">b、运行多个项目——批量操作相关命令</span><br><span class="line">    全部重载 pm2 reload all</span><br><span class="line">    全部停止 pm2 stop all</span><br><span class="line">    全部重启 pm2 restart all</span><br><span class="line">    全部删除 pm2 delete all</span><br><span class="line">注意：reload可以做到0秒宕机加载新的代码，restart则是重新启动，生产环境中多用reload来完成代码更新</span><br><span class="line">c、集群——mode模式</span><br><span class="line">    开发环境中mode多以fork的方式启动，生产环境中多用cluster方式启动</span><br><span class="line">    pm2 start app.js -i 数字 --name <span class="built_in">test</span></span><br><span class="line">　　表示在后台以cluster方式运行<span class="built_in">test</span>，数字表示要启动的工作线程的数量</span><br><span class="line">d、监听</span><br><span class="line">    这个项默认是disabled，可以通过如下命令开启</span><br><span class="line">    pm2 start app.js --name <span class="built_in">test</span> --watch</span><br><span class="line">    用处：主要更新代码后，不用重载或重启项目即可以立即让更新的代码起作用</span><br><span class="line">    注意：适合在开发时用，可以省不少时间，生产环境下最好不要用</span><br></pre></td></tr></table></figure></p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><pre><code>1、ls       列出文件或文件目录
+2、cd       切换目录
+3、mkdir    创建文件夹
+4、unzip ***.zip    解压 .zip文件到当前目录（若提示找不到命令unzip，需要执行yum install -y unzip zip）
+5、tar -xvf  ***.tar        解压 .tar文件到当前目录
+6、tar xvJf  ***.tar.xz     解压 .tar.xz文件到当前目录
+7、rm -r 文件夹名称 -f        强制删除文件夹 
+8、rm  文件名   删除文件
+9、cat 文件名   查看文件内容
+10、vi 文件名   进入文件,按下 i 键 ，出现 -- INSERT-- 就可以编辑了,按esc之后输入:wq, 保存并退出编辑模式 
+11、lsof -i:端口号   查看端口号 被哪个进程占用 （yum install lsof）
+    kill -9 端口号   杀掉进程
+12、pwd             查看当前文件的目录
+13、lsb_release -a  获取linux操作系统
+14、df -h           磁盘空间
+15、echo $LANG      查看linux下当前使用语言命令
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/27/mac操作linux/" data-id="ckahv5o9c00064kuv5ffb748e" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-flutter移动框架学习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/25/flutter移动框架学习/" class="article-date">
+  <time datetime="2019-02-25T08:56:19.000Z" itemprop="datePublished">2019-02-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/25/flutter移动框架学习/">flutter移动框架学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、flutter环境搭建-Mac版"><a href="#一、flutter环境搭建-Mac版" class="headerlink" title="一、flutter环境搭建(Mac版)"></a>一、flutter环境搭建(Mac版)</h2><h3 id="认识"><a href="#认识" class="headerlink" title="认识"></a>认识</h3><p>Flutter是谷歌的移动UI框架，可以快速在iOS和Android上构建高质量的原生用户界面。</p>
+<h5 id="1、使用镜像"><a href="#1、使用镜像" class="headerlink" title="1、使用镜像"></a>1、使用镜像</h5><p>由于在国内访问Flutter有时可能会受到限制，Flutter官方为中国开发者搭建了临时镜像，可以将如下环境变量加入到系统环境变量中。</p>
+<ul>
+<li>进入命令窗口</li>
+<li>执行 vi .bash_profile</li>
+<li>输入 以下 内容<br>export PUB_HOSTED_URL=<a href="https://pub.flutter-io.cn" target="_blank" rel="noopener">https://pub.flutter-io.cn</a><br>export FLUTTER_STORAGE_BASE_URL=<a href="https://storage.flutter-io.cn" target="_blank" rel="noopener">https://storage.flutter-io.cn</a><br>按 esc，输入:wq, 按 enter</li>
+<li>执行 source  .bash_profile</li>
+</ul>
+<h5 id="2、安装Flutter-SDK"><a href="#2、安装Flutter-SDK" class="headerlink" title="2、安装Flutter SDK"></a>2、安装Flutter SDK</h5><p>从github拉取代码，在命令行中执行 以下 操作。</p>
+<ul>
+<li>git clone -b beta <a href="https://github.com/flutter/flutter.git" target="_blank" rel="noopener">https://github.com/flutter/flutter.git</a></li>
+<li>获取代码成功后，进入 fluter 目录，执行 vi .bash_profile，添加<br>export PATH_TO_FLUTTER_GIT_DIRECTORY=/Users/candy/flutter(flutter的目录)<br>export PATH=${PATH}:${PATH_TO_FLUTTER_GIT_DIRECTORY}/bin<br>保存后 执行 source  .bash_profile</li>
+<li>执行命令flutter doctor，命令的作用是检测还需要安装的依赖<br>没有出现commond not found：flutter 即是配置成功</li>
+</ul>
+<p><strong>注意</strong>：<br>a. 以上配置 flutter命令只在当前窗口下的flutter目录下生效，关闭窗口，需要重新执行source  .bash_profile<br>b. flutter doctor 非常慢，需耐心等待</p>
+<h5 id="3、配置全局的-flutter-命令"><a href="#3、配置全局的-flutter-命令" class="headerlink" title="3、配置全局的 flutter 命令"></a>3、配置全局的 flutter 命令</h5><ul>
+<li>配置系统环境变量，执行 vi .bash_profile</li>
+<li>输入 以下 内容<br>export PATH=/Users/candy/flutter/bin:$PATH</li>
+<li>保存后 执行 source .bash_profile</li>
+</ul>
+<p><strong>注意</strong>：<br>a. 以上配置 flutter命令只在当前窗口下生效，关闭窗口，需要重新执行source  .bash_profile</p>
+<h5 id="4、Mac-每次都要执行source-bash-profile-配置的环境变量才生效"><a href="#4、Mac-每次都要执行source-bash-profile-配置的环境变量才生效" class="headerlink" title="4、Mac 每次都要执行source ~/.bash_profile 配置的环境变量才生效"></a>4、Mac 每次都要执行source ~/.bash_profile 配置的环境变量才生效</h5><p>解决方案：vi ~/.zshrc, 最后一行加上 source ~/.bash_profile 即可</p>
+<h5 id="5、flutter-doctor报错处理参考原文"><a href="#5、flutter-doctor报错处理参考原文" class="headerlink" title="5、flutter doctor报错处理参考原文"></a>5、flutter doctor报错处理<a href="http://www.cnblogs.com/Free-Thinker/p/10212822.html" target="_blank" rel="noopener">参考原文</a></h5><p>a. 下载安装android studio 地址：<a href="https://developer.android.com/studio/index.html" target="_blank" rel="noopener">https://developer.android.com/studio/index.html</a></p>
+<ul>
+<li>安装成功后 配置系统环境变量<br>进入命令窗口，执行 vi .bash_profile，添加<br>export ANDROID_HOME=”/Users/candy/Library/Android/sdk” //android sdk目录，替换为自己的<br>export PATH=${PATH}:${ANDROID_HOME}/tools<br>export PATH=${PATH}:${ANDROID_HOME}/platform-tools<br>保存后 执行 source  .bash_profile</li>
+<li>执行 flutter doctor –android-licenses </li>
+<li>flutter doctor 检测 是否还有错</li>
+</ul>
+<p>b. 下载安装 Xcode(为了iOS开发)<br>下载地址：<a href="https://developer.apple.com/xcode/download/" target="_blank" rel="noopener">https://developer.apple.com/xcode/download/</a><br><strong>注意</strong>:<br>要为iOS开发Flutter应用程序，需要Xcode 至少9.0.0版本。<br>Xcode对Mac版本有要求，Xcode 9以上版本 需要Mac版本至少 10.13.2。</p>
+<p>安装完之后，按报错的 提示 一步步执行命令即可</p>
+<h2 id="二、编辑器的配置"><a href="#二、编辑器的配置" class="headerlink" title="二、编辑器的配置"></a>二、编辑器的配置</h2><p><strong>推荐使用 VS Code</strong><br>1、需要安装两个插件:<br>    Flutter插件： 支持Flutter开发工作流 (运行、调试、热重载等)。<br>    Dart插件： 提供代码分析 (输入代码时进行验证、代码补全等)。<br>2、点击命令面板 ——&gt; 输入flutter ——&gt; 选择 Flutter：New Project ——&gt; 输入项目名称，不能有大写<br>3、安装模拟器并调试<br>    点击右下角的 No Device，可以 安装模拟器<br>    窗口里 执行命令 flutter run 调试，按 r 键 刷新<br>    获取设备列表：执行 flutter emulator</p>
+<h2 id="三、添加配置项"><a href="#三、添加配置项" class="headerlink" title="三、添加配置项"></a>三、添加配置项</h2><p>1、在pubspec.yaml文件中的dependencies下添加 english_words: ^3.1.0<br>目的：避免引入无用的包</p>
+<h2 id="四、基础知识了解"><a href="#四、基础知识了解" class="headerlink" title="四、基础知识了解"></a>四、基础知识了解</h2><h5 id="A-lib-main-dart"><a href="#A-lib-main-dart" class="headerlink" title="A. lib/main.dart"></a>A. lib/main.dart</h5><p>此文件是每一个flutter项目的默认入口文件，也就是说每个flutter项目启动的时候，默认先运行这个文件的代码。</p>
+<h5 id="B-pubspec-yaml"><a href="#B-pubspec-yaml" class="headerlink" title="B  pubspec.yaml"></a>B  pubspec.yaml</h5><p>此文件为项目配置文件</p>
+<h5 id="C-import-‘package-flutter-material-dart’"><a href="#C-import-‘package-flutter-material-dart’" class="headerlink" title="C. import ‘package:flutter/material.dart’;"></a>C. import ‘package:flutter/material.dart’;</h5><p>每一个.dart文件的第一行都会导入flutter/material.dart包，这个包是Flutter实现Material Design设计风格的基础包，里面有文本输入框(Text)、图标(Icon)、图片(Image)、行排列布局(Align)、列排列布局(Column)、Decoration)、异步、动画等等等等控件，大家可以理解为网页中的按钮、标题、选项框呀等等控件库吧。<br><strong>注意</strong>：Material Design是啥？是谷歌推出的一套视觉设计语言。比如有的APP可以换皮肤，而每一套皮肤就是一种设计语言，有古典风呀炫酷风呀极简风呀等等。</p>
+<h5 id="D-void-main-gt-runApp-new-MyApp"><a href="#D-void-main-gt-runApp-new-MyApp" class="headerlink" title="D. void main() =&gt; runApp(new MyApp())"></a>D. void main() =&gt; runApp(new MyApp())</h5><p>这里的main()函数是Dart程序的入口，也就是说，Flutter程序在运行的时候，第一个执行的函数就是main()函数。</p>
+<h5 id="E-StatelessWidget和StatefulWidget"><a href="#E-StatelessWidget和StatefulWidget" class="headerlink" title="E. StatelessWidget和StatefulWidget"></a>E. StatelessWidget和StatefulWidget</h5><p>这是flutter最基础的的两种控件类，分别叫无状态类和有状态类。<br>两者的差别在于是否有状态，玩家创建的所有控件都继承自这两个控件。当你想展示的内容只需要改动控件本身的配置信息就可以实现时，例如文本、图片等，可以考虑使用无状态控件（StatelessWidget）。如果你想展示的内容是可以动态改变才能实现时，例如滚动列表、动画效果等，可以考虑使用有状态控件（StatefulWidget）。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/25/flutter移动框架学习/" data-id="ckahv5o9g000a4kuvj87ofdbf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-模块化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/20/模块化/" class="article-date">
+  <time datetime="2019-02-20T07:14:42.000Z" itemprop="datePublished">2019-02-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/20/模块化/">模块化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="模块化的好处"><a href="#模块化的好处" class="headerlink" title="模块化的好处"></a>模块化的好处</h2><ul>
+<li>解决命名冲突</li>
+<li>提供复用性</li>
+<li>提高代码可维护性</li>
+</ul>
+<h2 id="模块化的实现"><a href="#模块化的实现" class="headerlink" title="模块化的实现"></a>模块化的实现</h2><p>1、早期，使用立即执行函数，<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span>(globalVariable)&#123;</span><br><span class="line">   globalVariable.test = <span class="function"><span class="title">function</span></span>() &#123;&#125;</span><br><span class="line">   // ... 声明各种变量、函数都不会污染全局作用域</span><br><span class="line">&#125;)(globalVariable)</span><br></pre></td></tr></table></figure></p>
+<p>2、AMD、CMD，已很少见到<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// AMD</span><br><span class="line">define([<span class="string">'./a'</span>, <span class="string">'./b'</span>], <span class="keyword">function</span>(a, b) &#123;</span><br><span class="line">    // 加载模块完毕可以使用</span><br><span class="line">    a.do()</span><br><span class="line">    b.do()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// CMD</span><br><span class="line">define(<span class="keyword">function</span>(require, exports, module) &#123;</span><br><span class="line">    // 加载模块</span><br><span class="line">    // 可以把 require 写在函数体的任意地方实现延迟加载</span><br><span class="line">    var a = require(<span class="string">'./a'</span>)</span><br><span class="line">    a.doSomething()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>3、CommonJS，最早在Node中使用，目前仍然广泛使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// a.js</span><br><span class="line">//暴露模块</span><br><span class="line">module.exports = &#123;</span><br><span class="line">    a: 1,</span><br><span class="line">    b: 2</span><br><span class="line">&#125;</span><br><span class="line">// or</span><br><span class="line">exports.a = 1;</span><br><span class="line">exports.b = 2;</span><br><span class="line"></span><br><span class="line">// b.js</span><br><span class="line">//引入模块</span><br><span class="line">var module = require(<span class="string">'./a.js'</span>);</span><br><span class="line">console.log(module);//&#123;a: 1, b: 2&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//module的基本实现</span><br><span class="line">module = &#123;</span><br><span class="line">    id: <span class="string">'XXX'</span>,// 我总得知道怎么去找到他吧</span><br><span class="line">    exports: &#123;&#125;,// exports 就是个空对象</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>exports 和 module.exports 的区别<br>1、exports 和 module.exports 指向相同的内存地址<br>2、require() 返回的是 module.exports 而不是 exports<br>3、不能直接对 exports 赋值，因为会导致exports 和 module.exports不再指向同一个内存地址，修改并不会对 module.exports 起效</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'example1:'</span></span><br><span class="line">// a.js</span><br><span class="line">exports.a = 1;</span><br><span class="line">exports.b = 3;//exports 和 module.exports 指向相同的内存地址,所以module.exports = &#123;a: 1, b: 3&#125;</span><br><span class="line">exports = &#123;c: 5&#125;;//exports指向了另一个引用地址，module.exports还是&#123;a: 1, b: 3&#125;</span><br><span class="line">// b.js</span><br><span class="line">//引入模块</span><br><span class="line">var module = require(<span class="string">'./a.js'</span>);//返回的是module.exports = &#123;a: 1, b: 3&#125;</span><br><span class="line">console.log(module);//&#123;a: 1, b: 3&#125;</span><br><span class="line"></span><br><span class="line"><span class="string">'example2:'</span></span><br><span class="line">// a.js</span><br><span class="line">exports = &#123;c: 5&#125;;//exports指向了另一个引用地址，与module.exports互不影响，module.exports是&#123;&#125;</span><br><span class="line">exports.a = 1;</span><br><span class="line">exports.b = 3;</span><br><span class="line">// b.js</span><br><span class="line">//引入模块</span><br><span class="line">var module = require(<span class="string">'./a.js'</span>);//返回的是module.exports = &#123;&#125;</span><br><span class="line">console.log(module);//&#123;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'example3:'</span></span><br><span class="line">// a.js</span><br><span class="line">exports.a = 1;</span><br><span class="line">exports.b = 3;</span><br><span class="line">console.log(exports);//&#123;a: 1, b: 3&#125;</span><br><span class="line">console.log(module.exports);////&#123;a: 1, b: 3&#125;</span><br><span class="line">console.log(exports === module.exports);//<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="string">'example4:'</span></span><br><span class="line">// a.js</span><br><span class="line">module.exports = &#123;a: 1&#125;;</span><br><span class="line">console.log(exports);//&#123;&#125;</span><br><span class="line">console.log(module.exports);//&#123;a: 1&#125;</span><br><span class="line">console.log(exports === module.exports);//<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>4、es6提出import、export2个命令<br>一个模块就是一个独立的文件。该文件内部的所有变量，外部无法获取。如果希望外部能够读取模块内部的某个变量，就必须使用export关键字输出该变量。</p>
+<p>export命令可以输出 变量、函数或类</p>
+<ul>
+<li>export 与 export default的区别<br> 1、export default命令, import加载模块的时候可以自定义模块名称, 并且不想要使用大括号(与export命令的区别)<br> 2、在一个模块中 只能有一个 export default, 可以有多个export</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">//XX.js</span><br><span class="line">var name = <span class="string">'小红'</span>;</span><br><span class="line">var addFunc = <span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line"></span><br><span class="line">//导出多个模块</span><br><span class="line"><span class="built_in">export</span> &#123;name, addFunc&#125;;</span><br><span class="line">import &#123;name, addFunc&#125; from <span class="string">'XX.js'</span>;</span><br><span class="line">console.log(name, addFunc);//输出 小红 ƒ <span class="function"><span class="title">addFunc</span></span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">//模块整体加载</span><br><span class="line">import * as allVar from <span class="string">'XX.js'</span>;</span><br><span class="line">console.log(allVar.name);// <span class="string">'小红'</span></span><br><span class="line">console.log(allVar.addFunc);// ƒ <span class="function"><span class="title">addFunc</span></span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">//<span class="built_in">export</span> 使用 as 对模块 重命名</span><br><span class="line"><span class="built_in">export</span> &#123;addFunc as add&#125;;</span><br><span class="line">import &#123;add&#125; from <span class="string">'XX.js'</span>;</span><br><span class="line">console.log(add);//输出 ƒ <span class="function"><span class="title">addFunc</span></span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">//import 使用 as 对模块 重命名</span><br><span class="line">import &#123;add as addFunction&#125; from <span class="string">'XX.js'</span>;</span><br><span class="line">console.log(addFunction);//输出 ƒ <span class="function"><span class="title">addFunc</span></span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">//<span class="built_in">export</span>命令中 使用 as default 指定模块的默认输出</span><br><span class="line"><span class="built_in">export</span> &#123;name as default, addFunc&#125;;</span><br><span class="line">import name, &#123;addFunc&#125; from <span class="string">'XX.js'</span>;</span><br><span class="line">console.log(name);//输出 <span class="string">'小红'</span></span><br><span class="line">console.log(addFunc);//输出 ƒ <span class="function"><span class="title">addFunc</span></span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//导入 默认模块</span><br><span class="line"><span class="built_in">export</span> default <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">  console.log(<span class="string">'foo'</span>);</span><br><span class="line">&#125;</span><br><span class="line">import customFunc from <span class="string">'XX.js'</span>;</span><br><span class="line">customFunc();//<span class="string">'foo'</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/20/模块化/" data-id="ckahv5oay000h4kuvc5zrury9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-常用git命令" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/31/常用git命令/" class="article-date">
@@ -162,7 +420,7 @@ npm set init-license &apos;MIT&apos;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/31/常用git命令/" data-id="ck9xiy4yb000fwkuvdeoiuhjq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/31/常用git命令/" data-id="ckahv5oaw000g4kuvsj5kebxh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -204,7 +462,7 @@ npm set init-license &apos;MIT&apos;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/19/前端开发各类问题总结/" data-id="ck9xiy4ww0007wkuvacej0njv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/19/前端开发各类问题总结/" data-id="ckahv5o9i000c4kuv805d254f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -289,7 +547,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/15/jsvascript易混淆点/" data-id="ck9xiy4wo0001wkuv6ur1wkz8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/15/jsvascript易混淆点/" data-id="ckahv5o9f00094kuvcp9jejui" class="article-share-link">Share</a>
       
       
     </footer>
@@ -327,7 +585,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/15/浏览器渲染机制/" data-id="ck9xiy4yb000ewkuvfzdtpco6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/15/浏览器渲染机制/" data-id="ckahv5ob9000j4kuvkj0cslbj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -411,7 +669,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/15/js中的作用域/" data-id="ck9xiy4ws0004wkuvi24hdc8h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/15/js中的作用域/" data-id="ckahv5o9900034kuvvnamttmg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -508,111 +766,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/08/http缓存/" data-id="ck9xiy4ya000dwkuvhmgymi7x" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-markdown-grammar" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/05/markdown-grammar/" class="article-date">
-  <time datetime="2019-01-05T12:16:37.000Z" itemprop="datePublished">2019-01-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/05/markdown-grammar/">markdown 语法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1、标题"><a href="#1、标题" class="headerlink" title="1、标题"></a>1、标题</h2><p>在想要设置为标题的文字前面加#来表示<br>一个#是一级标题，二个#是二级标题，以此类推。支持六级标题。<br>注：#后跟个空格再写文字<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一级标题</span></span><br><span class="line"><span class="comment">## 二级标题</span></span><br><span class="line"><span class="comment">### 三级标题</span></span><br><span class="line"><span class="comment">#### 四级标题</span></span><br><span class="line"><span class="comment">##### 五级标题</span></span><br><span class="line"><span class="comment">##### 六级标题</span></span><br></pre></td></tr></table></figure></p>
-<p>效果</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h5 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h5><h2 id="2、字体"><a href="#2、字体" class="headerlink" title="2、字体"></a>2、字体</h2><ul>
-<li><h3 id="加粗"><a href="#加粗" class="headerlink" title="加粗"></a>加粗</h3>要加粗的文字左右分别用两个*号包起来</li>
-<li><h3 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h3>要倾斜的文字左右分别用一个*号包起来</li>
-<li><h3 id="斜体加粗"><a href="#斜体加粗" class="headerlink" title="斜体加粗"></a>斜体加粗</h3>要倾斜和加粗的文字左右分别用三个*号包起来</li>
-<li><h3 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h3>要加删除线的文字左右分别用两个~~号包起来<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">**这是加粗的文字**</span><br><span class="line">*这是倾斜的文字*`</span><br><span class="line">***这是斜体加粗的文字***</span><br><span class="line">~~这是加删除线的文字~~</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>效果<br><strong>这是加粗的文字</strong><br><em>这是倾斜的文字</em>`<br><strong><em>这是斜体加粗的文字</em></strong><br><del>这是加删除线的文字</del></p>
-<h2 id="3、列表"><a href="#3、列表" class="headerlink" title="3、列表"></a>3、列表</h2><ul>
-<li><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3>无序列表用 - + * 任何一种都可以<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 无序列表1</span><br><span class="line">+ 无序列表2</span><br><span class="line">* 无序列表3</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>效果</p>
-<ul>
-<li>无序列表1</li>
-</ul>
-<ul>
-<li>无序列表2</li>
-</ul>
-<ul>
-<li><p>无序列表3</p>
-</li>
-<li><h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><p>数字加点</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.列表内容</span><br><span class="line">2.列表内容</span><br><span class="line">3.列表内容</span><br><span class="line">注意：序号跟内容之间要有空格</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>效果<br>1.列表内容<br>2.列表内容<br>3.列表内容</p>
-<ul>
-<li><h3 id="列表嵌套"><a href="#列表嵌套" class="headerlink" title="列表嵌套"></a>列表嵌套</h3>上一级和下一级之间敲三个空格即可<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* 一级内容</span><br><span class="line">   1.二级有序列表内容</span><br><span class="line">   2.二级有序列表内容</span><br><span class="line">   3.二级有序列表内容</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>效果</p>
-<ul>
-<li>一级内容<br> 1.二级有序列表内容<br> 2.二级有序列表内容<br> 3.二级有序列表内容</li>
-</ul>
-<h2 id="4、超链接"><a href="#4、超链接" class="headerlink" title="4、超链接"></a>4、超链接</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[超链接名](超链接地址 <span class="string">"超链接title"</span>)</span><br><span class="line">title可加可不加</span><br></pre></td></tr></table></figure>
-<p>效果<br>欢迎去<a href="https://www.baidu.com" title="百度" target="_blank" rel="noopener">百度</a></p>
-<h2 id="5、图片"><a href="#5、图片" class="headerlink" title="5、图片"></a>5、图片</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">![图片alt](图片地址 <span class="string">"图片title"</span>)</span><br><span class="line"></span><br><span class="line">图片alt就是显示在图片下面的文字，相当于对图片内容的解释。</span><br><span class="line">图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</span><br></pre></td></tr></table></figure>
-<p>效果<br><img src="http://pic1.win4000.com/wallpaper/e/526c9f87129d9.jpg" alt="黄石国家公园" title="美景"></p>
-<h2 id="6、分割线"><a href="#6、分割线" class="headerlink" title="6、分割线"></a>6、分割线</h2><p>三个或者三个以上的 - 或者 * 都可以<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">----</span><br><span class="line">***</span><br><span class="line">*****</span><br></pre></td></tr></table></figure></p>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><hr>
-<hr>
-<hr>
-<h2 id="7、表格"><a href="#7、表格" class="headerlink" title="7、表格"></a>7、表格</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">表头|表头|表头</span><br><span class="line">--|:--:|--:</span><br><span class="line">内容|内容|内容</span><br><span class="line">内容|内容|内容</span><br><span class="line"></span><br><span class="line">1）|、-、:之间的多余空格会被忽略，不影响布局。</span><br><span class="line">2）默认标题栏居中对齐，内容居左对齐。</span><br><span class="line">3）-:表示内容和标题栏居右对齐，:-表示内容和标题栏居左对齐，:-:表示内容和标题栏居中对齐。</span><br><span class="line">4）内容和|之间的多余空格会被忽略，每行第一个|和最后一个|可以省略，-的数量至少有一个。</span><br><span class="line"></span><br><span class="line">注意，使用时发现，表格的语句上一行必须为空行，不然表格不生效。</span><br></pre></td></tr></table></figure>
-<p>效果</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">左对齐标题</th>
-<th style="text-align:right">右对齐标题</th>
-<th style="text-align:center">居中对齐标题</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">短文本</td>
-<td style="text-align:right">中等文本</td>
-<td style="text-align:center">稍微长一点的文本</td>
-</tr>
-<tr>
-<td style="text-align:left">稍微长一点的文本</td>
-<td style="text-align:right">短文本</td>
-<td style="text-align:center">中等文本</td>
-</tr>
-</tbody>
-</table>
-<h2 id="8、代码"><a href="#8、代码" class="headerlink" title="8、代码"></a>8、代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    <span class="built_in">let</span> a = 1;</span><br><span class="line">    <span class="built_in">let</span> b = 2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/05/markdown-grammar/" data-id="ck9xiy4ws0005wkuv122gz2jj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/08/http缓存/" data-id="ckahv5ob9000i4kuvhnmbu45q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -626,7 +780,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -645,7 +799,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -658,23 +812,23 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
       <ul>
         
           <li>
+            <a href="/2020/05/22/web网页安全/">web网页安全</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/22/http/">http</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/21/vue框架/">vue框架</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/13/算法题/">算法题</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/30/微信公众号/">微信公众号</a>
-          </li>
-        
-          <li>
-            <a href="/2019/10/10/问题总结/">问题总结</a>
-          </li>
-        
-          <li>
-            <a href="/2019/09/29/搭建静态服务器/">搭建静态服务器</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/16/console用法/">console用法</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/24/css-grid/">css-grid</a>
           </li>
         
       </ul>
