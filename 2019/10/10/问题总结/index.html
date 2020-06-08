@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="学无止境">
 <meta property="og:description" content="一、原生js基础相关变量区分大小写1、数据类型有哪些基本数据类型(存放在栈中)：string、number、boolean、null、undefined、symbol 引用类型(存放在堆中)：object、function 注意1: 栈和堆的区别    栈（stack）为自动分配的内存空间, 它由系统自动释放; 而堆（heap）则是动态分配的内存, 大小不定也不会自动释放注意2: null和und">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-19T10:11:52.038Z">
+<meta property="og:updated_time" content="2020-06-04T08:28:05.512Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="问题总结">
 <meta name="twitter:description" content="一、原生js基础相关变量区分大小写1、数据类型有哪些基本数据类型(存放在栈中)：string、number、boolean、null、undefined、symbol 引用类型(存放在堆中)：object、function 注意1: 栈和堆的区别    栈（stack）为自动分配的内存空间, 它由系统自动释放; 而堆（heap）则是动态分配的内存, 大小不定也不会自动释放注意2: null和und">
@@ -270,15 +270,24 @@ get：参数拼接在url上, 出于安全考虑, 服务器端在实现时会做�
     localStorage、sessionStorage、Cookie
 2、完全没有关系的两个浏览器的tab通信
     A、B Tab 引入iframe 并且指向同一个页面, 利用postMessage通信
-</code></pre><h2 id="二、性能优化相关"><a href="#二、性能优化相关" class="headerlink" title="二、性能优化相关"></a>二、性能优化相关</h2><h4 id="1、如何优化性能"><a href="#1、如何优化性能" class="headerlink" title="1、如何优化性能"></a>1、如何优化性能</h4><pre><code>网页方面
-* 减少http请求次数
-    合并文件、css雪碧图
-* http缓存
-* 减少DOM数量
-js方面
-    减少操作DOM
-    使用外部Javascirpt和CSS文件
-图片方面
+</code></pre><h2 id="二、性能优化相关"><a href="#二、性能优化相关" class="headerlink" title="二、性能优化相关"></a>二、性能优化相关</h2><h4 id="1、如何优化性能"><a href="#1、如何优化性能" class="headerlink" title="1、如何优化性能"></a>1、如何优化性能</h4><pre><code>a、DNS预解析（不能滥用）
+    eg：
+    // 开启预解析
+    &lt;meta http-equiv=&quot;x-dns-prefetch-control&quot; content=&quot;on&quot;&gt;
+    // 关闭预解析
+    &lt;meta http-equiv=&quot;x-dns-prefetch-control&quot; content=&quot;off&quot;&gt;
+    // link的设置会让浏览器预取&quot;www.zhix.net&quot;的解析
+    &lt;link rel=&quot;dns-prefetch&quot; href=&quot;//www.zhix.net&quot;&gt;
+b、http缓存
+c、CDN加速-适合处理静态文件
+    原理：把内容发布到世界的各个节点，用户可以在距离最近的网络节点获取到内容, 减少网络传输距离达到加速的目的
+b、代码层面
+    1) 防抖、节流
+    2) 减少http请求次数
+        合并文件、css雪碧图
+    3) js、css、图片等资源进行压缩
+    4) 减少操作频繁DOM
+    5) 图片预加载、懒加载
 </code></pre><h2 id="三、es6-ES2017-相关"><a href="#三、es6-ES2017-相关" class="headerlink" title="三、es6(ES2017)相关"></a>三、es6(ES2017)相关</h2><h4 id="1、let、var、const声明变量"><a href="#1、let、var、const声明变量" class="headerlink" title="1、let、var、const声明变量"></a>1、let、var、const声明变量</h4><pre><code>let：声明的变量不能再重新声明, 可以修改值
 const：声明的变量不能再重新声明, 如果是基本数据类型, 则不能修改值, 引用类型, 可以改
 let、const 在全局声明的变量 不会挂载到window上
@@ -404,7 +413,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/10/问题总结/" data-id="ckahv5obf000k4kuvt6sp61on" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/10/问题总结/" data-id="ckb5v4eun000kpguvjx8y46ia" class="article-share-link">Share</a>
       
       
     </footer>
@@ -449,7 +458,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -462,6 +471,14 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       <ul>
         
           <li>
+            <a href="/2020/06/08/taro小程序/">taro小程序</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/03/javascript页面容错处理/">javascript页面容错处理</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/22/web网页安全/">web网页安全</a>
           </li>
         
@@ -471,14 +488,6 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
         
           <li>
             <a href="/2020/05/21/vue框架/">vue框架</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/13/算法题/">算法题</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/30/微信公众号/">微信公众号</a>
           </li>
         
       </ul>

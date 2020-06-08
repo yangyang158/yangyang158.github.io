@@ -5,19 +5,19 @@
   
 
   
-  <title>web网页安全 | 学无止境</title>
+  <title>javascript页面容错处理 | 学无止境</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、XSS 跨站脚本攻击原理：通过在web网页里植入可执行的脚本 盗取信息防御：    1、HttpOnly Cookie    2、不信任用户输入, 对特殊字符进行转义    3、建立白名单, 配置规则, 告诉浏览器可以加载和执行哪些资源, 设置meta标签的方式 或 HTTP Header 中的 Content-Security-Policy 二、CSRF(Cross Site Request">
+  <meta name="description" content="一、js脚本运行出错，导致页面空白，可以监听error事件定位错误window.onerror = handleErr var txt = &amp;quot;&amp;quot; function handleErr(msg,url,l) {     txt = &amp;quot;There was an error on this page.\n\n&amp;quot;     txt += &amp;quot;Error: &amp;q">
 <meta property="og:type" content="article">
-<meta property="og:title" content="web网页安全">
-<meta property="og:url" content="http://yoursite.com/2020/05/22/web网页安全/index.html">
+<meta property="og:title" content="javascript页面容错处理">
+<meta property="og:url" content="http://yoursite.com/2020/06/03/javascript页面容错处理/index.html">
 <meta property="og:site_name" content="学无止境">
-<meta property="og:description" content="一、XSS 跨站脚本攻击原理：通过在web网页里植入可执行的脚本 盗取信息防御：    1、HttpOnly Cookie    2、不信任用户输入, 对特殊字符进行转义    3、建立白名单, 配置规则, 告诉浏览器可以加载和执行哪些资源, 设置meta标签的方式 或 HTTP Header 中的 Content-Security-Policy 二、CSRF(Cross Site Request">
+<meta property="og:description" content="一、js脚本运行出错，导致页面空白，可以监听error事件定位错误window.onerror = handleErr var txt = &amp;quot;&amp;quot; function handleErr(msg,url,l) {     txt = &amp;quot;There was an error on this page.\n\n&amp;quot;     txt += &amp;quot;Error: &amp;q">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-22T07:11:22.096Z">
+<meta property="og:updated_time" content="2020-06-08T09:17:37.382Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="web网页安全">
-<meta name="twitter:description" content="一、XSS 跨站脚本攻击原理：通过在web网页里植入可执行的脚本 盗取信息防御：    1、HttpOnly Cookie    2、不信任用户输入, 对特殊字符进行转义    3、建立白名单, 配置规则, 告诉浏览器可以加载和执行哪些资源, 设置meta标签的方式 或 HTTP Header 中的 Content-Security-Policy 二、CSRF(Cross Site Request">
+<meta name="twitter:title" content="javascript页面容错处理">
+<meta name="twitter:description" content="一、js脚本运行出错，导致页面空白，可以监听error事件定位错误window.onerror = handleErr var txt = &amp;quot;&amp;quot; function handleErr(msg,url,l) {     txt = &amp;quot;There was an error on this page.\n\n&amp;quot;     txt += &amp;quot;Error: &amp;q">
   
     <link rel="alternate" href="/atom.xml" title="学无止境" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-web网页安全" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-javascript页面容错处理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/05/22/web网页安全/" class="article-date">
-  <time datetime="2020-05-22T06:02:51.000Z" itemprop="datePublished">2020-05-22</time>
+    <a href="/2020/06/03/javascript页面容错处理/" class="article-date">
+  <time datetime="2020-06-03T06:56:56.000Z" itemprop="datePublished">2020-06-03</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      web网页安全
+      javascript页面容错处理
     </h1>
   
 
@@ -86,16 +86,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、XSS-跨站脚本攻击"><a href="#一、XSS-跨站脚本攻击" class="headerlink" title="一、XSS 跨站脚本攻击"></a>一、XSS 跨站脚本攻击</h2><p>原理：通过在web网页里植入可执行的脚本 盗取信息<br>防御：<br>    1、HttpOnly Cookie<br>    2、不信任用户输入, 对特殊字符进行转义<br>    3、建立白名单, 配置规则, 告诉浏览器可以加载和执行哪些资源, 设置meta标签的方式 或 HTTP Header 中的 Content-Security-Policy</p>
-<h2 id="二、CSRF-Cross-Site-Request-Forgery-，即跨站请求伪造"><a href="#二、CSRF-Cross-Site-Request-Forgery-，即跨站请求伪造" class="headerlink" title="二、CSRF(Cross Site Request Forgery)，即跨站请求伪造"></a>二、CSRF(Cross Site Request Forgery)，即跨站请求伪造</h2><p>原理: 盗用了用户的身份, 以用户的名义发请求<br>场景: 用户登录了某网站且未退出, 被诱惑访问了其他网站<br>防御:<br>    1、检查 header中的refer字段<br>    2、get请求比较好伪造, get请求不要对数据做修改<br>    3、对账户交易的要加上验证码或token</p>
-<p>疑问：cookie是不能跨域访问的，为什么会有csrf攻击？<br>浏览器会依据加载的域名附带上对应域名cookie。<br>就是如果用户在a网站登录且生成了授权的cookies，然后访问b网站，b站故意构造请求a站的请求，用script，img或者iframe之类的加载a站着个地址，浏览器会附带上a站此登录用户的授权cookie信息，这样就构成crsf</p>
-<h2 id="三、点击劫持"><a href="#三、点击劫持" class="headerlink" title="三、点击劫持"></a>三、点击劫持</h2><p>原理：一种视觉上的欺骗手段, 如：在页面上覆盖一个透明的iframe, 此时用户将在不知情的情况下点击透明的iframe里的页面<br>防御：<br>    1、设置请求头的X-FRAME-OPTIONS字段, 控制访问iframe的来源</p>
-<h2 id="四、URL跳转漏洞"><a href="#四、URL跳转漏洞" class="headerlink" title="四、URL跳转漏洞"></a>四、URL跳转漏洞</h2><p>原理: 攻击者做一个恶意链接，比如：qq号被盗 就是打开了一个恶意链接<br>eg: <a href="http://www.XX.XX.com/index?url=http://XXXXX" target="_blank" rel="noopener">http://www.XX.XX.com/index?url=http://XXXXX</a><br>前面看着是安全的链接, 参数url是一个恶意网址<br>防御：<br>    1、加入token对生成的链接进行校验<br>    2、对referer的限制</p>
-<h2 id="五、SQL注入"><a href="#五、SQL注入" class="headerlink" title="五、SQL注入"></a>五、SQL注入</h2>
+        <h3 id="一、js脚本运行出错，导致页面空白，可以监听error事件定位错误"><a href="#一、js脚本运行出错，导致页面空白，可以监听error事件定位错误" class="headerlink" title="一、js脚本运行出错，导致页面空白，可以监听error事件定位错误"></a>一、js脚本运行出错，导致页面空白，可以监听error事件定位错误</h3><pre><code>window.onerror = handleErr
+var txt = &quot;&quot;
+function handleErr(msg,url,l) {
+    txt = &quot;There was an error on this page.\n\n&quot;
+    txt += &quot;Error: &quot; + msg + &quot;\n&quot;
+    txt += &quot;URL: &quot; + url + &quot;\n&quot;
+    txt += &quot;Line: &quot; + l + &quot;\n\n&quot;
+    txt += &quot;Click OK to continue.\n\n&quot;
+    alert(txt)
+    return false; // true：控制台不显示错误日志; false：控制台显示错误日志
+}
+可以通过img标签发送get请求 进行错误上报
+</code></pre><h3 id="二、捕获错误"><a href="#二、捕获错误" class="headerlink" title="二、捕获错误"></a>二、捕获错误</h3><p>1、try catch——可以绕开错误,代码还可以继续运行<br>    try {<br>        …<br>    } catch (error) {<br>        // 代码出错后执行这里<br>        console.log(‘错误’, error)<br>    } finally {<br>        // 不管代码是否报错，都将执行这里<br>        …<br>    }<br>2、抛异常<br>    a、throw exception<br>    b、new Error()</p>
+<h3 id="三、跨域页面捕获异常-Script-error"><a href="#三、跨域页面捕获异常-Script-error" class="headerlink" title="三、跨域页面捕获异常-Script error"></a>三、跨域页面捕获异常-Script error</h3><pre><code>当引入的第三方脚本发生错误时, 该脚本中的 window.onerror 会将这类错误统一展示为 Script error 。所以为了解决这个问题一般有两种解决方案：
+a、后端配置 Access-Control-Allow-origin、前端在 script 标签配置 crossorigin
+b、劫持原生方法，使用 try/catch 绕过，将错误抛出
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/22/web网页安全/" data-id="ckb5v4eu9000cpguvmd2l59kl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/03/javascript页面容错处理/" data-id="ckb5v4etx0004pguvxzv153xo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -104,19 +115,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/06/03/javascript页面容错处理/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/06/08/taro小程序/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          javascript页面容错处理
+          taro小程序
         
       </div>
     </a>
   
   
-    <a href="/2020/05/22/http/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/05/22/web网页安全/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">http</div>
+      <div class="article-nav-title">web网页安全</div>
     </a>
   
 </nav>
