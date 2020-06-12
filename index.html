@@ -62,6 +62,44 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-开机自启动脚本" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/12/开机自启动脚本/" class="article-date">
+  <time datetime="2020-06-12T02:43:07.000Z" itemprop="datePublished">2020-06-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/12/开机自启动脚本/">开机自启动脚本</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="window操作系统"><a href="#window操作系统" class="headerlink" title="window操作系统"></a>window操作系统</h2><p><strong>以开机自动打开浏览器并访问一个页面为例</strong>    </p>
+<h3 id="一、使用XXX-bat脚本-把该脚本文件放到C-ProgramData-Microsoft-Windows-Start-Menu-Programs-Startup中"><a href="#一、使用XXX-bat脚本-把该脚本文件放到C-ProgramData-Microsoft-Windows-Start-Menu-Programs-Startup中" class="headerlink" title="一、使用XXX.bat脚本, 把该脚本文件放到C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup中"></a>一、使用XXX.bat脚本, 把该脚本文件放到C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup中</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// open.bat文件 </span><br><span class="line">E:</span><br><span class="line"><span class="built_in">cd</span> E:\webpack-template\node-sever</span><br><span class="line">node ./open-broswer.js</span><br><span class="line">taskkill /f /im cmd.exe</span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// open-broswer.js</span><br><span class="line">const &#123;<span class="built_in">exec</span>&#125; = require(<span class="string">"child_process"</span>);</span><br><span class="line"><span class="keyword">function</span> openBroswer (url) &#123;</span><br><span class="line">    // 拿到当前系统的参数</span><br><span class="line">    switch (process.platform) &#123;</span><br><span class="line">        //mac系统使用 一下命令打开url在浏览器</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"darwin"</span>:</span><br><span class="line">            <span class="built_in">exec</span>(`open <span class="variable">$&#123;url&#125;</span>`);</span><br><span class="line">        //win系统使用 一下命令打开url在浏览器</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"win32"</span>:</span><br><span class="line">            <span class="built_in">exec</span>(`start <span class="variable">$&#123;url&#125;</span>`);</span><br><span class="line">            // 默认mac系统</span><br><span class="line">        default:</span><br><span class="line">            <span class="built_in">exec</span>(`open <span class="variable">$&#123;url&#125;</span>`);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">openBroswer(<span class="string">'https://www.bilibili.com/'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="2、将系统包装成pc端的app软件-类似qq、微信等开机自动打开"><a href="#2、将系统包装成pc端的app软件-类似qq、微信等开机自动打开" class="headerlink" title="2、将系统包装成pc端的app软件(类似qq、微信等开机自动打开)"></a>2、将系统包装成pc端的app软件(类似qq、微信等开机自动打开)</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/12/开机自启动脚本/" data-id="ckbbm4jjb000b88uvybvhk1mi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-taro小程序" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/08/taro小程序/" class="article-date">
@@ -91,7 +129,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/08/taro小程序/" data-id="ckb5v4eu30007pguvf083i8sm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/08/taro小程序/" data-id="ckbbm4jiz000688uvjd6sch8c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -143,7 +181,7 @@ b、劫持原生方法，使用 try/catch 绕过，将错误抛出
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/03/javascript页面容错处理/" data-id="ckb5v4etx0004pguvxzv153xo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/03/javascript页面容错处理/" data-id="ckbbm4jib000288uvexdffupv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -184,7 +222,7 @@ b、劫持原生方法，使用 try/catch 绕过，将错误抛出
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/22/web网页安全/" data-id="ckb5v4eu9000cpguvmd2l59kl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/22/web网页安全/" data-id="ckbbm4jj9000a88uv89y2kf0i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -222,7 +260,7 @@ b、劫持原生方法，使用 try/catch 绕过，将错误抛出
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/22/http/" data-id="ckb5v4etz0005pguvdsv1i40y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/22/http/" data-id="ckbbm4jis000388uvhcb02prz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -437,7 +475,7 @@ deactivated —— 组件被移除时调用
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/21/vue框架/" data-id="ckb5v4eu8000bpguvwy0rl3vn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/21/vue框架/" data-id="ckbbm4jj8000988uvyq8q4uc1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -473,7 +511,7 @@ deactivated —— 组件被移除时调用
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/13/算法题/" data-id="ckb5v4eue000hpguvh67dcq0c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/13/算法题/" data-id="ckbbm4jjj000i88uvop3c9i4s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -514,7 +552,7 @@ deactivated —— 组件被移除时调用
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/30/微信公众号/" data-id="ckb5v4eua000dpguvy2wx1xwu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/30/微信公众号/" data-id="ckbbm4jjd000d88uvk1xwj6n5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -873,7 +911,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/10/问题总结/" data-id="ckb5v4eun000kpguvjx8y46ia" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/10/问题总结/" data-id="ckbbm4jjk000j88uvoylodkab" class="article-share-link">Share</a>
       
       
     </footer>
@@ -925,54 +963,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/29/搭建静态服务器/" data-id="ckb5v4euc000fpguvbo181gxk" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-console用法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/16/console用法/" class="article-date">
-  <time datetime="2019-07-16T02:04:11.000Z" itemprop="datePublished">2019-07-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/16/console用法/">console用法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、输出一个变量或者输出一个字符串"><a href="#一、输出一个变量或者输出一个字符串" class="headerlink" title="一、输出一个变量或者输出一个字符串"></a>一、输出一个变量或者输出一个字符串</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> name1 = <span class="string">'yy'</span></span><br><span class="line"><span class="built_in">let</span> name2 = <span class="string">'zs'</span></span><br><span class="line">console.log(name1, name2); // yy zs</span><br></pre></td></tr></table></figure>
-<h2 id="二、支持占位符-不过其支持的占位符种类较少-只支持字符串（-s）-整数（-d或-i）、浮点数（-f）和对象（-o）"><a href="#二、支持占位符-不过其支持的占位符种类较少-只支持字符串（-s）-整数（-d或-i）、浮点数（-f）和对象（-o）" class="headerlink" title="二、支持占位符, 不过其支持的占位符种类较少, 只支持字符串（%s）\整数（%d或%i）、浮点数（%f）和对象（%o）"></a>二、支持占位符, 不过其支持的占位符种类较少, 只支持字符串（%s）\整数（%d或%i）、浮点数（%f）和对象（%o）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(<span class="string">"%d年%d月%d日"</span>, 2019, 09, 22); // 2019年09月22日</span><br></pre></td></tr></table></figure>
-<h2 id="三、console-log-、console-warn-、console-error-打印的颜色不一样"><a href="#三、console-log-、console-warn-、console-error-打印的颜色不一样" class="headerlink" title="三、console.log()、console.warn()、console.error() 打印的颜色不一样"></a>三、console.log()、console.warn()、console.error() 打印的颜色不一样</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.warn(<span class="string">'warn'</span>); // 黄色</span><br><span class="line">console.error(<span class="string">'error'</span>); // 红色</span><br><span class="line">console.log(<span class="string">'log'</span>); // 正常黑色</span><br></pre></td></tr></table></figure>
-<h2 id="四、console-table-以表格形式输出"><a href="#四、console-table-以表格形式输出" class="headerlink" title="四、console.table() 以表格形式输出"></a>四、console.table() 以表格形式输出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const people = &#123;</span><br><span class="line">    <span class="string">"person1"</span>: &#123;<span class="string">"fname"</span>: <span class="string">"san"</span>, <span class="string">"lname"</span>: <span class="string">"zhang"</span>&#125;, </span><br><span class="line">    <span class="string">"person2"</span>: &#123;<span class="string">"fname"</span>: <span class="string">"si"</span>, <span class="string">"lname"</span>: <span class="string">"li"</span>&#125;, </span><br><span class="line">    <span class="string">"person3"</span>: &#123;<span class="string">"fname"</span>: <span class="string">"wu"</span>, <span class="string">"lname"</span>: <span class="string">"wang"</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line">console.table(people)</span><br></pre></td></tr></table></figure>
-<p><img src="https://pic1.zhimg.com/80/v2-47e42c76d29825ad76e0f8db651be5b0_hd.png" alt="效果"></p>
-<h2 id="五、console-time-与-console-timeEnd-测试代码运行时间"><a href="#五、console-time-与-console-timeEnd-测试代码运行时间" class="headerlink" title="五、console.time() 与 console.timeEnd() 测试代码运行时间"></a>五、console.time() 与 console.timeEnd() 测试代码运行时间</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">console.time(<span class="string">"for-test"</span>);</span><br><span class="line">const arr = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i = 0; i &lt; 100000; i++) &#123;</span><br><span class="line">    arr.push(&#123;<span class="string">"key"</span>: i&#125;);</span><br><span class="line">&#125;</span><br><span class="line">console.timeEnd(<span class="string">"for-test"</span>);</span><br><span class="line">// <span class="keyword">for</span>-test: 10.705810546875ms</span><br></pre></td></tr></table></figure>
-<h2 id="六、console-assert-断言-当表达式为-false-时，输出错误信息Assertion-failed-console-assert"><a href="#六、console-assert-断言-当表达式为-false-时，输出错误信息Assertion-failed-console-assert" class="headerlink" title="六、console.assert() 断言, 当表达式为 false 时，输出错误信息Assertion failed: console.assert"></a>六、console.assert() 断言, 当表达式为 false 时，输出错误信息Assertion failed: console.assert</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> arr = [1, 2, 3, 4]</span><br><span class="line">console.assert(arr.length === 2); // Assertion failed: console.assert</span><br><span class="line">console.assert(arr.length === 4); // undefined</span><br></pre></td></tr></table></figure>
-<h2 id="七、console-count-计算代码被执行了多少次"><a href="#七、console-count-计算代码被执行了多少次" class="headerlink" title="七、console.count() 计算代码被执行了多少次"></a>七、console.count() 计算代码被执行了多少次</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">func</span></span>() &#123;</span><br><span class="line">    console.count(<span class="string">"次数"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i = 0; i &lt; 3; i++) &#123;</span><br><span class="line">    func();</span><br><span class="line">&#125;</span><br><span class="line">// 输出</span><br><span class="line">次数: 1</span><br><span class="line">次数: 2</span><br><span class="line">次数: 3</span><br></pre></td></tr></table></figure>
-<h2 id="八、console-group-、-console-groupEnd-与-console-groupCollapsed-可以展示层级关系"><a href="#八、console-group-、-console-groupEnd-与-console-groupCollapsed-可以展示层级关系" class="headerlink" title="八、console.group()、 console.groupEnd() 与 console.groupCollapsed() 可以展示层级关系"></a>八、console.group()、 console.groupEnd() 与 console.groupCollapsed() 可以展示层级关系</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">console.group(<span class="string">"1"</span>); // 层级默认展开</span><br><span class="line">console.log(<span class="string">"1-1"</span>);</span><br><span class="line">console.log(<span class="string">"1-2"</span>);</span><br><span class="line">console.log(<span class="string">"1-3"</span>);</span><br><span class="line">console.groupEnd();</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">console.groupCollapsed(<span class="string">"2"</span>); // 层级默认折叠</span><br><span class="line">console.log(<span class="string">"2-1"</span>);</span><br><span class="line">console.log(<span class="string">"2-2"</span>);</span><br><span class="line">console.log(<span class="string">"2-3"</span>);</span><br><span class="line">console.groupEnd();</span><br></pre></td></tr></table></figure>
-<p><img src="https://pic3.zhimg.com/80/v2-696609e37fad3a14b054285c57172aae_hd.png" alt="效果"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/console用法/" data-id="ckb5v4eti0000pguvbfasge7t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/29/搭建静态服务器/" data-id="ckbbm4jjf000f88uvng08wu0l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1018,6 +1009,10 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       <ul>
         
           <li>
+            <a href="/2020/06/12/开机自启动脚本/">开机自启动脚本</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/08/taro小程序/">taro小程序</a>
           </li>
         
@@ -1031,10 +1026,6 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
         
           <li>
             <a href="/2020/05/22/http/">http</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/21/vue框架/">vue框架</a>
           </li>
         
       </ul>
