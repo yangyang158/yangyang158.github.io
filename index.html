@@ -90,7 +90,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/14/promise/" data-id="ckdto51340005wkuvxvm0pxa3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/08/14/promise/" data-id="cke0s9sb9000kq8uvopil6z7a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -128,7 +128,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/12/开机自启动脚本/" data-id="ckdto513i000fwkuv0033opu4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/12/开机自启动脚本/" data-id="cke0s9saq000fq8uvmr1x8rg9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -167,7 +167,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/08/taro小程序/" data-id="ckdto51390008wkuvwos9q7ll" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/08/taro小程序/" data-id="cke0s9sag000aq8uvq7fhto4k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -219,7 +219,7 @@ b、劫持原生方法，使用 try/catch 绕过，将错误抛出
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/03/javascript页面容错处理/" data-id="ckdto512z0004wkuvg7oqsp9b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/03/javascript页面容错处理/" data-id="cke0s9saa0006q8uvm1zd4yuc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -260,7 +260,7 @@ b、劫持原生方法，使用 try/catch 绕过，将错误抛出
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/22/web网页安全/" data-id="ckdto513b000awkuvik81uyrw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/22/web网页安全/" data-id="cke0s9san000dq8uv2wqgfj8d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -298,7 +298,7 @@ b、劫持原生方法，使用 try/catch 绕过，将错误抛出
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/22/http/" data-id="ckdto512y0003wkuvl6lk5y52" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/22/http/" data-id="cke0s9sa90005q8uvf1mghfgh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -513,7 +513,7 @@ deactivated —— 组件被移除时调用
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/21/vue框架/" data-id="ckdto513e000cwkuvfr4jwb1k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/21/vue框架/" data-id="cke0s9sak000cq8uv0x5uvn1d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -554,11 +554,11 @@ deactivated —— 组件被移除时调用
 <h5 id="6、实现call"><a href="#6、实现call" class="headerlink" title="6、实现call"></a>6、实现call</h5><pre><code>参考文献：https://github.com/mqyqingfeng/Blog/issues/12
 </code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> <span class="built_in">test</span> = &#123;</span><br><span class="line">    name: <span class="string">'test'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">let</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'哈哈'</span>,</span><br><span class="line">    speak: <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        console.log(this.name, arguments)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Function.prototype.myCall = <span class="keyword">function</span>(context, ...args) &#123;</span><br><span class="line">    // _fn_是任意起的，之后会被删除</span><br><span class="line">    <span class="built_in">let</span> context = context || window;</span><br><span class="line">    context._fn_ = this;  //在obj上添加_fn_属性，值是this(要调用此方法的那个函数对象)。</span><br><span class="line">    context._fn_(...args); //在obj上调用函数,那函数的this值就是obj.</span><br><span class="line">    delete context._fn_; </span><br><span class="line">&#125;</span><br><span class="line">// 原生js</span><br><span class="line">obj.speak.call(<span class="built_in">test</span>, 1, 2, 3)</span><br><span class="line">// 自定义call</span><br><span class="line">obj.speak.myCall(<span class="built_in">test</span>, 1, 2, 3)</span><br><span class="line"></span><br><span class="line">// 解题思路</span><br><span class="line">将<span class="built_in">test</span>构造为如下样子</span><br><span class="line"><span class="built_in">let</span> <span class="built_in">test</span> = &#123;</span><br><span class="line">    name: <span class="string">'test'</span>,</span><br><span class="line">    _fn_: <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        console.log(this.name, arguments)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">1、将函数设为对象的属性</span><br><span class="line">2、执行该函数</span><br><span class="line">3、删除该属性</span><br></pre></td></tr></table></figure>
 <h5 id="7、实现apply（原理和call差不多）"><a href="#7、实现apply（原理和call差不多）" class="headerlink" title="7、实现apply（原理和call差不多）"></a>7、实现apply（原理和call差不多）</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> <span class="built_in">test</span> = &#123;</span><br><span class="line">    name: <span class="string">'test'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">let</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'哈哈'</span>,</span><br><span class="line">    speak: <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        console.log(this.name, arguments)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Function.prototype.myApply = <span class="keyword">function</span>(context, arr) &#123;</span><br><span class="line">    var context = context || window</span><br><span class="line">    context._fn_ = this</span><br><span class="line">    <span class="keyword">if</span> (!arr || arr.length === 0) &#123;</span><br><span class="line">        context._fn_()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">let</span> params = []</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">let</span> i = 0 ; i&lt;arr.length ; i++)&#123;</span><br><span class="line">            params.push(arr[i]) ;</span><br><span class="line">        &#125;</span><br><span class="line">        context._fn_(...params)</span><br><span class="line">    &#125;</span><br><span class="line">    delete context._fn_</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 原生js</span><br><span class="line">obj.speak.apply(<span class="built_in">test</span>, [1, 2, 3])</span><br><span class="line">// 自定义apply</span><br><span class="line">obj.speak.myApply(<span class="built_in">test</span>, [1, 2, 3])</span><br></pre></td></tr></table></figure>
-<h5 id="8、实现bind"><a href="#8、实现bind" class="headerlink" title="8、实现bind"></a>8、实现bind</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> <span class="built_in">test</span> = &#123;</span><br><span class="line">    name: <span class="string">'test'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">let</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'哈哈'</span>,</span><br><span class="line">    speak: <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        this.habit = <span class="string">'shopping'</span>;</span><br><span class="line">        console.log(this.name, arguments)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Function.prototype.myBind = <span class="keyword">function</span>(context) &#123;</span><br><span class="line">    var self = this</span><br><span class="line">    // 接受<span class="built_in">bind</span>函数的参数，在此处为1，2，3</span><br><span class="line">    var args = Array.from(arguments).slice(1)</span><br><span class="line">    <span class="built_in">let</span> fBound = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        // 接受<span class="built_in">bind</span>返回的函数的参数，在此处为4，5</span><br><span class="line">        var args1 = Array.from(arguments)</span><br><span class="line">        // 当<span class="built_in">bind</span>返回的函数作为构造函数使用时,要判断一下</span><br><span class="line">        self.apply(this instanceof fBound ? this : context, args.concat(args1))</span><br><span class="line">    &#125;</span><br><span class="line">    fBound.prototype = this.prototype;</span><br><span class="line">    <span class="built_in">return</span> fBound</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 原生js</span><br><span class="line">var s = obj.speak.bind(<span class="built_in">test</span>, 1, 2, 3)</span><br><span class="line">// 自定义<span class="built_in">bind</span></span><br><span class="line">var s = obj.speak.myBind(<span class="built_in">test</span>, 1, 2, 3)</span><br><span class="line">s(4, 5)</span><br><span class="line">// 复杂的情况</span><br><span class="line"><span class="built_in">let</span> s1 = new s()</span><br></pre></td></tr></table></figure>
+<h5 id="8、实现bind"><a href="#8、实现bind" class="headerlink" title="8、实现bind"></a>8、实现bind</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> <span class="built_in">test</span> = &#123;</span><br><span class="line">    name: <span class="string">'test'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">let</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'哈哈'</span>,</span><br><span class="line">    speak: <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        this.habit = <span class="string">'shopping'</span>;</span><br><span class="line">        console.log(this.name, arguments)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Function.prototype.myBind = <span class="keyword">function</span>(context) &#123;</span><br><span class="line">    var self = this</span><br><span class="line">    // 接受<span class="built_in">bind</span>函数的参数，在此处为1，2，3</span><br><span class="line">    var args = Array.from(arguments).slice(1)</span><br><span class="line">    <span class="built_in">let</span> fBound = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        // 接受<span class="built_in">bind</span>返回的函数的参数，在此处为4，5</span><br><span class="line">        var args1 = Array.from(arguments)</span><br><span class="line">        // 当<span class="built_in">bind</span>返回的函数作为构造函数使用时,要判断一下</span><br><span class="line">        self.apply(this instanceof fBound ? this : context, args.concat(args1))</span><br><span class="line">    &#125;</span><br><span class="line">    fBound.prototype = Object.create(this.prototype);</span><br><span class="line">    <span class="built_in">return</span> fBound</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 原生js</span><br><span class="line">var s = obj.speak.bind(<span class="built_in">test</span>, 1, 2, 3)</span><br><span class="line">// 自定义<span class="built_in">bind</span></span><br><span class="line">var s = obj.speak.myBind(<span class="built_in">test</span>, 1, 2, 3)</span><br><span class="line">s(4, 5)</span><br><span class="line">// 复杂的情况</span><br><span class="line"><span class="built_in">let</span> s1 = new s()</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/13/算法题/" data-id="ckdto5144000jwkuvhxexpbg3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/13/算法题/" data-id="cke0s9sav000jq8uvfwuvsjz5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -599,7 +599,7 @@ deactivated —— 组件被移除时调用
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/30/微信公众号/" data-id="ckdto5142000hwkuvn17rit0a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/30/微信公众号/" data-id="cke0s9sar000gq8uvjmejjve3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -999,7 +999,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/10/问题总结/" data-id="ckdto514u000nwkuvjp0ok0wp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/10/问题总结/" data-id="cke0s9sc3000nq8uvboersirl" class="article-share-link">Share</a>
       
       
     </footer>
