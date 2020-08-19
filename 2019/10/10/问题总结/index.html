@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="学无止境">
 <meta property="og:description" content="一、原生js基础相关变量区分大小写1、数据类型有哪些基本数据类型(存放在栈中)：string、number、boolean、null、undefined、symbol 引用类型(存放在堆中)：object、function 注意1: 栈和堆的区别    栈（stack）为自动分配的内存空间, 它由系统自动释放; 而堆（heap）则是动态分配的内存, 大小不定也不会自动释放注意2: null和und">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-06-04T08:28:05.512Z">
+<meta property="og:updated_time" content="2020-08-18T08:37:30.157Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="问题总结">
 <meta name="twitter:description" content="一、原生js基础相关变量区分大小写1、数据类型有哪些基本数据类型(存放在栈中)：string、number、boolean、null、undefined、symbol 引用类型(存放在堆中)：object、function 注意1: 栈和堆的区别    栈（stack）为自动分配的内存空间, 它由系统自动释放; 而堆（heap）则是动态分配的内存, 大小不定也不会自动释放注意2: null和und">
@@ -151,7 +151,7 @@ let w1 = new WebSocket(SOCKETURL)
 onopen(): 连接成功
 onmesage(): 接受消息
 close(): 关闭连接
-</code></pre><p><strong>注：</strong> 使用Nginx代理WebSocket,如果在60秒(默认)内没有数据交互,就会自动断开连接</p>
+</code></pre><p><strong>注：</strong> 使用Nginx代理WebSocket,如果在60秒(默认)内没有数据交互,就会自动断开连接<br>    websocket和http的区别:<br>    1、http的通信只能由客户端发起，websocket可以主动向客户端发送消息</p>
 <h4 id="17、js的三种类型转换"><a href="#17、js的三种类型转换" class="headerlink" title="17、js的三种类型转换"></a>17、js的三种类型转换</h4><pre><code>转换为布尔值、转换为数字、转换为字符串
 </code></pre><table>
 <thead>
@@ -234,6 +234,39 @@ close(): 关闭连接
 </tr>
 </tbody>
 </table>
+<pre><code>==比较时都进行的哪些隐形转换
+</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:left">左边操作符类型</th>
+<th style="text-align:left">右边操作符类型</th>
+<th style="text-align:left">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">string</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">将string转为number</td>
+</tr>
+<tr>
+<td style="text-align:left">string、number、bool</td>
+<td style="text-align:left">string、number、bool</td>
+<td style="text-align:left">将不是number的转为number</td>
+</tr>
+<tr>
+<td style="text-align:left">null</td>
+<td style="text-align:left">undefined</td>
+<td style="text-align:left">true</td>
+</tr>
+<tr>
+<td style="text-align:left">NaN</td>
+<td style="text-align:left">NaN</td>
+<td style="text-align:left">false</td>
+</tr>
+</tbody>
+</table>
+<p>如果存在引用数据类型，会先调用valueOf或者toString，在进行判断</p>
 <h4 id="18、浅比较和深比较的区别"><a href="#18、浅比较和深比较的区别" class="headerlink" title="18、浅比较和深比较的区别"></a>18、浅比较和深比较的区别</h4><p>浅比较：判断2个对象的引用地址是否一样<br>深比较：判断2个对象的所有属性值是否一样<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 浅比较</span><br><span class="line">const obj1 = &#123;age: 12&#125;</span><br><span class="line">const obj2 = &#123;age: 12&#125;</span><br><span class="line">const obj3 = obj1</span><br><span class="line">obj1 === obj2; // <span class="literal">false</span></span><br><span class="line">obj3 === obj1; // <span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
 <h4 id="19、栈、堆、队列"><a href="#19、栈、堆、队列" class="headerlink" title="19、栈、堆、队列"></a>19、栈、堆、队列</h4><p>栈: 先进后出的有序集合，js的基本数据类型都存放在栈中，栈由编译器自动分配释放，调用完毕自动释放。<br>堆：一般由操作人员（程序员）分配释放，若操作人员不分配释放，将由OS回收释放，js的引用数据类型都存放在堆中<br>队列：先进先出的有序集合<br><strong>为什么会有堆内存、栈内存之分？</strong><br>通常与垃圾回收机制有关。为了使程序运行时占用的内存最小。<br>当一个方法执行时，每个方法都会建立自己的内存栈，在这个方法内定义的变量将会逐个放入这块栈内存里，随着方法的执行结束，这个方法的内存栈也将自然销毁了。因此，所有在方法中定义的变量都是放在栈内存中的；<br>当我们在程序中创建一个对象时，这个对象将被保存到运行时数据区中，以便反复利用（因为对象的创建成本通常较大），这个运行时数据区就是堆内存。堆内存中的对象不会随方法的结束而销毁，即使方法结束后，这个对象还可能被另一个引用变量所引用（方法的参数传递时很常见），则这个对象依然不会被销毁，只有当一个对象没有任何引用变量引用它时，系统的垃圾回收机制才会在核实的时候回收它。</p>
 <h4 id="20、JavaScript-运行机制"><a href="#20、JavaScript-运行机制" class="headerlink" title="20、JavaScript 运行机制"></a>20、JavaScript 运行机制</h4><p><a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html" title="阮一峰" target="_blank" rel="noopener">参考文献</a></p>
@@ -242,8 +275,9 @@ close(): 关闭连接
 <p>节流：动作触发后间隔一段时间 触发某个事件，如果在这段时间内又触发了该动作，则无视该动作<br>例如：8s内无论重复触发多少次该动作，都只触发一次该事件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> throtte(fn, time) &#123;</span><br><span class="line">    <span class="built_in">let</span> preTime = 0</span><br><span class="line">    <span class="built_in">return</span> () =&gt; &#123;</span><br><span class="line">        // 时间戳</span><br><span class="line">        <span class="built_in">let</span> now = Date.now()</span><br><span class="line">        <span class="keyword">if</span> (now - preTime &gt; time) &#123;</span><br><span class="line">            fn()</span><br><span class="line">            preTime = now</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span>  <span class="function"><span class="title">sayHello</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'节流'</span>)</span><br><span class="line">&#125;</span><br><span class="line">// 效果: 重复点击一个按钮, 8秒后只会触发一次sayHello函数</span><br><span class="line"><span class="built_in">let</span> btn: any = document.querySelector(<span class="string">'.tets'</span>)</span><br><span class="line">btn.addEventListener(<span class="string">'click'</span>, this.throtte(this.sayHello, 8000))</span><br></pre></td></tr></table></figure></p>
 <h5 id="22、JavaScript设计模式"><a href="#22、JavaScript设计模式" class="headerlink" title="22、JavaScript设计模式"></a>22、JavaScript设计模式</h5><pre><code>单例模式：保证一个类只有一个实例
 工厂模式：构造函数
-发布-订阅模式：addEventListener
+观察者模式：addEventListener
 装饰者模式：给对象动态添加属性和方法
+代理模式：比如：事件代理
 </code></pre><h5 id="23、JavaScript架构模式"><a href="#23、JavaScript架构模式" class="headerlink" title="23、JavaScript架构模式"></a>23、JavaScript架构模式</h5><pre><code>MVC: 数据层 + 视图层 + 控制器
 MVP: 数据层 + 视图层 + 展示器
 MVVM: Model + View + ViewModel, 是基于MVC和MVP的架构模式, Angular、Vue
@@ -374,7 +408,14 @@ b、属性语法
 b: Provider 组件。用在组件树中更外层的位置。它接受一个名为 value 的 prop，其值可以是任何 JavaScript 中的数据类型。
 c: Consumer 组件。可以在 Provider 组件内部的任何一层使用。它接收一个名为 children 值为一个函数的 prop。这个函数的参数是 Provider 组件接收的那个 value prop 的值，返回值是一个 React 元素（一段 JSX 代码）。
 </code></pre><h4 id="4、Hooks"><a href="#4、Hooks" class="headerlink" title="4、Hooks"></a>4、Hooks</h4><pre><code>函数式组件
-</code></pre><h2 id="六、webpack打包相关"><a href="#六、webpack打包相关" class="headerlink" title="六、webpack打包相关"></a>六、webpack打包相关</h2><h4 id="1、打包原理"><a href="#1、打包原理" class="headerlink" title="1、打包原理"></a>1、打包原理</h4><h4 id="2、background引用图片和img引用图片的区别"><a href="#2、background引用图片和img引用图片的区别" class="headerlink" title="2、background引用图片和img引用图片的区别"></a>2、background引用图片和img引用图片的区别</h4><pre><code>当我们要引用一个图片时，在js文件中要以引用它的html的路径为准；而在css文件中，要以该css的路径为准
+useState：状态变量
+useEffect：把多个生命周期函数合并成一个，两个参数
+自定义hook
+useContext
+useReducer
+useMemo
+useRef
+</code></pre><h4 id="5、虚拟dom如何运行，fiber是什么"><a href="#5、虚拟dom如何运行，fiber是什么" class="headerlink" title="5、虚拟dom如何运行，fiber是什么"></a>5、虚拟dom如何运行，fiber是什么</h4><h4 id="6、react事件系统和浏览器事件系统有什么区别"><a href="#6、react事件系统和浏览器事件系统有什么区别" class="headerlink" title="6、react事件系统和浏览器事件系统有什么区别"></a>6、react事件系统和浏览器事件系统有什么区别</h4><h4 id="7、react-router原理"><a href="#7、react-router原理" class="headerlink" title="7、react-router原理"></a>7、react-router原理</h4><h4 id="8、组件库的按需加载"><a href="#8、组件库的按需加载" class="headerlink" title="8、组件库的按需加载"></a>8、组件库的按需加载</h4><h2 id="六、webpack打包相关"><a href="#六、webpack打包相关" class="headerlink" title="六、webpack打包相关"></a>六、webpack打包相关</h2><h4 id="1、打包原理"><a href="#1、打包原理" class="headerlink" title="1、打包原理"></a>1、打包原理</h4><h4 id="2、background引用图片和img引用图片的区别"><a href="#2、background引用图片和img引用图片的区别" class="headerlink" title="2、background引用图片和img引用图片的区别"></a>2、background引用图片和img引用图片的区别</h4><pre><code>当我们要引用一个图片时，在js文件中要以引用它的html的路径为准；而在css文件中，要以该css的路径为准
 </code></pre><p>参考文献<a href="https://www.jianshu.com/p/794c5f301169" title="Webpack打包图片路径问题" target="_blank" rel="noopener">Webpack打包图片路径问题</a></p>
 <h4 id="3、contentBase"><a href="#3、contentBase" class="headerlink" title="3、contentBase"></a>3、contentBase</h4><pre><code>安装了html-webpack-plugin后, 此参数可不需要。
 作用: 给浏览器访问的页面(虚拟文件)指定根目录, 默认访问html页面, 若没有html页面, 则看到所有文件(类似静态资源服务器)
@@ -413,7 +454,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/10/问题总结/" data-id="ckbbmf9hd000liguvl78y1b67" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/10/问题总结/" data-id="ckdto514u000nwkuvjp0ok0wp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -458,7 +499,7 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -469,6 +510,10 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/08/14/promise/">promise</a>
+          </li>
         
           <li>
             <a href="/2020/06/12/开机自启动脚本/">开机自启动脚本</a>
@@ -484,10 +529,6 @@ parseInt(&apos;3&apos;, 2)   // 结果NaN。return false
         
           <li>
             <a href="/2020/05/22/web网页安全/">web网页安全</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/22/http/">http</a>
           </li>
         
       </ul>

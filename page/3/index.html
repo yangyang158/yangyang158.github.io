@@ -62,6 +62,91 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-jsvascript易混淆点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/15/jsvascript易混淆点/" class="article-date">
+  <time datetime="2019-01-15T06:47:25.000Z" itemprop="datePublished">2019-01-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/15/jsvascript易混淆点/">jsvascript易混淆点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、循环"><a href="#一、循环" class="headerlink" title="一、循环"></a>一、循环</h2><p>1、for … of(es6提出来的方法, 可以解决for…in的遗留问题)</p>
+<ul>
+<li>遍历字符串、数组, 直接获取值，不拿索引</li>
+<li>不能遍历对象</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var str = <span class="string">'asdfg'</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i of str)&#123;</span><br><span class="line">    console.log(<span class="string">'i'</span>, i); //<span class="string">'a'</span> <span class="string">'s'</span> <span class="string">'d'</span> <span class="string">'f'</span> <span class="string">'g'</span></span><br><span class="line">&#125;</span><br><span class="line">var obj = &#123;name: <span class="string">'小红'</span>, age: <span class="string">'12'</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i of obj)&#123;</span><br><span class="line">    console.log(<span class="string">'i'</span>, i); //VM60:2 Uncaught TypeError: obj is not iterable at &lt;anonymous&gt;:2:14</span><br><span class="line">&#125;</span><br><span class="line">var arr = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i of arr)&#123;</span><br><span class="line">    console.log(<span class="string">'i'</span>, i); //<span class="string">'a'</span> <span class="string">'b'</span> <span class="string">'c'</span></span><br><span class="line">&#125;</span><br><span class="line">arr.name = <span class="string">'小明'</span>;</span><br><span class="line">console.log(arr, arr.length);//[<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, name: <span class="string">"小明"</span>]   3</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i of arr)&#123;</span><br><span class="line">    console.log(<span class="string">'i'</span>, i); //<span class="string">'a'</span> <span class="string">'b'</span> <span class="string">'c'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、for … in(有一个历史问题：会把数据的属性循环出来)</p>
+<ul>
+<li>遍历字符串、数组、对象<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var str = <span class="string">'asdfg'</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i <span class="keyword">in</span> str)&#123;</span><br><span class="line">    console.log(<span class="string">'i'</span>, i, <span class="string">'str[i]'</span>, str[i]); //i 0 str[i] a    i 1 str[i] s  i 2 str[i] d ...   </span><br><span class="line">&#125;</span><br><span class="line">var obj = &#123;name: <span class="string">'小红'</span>, age: <span class="string">'12'</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i <span class="keyword">in</span> obj)&#123;</span><br><span class="line">    console.log(<span class="string">'i'</span>, i, <span class="string">'obj[i]'</span>, obj[i]); //i name obj[i] 小红     i age obj[i] 12</span><br><span class="line">&#125;</span><br><span class="line">var arr = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i <span class="keyword">in</span> arr)&#123;</span><br><span class="line">    console.log(<span class="string">'i'</span>, i, <span class="string">'arr[i]'</span>, arr[i]); //i 0 arr[i] a    i 1 arr[i] b   i 2 arr[i] c</span><br><span class="line">&#125;</span><br><span class="line">arr.name = <span class="string">'小明'</span>;</span><br><span class="line">console.log(arr, arr.length);//[<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, name: <span class="string">"小明"</span>]   3</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i <span class="keyword">in</span> arr)&#123;</span><br><span class="line">    console.log(<span class="string">'i'</span>, i, <span class="string">'arr[i]'</span>, arr[i]); //i 0 arr[i] a    i 1 arr[i] b   i 2 arr[i] c   i name arr[i] 小明</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="二、Javascript数据类型"><a href="#二、Javascript数据类型" class="headerlink" title="二、Javascript数据类型"></a>二、Javascript数据类型</h2><p>1、基本数据类型：boolean string number null undefined symbol<br>    注意<br>    a. null属于基本数据类型，但是typeof null = object(JS 存在的一个悠久 Bug)<br>    b. null === null, NaN !== NaN<br>2、对象转原始类型<br>对象在转换类型的时候，会调用内置的 [[ToPrimitive]] 函数，对于该函数来说，算法逻辑一般来说如下：</p>
+<ul>
+<li>如果已经是原始类型了，那就不需要转换了</li>
+<li>调用 x.valueOf()，如果转换为基础类型，就返回转换的值</li>
+<li>调用 x.toString()，如果转换为基础类型，就返回转换的值</li>
+<li>如果都没有返回原始类型，就会报错</li>
+<li>当然你也可以重写 Symbol.toPrimitive ，该方法在转原始类型时调用优先级最高。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> a = &#123;</span><br><span class="line">    <span class="function"><span class="title">valueOf</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> 0</span><br><span class="line">    &#125;,// a条件</span><br><span class="line">    <span class="function"><span class="title">toString</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> <span class="string">'1'</span></span><br><span class="line">    &#125;,// b条件</span><br><span class="line">    [Symbol.toPrimitive]() &#123;</span><br><span class="line">        <span class="built_in">return</span> 2</span><br><span class="line">    &#125;// c条件</span><br><span class="line">&#125;;</span><br><span class="line">1 + a;</span><br><span class="line">若 存在 a b c条件, c优先级最高——3</span><br><span class="line">若 存在 a b, a优先级最高——1</span><br><span class="line">若 a = &#123;&#125;, 结果——1[object Object]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="三、instanceof-和-Symbol-hasInstance-es6提出"><a href="#三、instanceof-和-Symbol-hasInstance-es6提出" class="headerlink" title="三、instanceof 和 Symbol.hasInstance(es6提出)"></a>三、instanceof 和 Symbol.hasInstance(es6提出)</h2><p>1、 instanceof 判断是否是该构造函数的实例<br>2、 对象的Symbol.hasInstance属性, 指向一个内部方法， 可以实现自定义 instanceof 方法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### example 1:</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">Person</span></span>()&#123;&#125;</span><br><span class="line">const p1 = new Person();</span><br><span class="line">//判断p1 是否是 Person的实例</span><br><span class="line">//执行 p1 instanceof Person, 在语言内部，实际调用的是 Person[Symbol.hasInstance](p1)</span><br><span class="line">p1 instanceof Person;//<span class="literal">true</span>  </span><br><span class="line">Person[Symbol.hasInstance](p1);//<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### example 2: 重写静态方法</span></span><br><span class="line">class Even &#123;</span><br><span class="line">    static [Symbol.hasInstance](obj) &#123;</span><br><span class="line">        <span class="built_in">return</span> Number(obj) % 2 === 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">const x = new Even();</span><br><span class="line">//原本判断x 是否为 Even的实例的方法，被改成了传入的数字%2===0</span><br><span class="line">1 instanceof Even 等价于 Even[Symbol.hasInstance](1);// <span class="literal">false</span></span><br><span class="line">2 instanceof Even 等价于 Even[Symbol.hasInstance](2);// <span class="literal">true</span></span><br><span class="line">x instanceof Even 等价于 Even[Symbol.hasInstance](x);//<span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### example 3: </span></span><br><span class="line">class Even &#123;</span><br><span class="line">    [Symbol.hasInstance](obj) &#123;</span><br><span class="line">        <span class="built_in">return</span> Number(obj) % 2 === 0;</span><br><span class="line">    &#125;</span><br><span class="line">    static [Symbol.hasInstance](obj) &#123;</span><br><span class="line">        <span class="built_in">return</span> typeof obj === <span class="string">'boolean'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">const x = new Even();</span><br><span class="line"></span><br><span class="line">2 instanceof Even 等价于 Even[Symbol.hasInstance](2);// <span class="literal">false</span> 调用 静态方法</span><br><span class="line"><span class="literal">true</span> instanceof Even 等价于 Even[Symbol.hasInstance](<span class="literal">true</span>);// <span class="literal">true</span> 调用 静态方法</span><br><span class="line"></span><br><span class="line">2 instanceof x 等价于 x[Symbol.hasInstance](2);// <span class="literal">true</span>  调用 动态方法</span><br><span class="line"></span><br><span class="line">x instanceof Even 等价于 Even[Symbol.hasInstance](x);//<span class="literal">false</span>  调用静态方法</span><br></pre></td></tr></table></figure></p>
+<h2 id="四、reduce方法的使用"><a href="#四、reduce方法的使用" class="headerlink" title="四、reduce方法的使用"></a>四、reduce方法的使用</h2><p>reduce作用：将数组中的元素通过回调函数最终转换为一个值</p>
+<ul>
+<li><p>用法<br>1.接受2个参数，一个回调, 一个初始值<br>2.回调函数接受4个参数，分别是累计值、当前元素、当前索引、原数组</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> arr = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>];</span><br><span class="line"><span class="built_in">let</span> value = arr.reduce(<span class="keyword">function</span>(acc, item, index, arr)&#123;</span><br><span class="line">    //第一次遍历执行回调函数时，acc为初始值0, item为a, 返回a1, </span><br><span class="line">    //该结果在第二次执行回调函数时会当作第一个参数传入，依次论推</span><br><span class="line">    console.log(<span class="string">'acc'</span>, acc);//0、a1、b1、c1、d1   </span><br><span class="line">    console.log(<span class="string">'item'</span>, item);//a、b、c、d</span><br><span class="line">    console.log(<span class="string">'index'</span>, index);//0、1、2、3</span><br><span class="line">    console.log(<span class="string">'arr'</span>, arr);// [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>]</span><br><span class="line">    <span class="built_in">return</span> item + <span class="string">'1'</span>;</span><br><span class="line">&#125;, 0)</span><br><span class="line">//value 是 最后一次执行回调函数<span class="built_in">return</span>的值</span><br><span class="line">console.log(value);//d1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一般方法实现：数组中的元素 求和</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> arr = [1, 2, 3];</span><br><span class="line"><span class="built_in">let</span> sum = 0;</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i=0;i&lt;arr.length;i++)&#123;</span><br><span class="line">    sum += arr[i];</span><br><span class="line">&#125;</span><br><span class="line">console.log(sum);//6</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>reduce实现 数组中的元素 求和</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> arr = [1, 2, 3];</span><br><span class="line"><span class="built_in">let</span> sum = arr.reduce(<span class="keyword">function</span>(sum, item)&#123;</span><br><span class="line">    <span class="built_in">return</span> sum + item</span><br><span class="line">&#125;, 0)</span><br><span class="line">console.log(sum);//6</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>reduce实现 map函数的功能，返回新数组</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> arr = [1, 2, 3];</span><br><span class="line"><span class="built_in">let</span> newArr = arr.reduce(<span class="keyword">function</span>(acc, item)&#123;</span><br><span class="line">    acc.push(item*2);</span><br><span class="line">    <span class="built_in">return</span> acc;</span><br><span class="line">&#125;, [])</span><br><span class="line">console.log(newArr);//[2, 4, 6]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="五、获取字符串中出现最多的字符"><a href="#五、获取字符串中出现最多的字符" class="headerlink" title="五、获取字符串中出现最多的字符"></a>五、获取字符串中出现最多的字符</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var str=<span class="string">'13rtghgfds'</span>;</span><br><span class="line">var obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i=0;i&lt;=str.length-1;i++)&#123;</span><br><span class="line">    console.log(str[i]);</span><br><span class="line">    <span class="built_in">let</span> key = str[i];</span><br><span class="line">    <span class="keyword">if</span>(obj[key])&#123;</span><br><span class="line">        obj[key]++;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        obj[key] = 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">console.log(<span class="string">'obj'</span>, obj) // &#123;1: 1, 3: 1, d: 1, f: 1, g: 2, h: 1, r: 1, s: 1, t: 1&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="六、parseInt"><a href="#六、parseInt" class="headerlink" title="六、parseInt"></a>六、parseInt</h2><p>区别：parseFloat(string)<br>定义：把一个字符串 解析为 十进制的整数<br>用法：parseInt(str, [radix]), radix可选<br>参数radix：<br>1、表示要解析的数字的基数。该值介于 2 ~ 36 之间。<br>2、如果它以 “0x” 或 “0X” 开头，将以 16 为基数, 将以0x之外的数解析为十进制。<br>3、如果该参数小于 2 或者大于 36，则 parseInt() 将返回 NaN。<br>参数str：<br>1、当传入非字符串时，会先将其转换为字符串。<br>2、字符串转整数时 是一个一个字符依次转换的，遇到不能转为数字的字符，就终止转换，返回已经转换好的部分。<br>3、当字符串的第一个字符不能转为数字时，则返回NaN。<br>4、当 string 前面有空格，会先去除前面的空格。<br>5、当参数 radix 的值为 0，或没有设置该参数时, 如果 string 以 0 开头，将以 8 为基数。<br>6、当参数 radix 的值为 0，或没有设置该参数时, 如果 string 以 1 ~ 9 的数字开头，将以 10 为基础。</p>
+<pre><code class="bash">字符串规则第2、6条: parseInt(<span class="string">'12aa'</span>); //12      
+字符串规则第3条:    parseInt(<span class="string">'a12aa'</span>); //NaN   
+字符串规则第4条:    parseInt(<span class="string">' 122 34'</span>); //122  
+字符串规则第5条:    parseInt(<span class="string">'012'</span>); //10: 2*8^0+1*8^1
+</code></pre>
+<pre><code class="bash">radix规则第1条: parseInt(<span class="string">'12aa'</span>, 3); //5    <span class="string">'12aa'</span>先转成12, 将 三进制 的12 转换成 十进制
+radix规则第1条: parseInt(<span class="string">'1f'</span>, 16); //31     结果将 十六进制 的1f 转换成 十进制
+radix规则第3条: parseInt(<span class="string">'0x10'</span>); //16   结果将 十六进制 的10 转换成 十进制
+radix规则第4条: parseInt(<span class="string">'12'</span>, 1); //NaN    
+radix规则第6条: parseInt(<span class="string">'19'</span>); //19  
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/15/jsvascript易混淆点/" data-id="ckdto513d000bwkuvdsmtghd1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-浏览器渲染机制" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/15/浏览器渲染机制/" class="article-date">
@@ -90,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/15/浏览器渲染机制/" data-id="ckbbmf9h1000jiguvm3v5743d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/15/浏览器渲染机制/" data-id="ckdto514o000lwkuvbenqpiqw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -174,7 +259,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/15/js中的作用域/" data-id="ckbbmf9gg0006iguvh5lgvdk5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/15/js中的作用域/" data-id="ckdto513h000ewkuv11u2t58j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -231,7 +316,7 @@
 </tr>
 </tbody>
 </table>
-<p>2、协商缓存</p>
+<p>区别：<br>Expires 是http1.0的产物，Cache-Control是http1.1的产物两者同时存在的话，Cache-Control优先级高于Expires,<br>Expires其实是过时的产物，现阶段它的存在只是一种兼容性的写法<br>2、协商缓存</p>
 <table>
 <thead>
 <tr>
@@ -256,12 +341,13 @@
 </tr>
 </tbody>
 </table>
+<p>在精确度上，Etag要优于Last-Modified，Last-Modified的时间单位是秒，如果某个文件在1秒内改变了多次，那么他们的Last-Modified其实并没有体现出来修改，但是Etag每次都会改变确保了精度<br>在性能上，Etag要逊于Last-Modified，毕竟Last-Modified只需要记录时间，而Etag需要服务器通过算法来计算出一个hash值。<br>在优先级上，服务器校验优先考虑Etag。<br>所以，两者互补</p>
 <ul>
 <li>例子<ol>
-<li>客户端请求一个页面 A。</li>
-<li>服务器返回页面A，并在给A加上一个Last-Modified/ETag。</li>
+<li>客户端首次请求一个页面 A。</li>
+<li>服务器返回页面A，并在response header上加一个Last-Modified/ETag。</li>
 <li>客户端展现该页面，并将页面连同Last-Modified/ETag一起缓存。</li>
-<li>客户再次请求页面A，并将上次请求时服务器返回的Last-Modified/ETag(以请求头If-Modified-Since／If-None-Match的形式)一起传递给服务器。</li>
+<li>客户再次请求页面A，并将上次请求时服务器返回的Last-Modified/ETag(以请求头If-Modified-Since／If-None-Match的形式), 通过request header一起传递给服务器。</li>
 <li>服务器检查该Last-Modified或ETag，判断是否过期。</li>
 </ol>
 </li>
@@ -271,7 +357,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/08/http缓存/" data-id="ckbbmf9hr000niguvxgioou1c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/08/http缓存/" data-id="ckdto519p000owkuv8l9vmyfy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -375,7 +461,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/05/markdown-grammar/" data-id="ckbbmf9gp000aiguvs04ka0hu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/05/markdown-grammar/" data-id="ckdto51370007wkuv1shxyy1l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -408,7 +494,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -419,6 +505,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/08/14/promise/">promise</a>
+          </li>
         
           <li>
             <a href="/2020/06/12/开机自启动脚本/">开机自启动脚本</a>
@@ -434,10 +524,6 @@
         
           <li>
             <a href="/2020/05/22/web网页安全/">web网页安全</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/22/http/">http</a>
           </li>
         
       </ul>

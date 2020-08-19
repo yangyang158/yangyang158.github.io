@@ -62,6 +62,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-搭建静态服务器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/29/搭建静态服务器/" class="article-date">
+  <time datetime="2019-09-29T01:34:42.000Z" itemprop="datePublished">2019-09-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/29/搭建静态服务器/">搭建静态服务器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、tomcat搭建"><a href="#一、tomcat搭建" class="headerlink" title="一、tomcat搭建"></a>一、tomcat搭建</h2><h3 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h3><p>1、安装apcha-tomcat<br>2、安装jdk<br>    下载地址<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a><br>3、配置系统环境变量<br>    添加 JAVA_HOME：C:\Program Files\Java\jdk1.8.0_221 (jdk的安装目录, 根据自身情况修改)<br>    修改 path: %JAVA_HOME%\bin<br>4、测试安装成功<br>    启动服务, 打开bin/startup.bat, 不闪退, 可以访问<a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a> 即安装成功<br>    命令行输入java -version, 可以看到版本号</p>
+<h3 id="部署静态文件-（文件夹名称叫dxs）"><a href="#部署静态文件-（文件夹名称叫dxs）" class="headerlink" title="部署静态文件 （文件夹名称叫dxs）"></a>部署静态文件 （文件夹名称叫dxs）</h3><p>第一种：利用Tomcat自动部署<br>    将dxs文件拷贝到Tomcat的/webapps文件夹下, 然后启动服务器就可以了, Tomcat启动时将自动加载应用。<br>    访问地址如下：<a href="http://localhost:8080/dxs/(默认访问index.html页面，可以修改)" target="_blank" rel="noopener">http://localhost:8080/dxs/(默认访问index.html页面，可以修改)</a></p>
+<h5 id="这种方式比较简单，但是web应用程序必须在webapps目录下。Tomcat的Webapps目录是Tomcat默认的应用目录-当服务器启动时-会加载所有这个目录下的应用。"><a href="#这种方式比较简单，但是web应用程序必须在webapps目录下。Tomcat的Webapps目录是Tomcat默认的应用目录-当服务器启动时-会加载所有这个目录下的应用。" class="headerlink" title="这种方式比较简单，但是web应用程序必须在webapps目录下。Tomcat的Webapps目录是Tomcat默认的应用目录, 当服务器启动时, 会加载所有这个目录下的应用。"></a>这种方式比较简单，但是web应用程序必须在webapps目录下。Tomcat的Webapps目录是Tomcat默认的应用目录, 当服务器启动时, 会加载所有这个目录下的应用。</h5><p>第二种：将静态文件部署再任何地方<br>a、修改conf/server.xml文件, 部署指定项目<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">找到下面代码</span><br><span class="line">&lt;Host name=<span class="string">"localhost"</span>  appBase=<span class="string">"webapps"</span> unpackWARs=<span class="string">"true"</span> autoDeploy=<span class="string">"true"</span>&gt;</span><br><span class="line">    &lt;Valve className=<span class="string">"org.apache.catalina.valves.AccessLogValve"</span> directory=<span class="string">"logs"</span></span><br><span class="line">        prefix=<span class="string">"localhost_access_log"</span> suffix=<span class="string">".txt"</span></span><br><span class="line">        pattern=<span class="string">"%h %l %u %t &amp;quot;%r&amp;quot; %s %b"</span> /&gt;</span><br><span class="line">&lt;/Host&gt;</span><br><span class="line">添加节点(根据自身情况修改))</span><br><span class="line">&lt;Context  path =<span class="string">"/dxs"</span>  </span><br><span class="line">    reloadable =<span class="string">"true"</span>  </span><br><span class="line">    docBase =<span class="string">"G:\tomcat-web\dxs"</span>  </span><br><span class="line">    workDir =<span class="string">"G:\tomcat-web\dxs"</span> </span><br><span class="line">/&gt;</span><br><span class="line">&lt;Context  path =<span class="string">"/files"</span>  </span><br><span class="line">    reloadable =<span class="string">"true"</span>  </span><br><span class="line">    docBase =<span class="string">"G:\tomcat-web\files"</span>  </span><br><span class="line">    workDir =<span class="string">"G:\tomcat-web\files"</span> </span><br><span class="line">/&gt;</span><br><span class="line">第一个Context是部署前端页面</span><br><span class="line">第二个Context是部署文件服务器</span><br><span class="line">path：是访问时的根地址，表示访问的路径；如上述例子中，访问该应用程序地址如下：http://localhost:8080/dxs/</span><br><span class="line">reloadable：表示可以在运行时在classes与lib文件夹下自动加载类包。其中reloadable=<span class="string">"false"</span>表示当应用程序中的内容发生更改之后服务器不会自动加载，这个属性在开       发阶段通常都设为<span class="literal">true</span>，方便开发，在发布阶段应该设置为<span class="literal">false</span>，提高应用程序的访问速度。</span><br><span class="line">docbase：表示应用程序的路径，注意斜杠的方向“/”。 docBase可以使用绝对路径，也可以使用相对路径，相对路径相对于webapps。</span><br><span class="line">workdir：表示缓存文件的放置地址，是指Tomcat解析Jsp转换为Java文件，并编译为class存放的文件夹，设置在项目文件夹里面，可以避免移植到其他地方首次读取jsp文件需要重新解析</span><br></pre></td></tr></table></figure></p>
+<p>b、若报错：The origin server did not find a current representation for the target resource or is not willing to disclose that one exists.<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">找到以下代码, 将listings对应的<span class="literal">false</span>改为<span class="literal">true</span></span><br><span class="line">&lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;default&lt;/servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;org.apache.catalina.servlets.DefaultServlet&lt;/servlet-class&gt;</span><br><span class="line">    &lt;init-param&gt;</span><br><span class="line">        &lt;param-name&gt;debug&lt;/param-name&gt;</span><br><span class="line">        &lt;param-value&gt;0&lt;/param-value&gt;</span><br><span class="line">    &lt;/init-param&gt;</span><br><span class="line">    &lt;init-param&gt;</span><br><span class="line">        &lt;param-name&gt;listings&lt;/param-name&gt;</span><br><span class="line">        &lt;param-value&gt;<span class="literal">false</span>&lt;/param-value&gt;</span><br><span class="line">    &lt;/init-param&gt;</span><br><span class="line">    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改tomcat默认配置"><a href="#修改tomcat默认配置" class="headerlink" title="修改tomcat默认配置"></a>修改tomcat默认配置</h3><pre><code>1、端口号默认8080
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">在conf/server.xml文件找到以下代码, 修改port即可</span><br><span class="line">&lt;Connector port=<span class="string">"8080"</span> protocol=<span class="string">"HTTP/1.1"</span></span><br><span class="line">    connectionTimeout=<span class="string">"20000"</span></span><br><span class="line">    redirectPort=<span class="string">"8443"</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+2、默认访问index.html页面
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在conf/web.xml文件找到以下代码, 第一个子节点添加&lt;welcome-file&gt;<span class="built_in">test</span>-index.html&lt;/welcome-file&gt;即可</span><br><span class="line">&lt;welcome-file-list&gt;</span><br><span class="line">    &lt;welcome-file&gt;index.html&lt;/welcome-file&gt;</span><br><span class="line">    &lt;welcome-file&gt;index.htm&lt;/welcome-file&gt;</span><br><span class="line">    &lt;welcome-file&gt;index.jsp&lt;/welcome-file&gt;</span><br><span class="line">&lt;/welcome-file-list&gt;</span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="开启命令"><a href="#开启命令" class="headerlink" title="开启命令"></a>开启命令</h3><p>点击bin目录下的startup.bat 开启服务</p>
+<h2 id="二、window下nginx搭建"><a href="#二、window下nginx搭建" class="headerlink" title="二、window下nginx搭建"></a>二、window下nginx搭建</h2><p>如：nginx安装目录 E:\application\nginx-1.16.1<br>1、安装nginx<br>    安装地址：<a href="https://nginx.org/en/download.html" target="_blank" rel="noopener">https://nginx.org/en/download.html</a><br>2、常用命令<br>打开cmd, 进入E:\application\nginx-1.16.1 执行以下命令<br>停止：nginx -s stop<br>开启：start nginx<br>重启：nginx -s reload<br>3、部署前端页面<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       7006;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   G:/tomcat-web/G-dxs;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">    location /api&#123;</span><br><span class="line">        proxy_pass http://192.168.140.196:22224/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>参考文档：<a href="https://blog.csdn.net/qq_23974323/article/details/80067250" target="_blank" rel="noopener">https://blog.csdn.net/qq_23974323/article/details/80067250</a></p>
+<p>4、部署静态文件<br>配置docx、xlsx、txt等文件可以下载, 其他格式的文件可以通过浏览器预览<br><strong>注意</strong>：文件名不能含中文<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       7007;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    location /files &#123;</span><br><span class="line">        <span class="built_in">alias</span>   G:/tomcat-web/files;</span><br><span class="line">        autoindex on;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$request_filename</span> ~* ^.*?\.(txt|docx|xlsx)$) &#123; </span><br><span class="line">            add_header Content-Type <span class="string">"application/octet-stream"</span>;</span><br><span class="line">            add_header Content-Disposition: <span class="string">'p_w_upload;'</span>;</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>5、root 和alias的区别<br>nginx指定文件路径有两种方式root和alias<br>root的处理结果是：root路径 ＋ location路径。<br>alias的处理结果是：使用alias路径替换location路径。location后面的路径若加了/, alias的路径后面必须加/; location后面的路径若不加/, alias的路径后面加不加/都可以<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location /files &#123;</span><br><span class="line">    <span class="built_in">alias</span>  G:/tomcat-web/files; // 实际访问路径是   G:/tomcat-web/files</span><br><span class="line">&#125;</span><br><span class="line">location /files &#123;</span><br><span class="line">    root  G:/tomcat-web/files; // 实际访问路径是  G:/tomcat-web/files/files</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="三、IIS搭建"><a href="#三、IIS搭建" class="headerlink" title="三、IIS搭建"></a>三、IIS搭建</h2><p><strong>前提</strong>：IIS已经搭建成功<br>1、搭建web项目<br>打开IIS, 右击添加网站 -&gt; 填写网站名称, 物理路径(放前端项目的位置), ip地址, 端口 -&gt; 点击确定 -&gt; 点击浏览网站即可<br>2、搭建http文件服务<br>打开IIS, 右击添加网站 -&gt; 填写网站名称, 物理路径(放文件的位置), ip地址, 端口 -&gt; 点击确定 -&gt; 找到目录浏览, 点击开启 -&gt; 点击浏览网站即可</p>
+<p>3、安装Application Request Route<br>    请求转发<br>    <a href="https://www.iis.net/downloads/microsoft/application-request-routing" target="_blank" rel="noopener">https://www.iis.net/downloads/microsoft/application-request-routing</a><br>    参考文档：<br>    <a href="https://www.cnblogs.com/yanyangtian/archive/2012/03/26/2417552.html" target="_blank" rel="noopener">https://www.cnblogs.com/yanyangtian/archive/2012/03/26/2417552.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/29/搭建静态服务器/" data-id="ckdto513j000gwkuvl5inz88x" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-console用法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/07/16/console用法/" class="article-date">
@@ -99,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/console用法/" data-id="ckbbmf9g50000iguvi32jxaxl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/console用法/" data-id="ckdto512v0001wkuvjo0al8e0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -141,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/24/css-grid/" data-id="ckbbmf9gb0002iguvjfrk9lpz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/24/css-grid/" data-id="ckdto51360006wkuv908a7nay" class="article-share-link">Share</a>
       
       
     </footer>
@@ -184,7 +236,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/12/构造函数及原型链/" data-id="ckbbmf9h0000iiguvla9d8qva" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/12/构造函数及原型链/" data-id="ckdto514t000mwkuv1ofctfvx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -229,7 +281,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/01/hello-world/" data-id="ckbbmf9g90001iguvdpkvmslk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/01/hello-world/" data-id="ckdto512q0000wkuvd71l1q5d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -312,7 +364,7 @@ ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/27/mac操作linux/" data-id="ckbbmf9gi0007iguvcmhrh5tz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/27/mac操作linux/" data-id="ckdto513a0009wkuvszswgxq5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -385,7 +437,7 @@ ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/25/flutter移动框架学习/" data-id="ckbbmf9gf0004iguvnfdcs1fe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/25/flutter移动框架学习/" data-id="ckdto512x0002wkuvija6y8i6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -438,11 +490,12 @@ ssh -p 端口号 账户名@服务器ip地址（ssh -p 10000 root@199.12.345.678�
 <li>export 与 export default的区别<br> 1、export default命令, import加载模块的时候可以自定义模块名称, 并且不想要使用大括号(与export命令的区别)<br> 2、在一个模块中 只能有一个 export default, 可以有多个export</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">//XX.js</span><br><span class="line">var name = <span class="string">'小红'</span>;</span><br><span class="line">var addFunc = <span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line"></span><br><span class="line">//导出多个模块</span><br><span class="line"><span class="built_in">export</span> &#123;name, addFunc&#125;;</span><br><span class="line">import &#123;name, addFunc&#125; from <span class="string">'XX.js'</span>;</span><br><span class="line">console.log(name, addFunc);//输出 小红 ƒ <span class="function"><span class="title">addFunc</span></span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">//模块整体加载</span><br><span class="line">import * as allVar from <span class="string">'XX.js'</span>;</span><br><span class="line">console.log(allVar.name);// <span class="string">'小红'</span></span><br><span class="line">console.log(allVar.addFunc);// ƒ <span class="function"><span class="title">addFunc</span></span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">//<span class="built_in">export</span> 使用 as 对模块 重命名</span><br><span class="line"><span class="built_in">export</span> &#123;addFunc as add&#125;;</span><br><span class="line">import &#123;add&#125; from <span class="string">'XX.js'</span>;</span><br><span class="line">console.log(add);//输出 ƒ <span class="function"><span class="title">addFunc</span></span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">//import 使用 as 对模块 重命名</span><br><span class="line">import &#123;add as addFunction&#125; from <span class="string">'XX.js'</span>;</span><br><span class="line">console.log(addFunction);//输出 ƒ <span class="function"><span class="title">addFunc</span></span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">//<span class="built_in">export</span>命令中 使用 as default 指定模块的默认输出</span><br><span class="line"><span class="built_in">export</span> &#123;name as default, addFunc&#125;;</span><br><span class="line">import name, &#123;addFunc&#125; from <span class="string">'XX.js'</span>;</span><br><span class="line">console.log(name);//输出 <span class="string">'小红'</span></span><br><span class="line">console.log(addFunc);//输出 ƒ <span class="function"><span class="title">addFunc</span></span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//导入 默认模块</span><br><span class="line"><span class="built_in">export</span> default <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">  console.log(<span class="string">'foo'</span>);</span><br><span class="line">&#125;</span><br><span class="line">import customFunc from <span class="string">'XX.js'</span>;</span><br><span class="line">customFunc();//<span class="string">'foo'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">require和import的区别</span><br><span class="line">1、require可以动态引入路径，import不支持</span><br><span class="line">2、import是编译时运行，必须放在模块顶部，在性能上比后者好一些；require是运行时加载，理论来说放在哪里都可以</span><br><span class="line">3、require会编译成require/exports来执行</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/20/模块化/" data-id="ckbbmf9gy000higuvw03y4fpj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/20/模块化/" data-id="ckdto5145000kwkuvisebx03y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -552,7 +605,7 @@ npm set init-license &apos;MIT&apos;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/31/常用git命令/" data-id="ckbbmf9gu000eiguvusbmjflg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/31/常用git命令/" data-id="ckdto513f000dwkuvv1f0i1aa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -594,92 +647,7 @@ npm set init-license &apos;MIT&apos;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/19/前端开发各类问题总结/" data-id="ckbbmf9h2000kiguvlhmsz975" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-jsvascript易混淆点" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/15/jsvascript易混淆点/" class="article-date">
-  <time datetime="2019-01-15T06:47:25.000Z" itemprop="datePublished">2019-01-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/15/jsvascript易混淆点/">jsvascript易混淆点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、循环"><a href="#一、循环" class="headerlink" title="一、循环"></a>一、循环</h2><p>1、for … of(es6提出来的方法, 可以解决for…in的遗留问题)</p>
-<ul>
-<li>遍历字符串、数组, 直接获取值，不拿索引</li>
-<li>不能遍历对象</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var str = <span class="string">'asdfg'</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i of str)&#123;</span><br><span class="line">    console.log(<span class="string">'i'</span>, i); //<span class="string">'a'</span> <span class="string">'s'</span> <span class="string">'d'</span> <span class="string">'f'</span> <span class="string">'g'</span></span><br><span class="line">&#125;</span><br><span class="line">var obj = &#123;name: <span class="string">'小红'</span>, age: <span class="string">'12'</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i of obj)&#123;</span><br><span class="line">    console.log(<span class="string">'i'</span>, i); //VM60:2 Uncaught TypeError: obj is not iterable at &lt;anonymous&gt;:2:14</span><br><span class="line">&#125;</span><br><span class="line">var arr = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i of arr)&#123;</span><br><span class="line">    console.log(<span class="string">'i'</span>, i); //<span class="string">'a'</span> <span class="string">'b'</span> <span class="string">'c'</span></span><br><span class="line">&#125;</span><br><span class="line">arr.name = <span class="string">'小明'</span>;</span><br><span class="line">console.log(arr, arr.length);//[<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, name: <span class="string">"小明"</span>]   3</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i of arr)&#123;</span><br><span class="line">    console.log(<span class="string">'i'</span>, i); //<span class="string">'a'</span> <span class="string">'b'</span> <span class="string">'c'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2、for … in(有一个历史问题：会把数据的属性循环出来)</p>
-<ul>
-<li>遍历字符串、数组、对象<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var str = <span class="string">'asdfg'</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i <span class="keyword">in</span> str)&#123;</span><br><span class="line">    console.log(<span class="string">'i'</span>, i, <span class="string">'str[i]'</span>, str[i]); //i 0 str[i] a    i 1 str[i] s  i 2 str[i] d ...   </span><br><span class="line">&#125;</span><br><span class="line">var obj = &#123;name: <span class="string">'小红'</span>, age: <span class="string">'12'</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i <span class="keyword">in</span> obj)&#123;</span><br><span class="line">    console.log(<span class="string">'i'</span>, i, <span class="string">'obj[i]'</span>, obj[i]); //i name obj[i] 小红     i age obj[i] 12</span><br><span class="line">&#125;</span><br><span class="line">var arr = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i <span class="keyword">in</span> arr)&#123;</span><br><span class="line">    console.log(<span class="string">'i'</span>, i, <span class="string">'arr[i]'</span>, arr[i]); //i 0 arr[i] a    i 1 arr[i] b   i 2 arr[i] c</span><br><span class="line">&#125;</span><br><span class="line">arr.name = <span class="string">'小明'</span>;</span><br><span class="line">console.log(arr, arr.length);//[<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, name: <span class="string">"小明"</span>]   3</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i <span class="keyword">in</span> arr)&#123;</span><br><span class="line">    console.log(<span class="string">'i'</span>, i, <span class="string">'arr[i]'</span>, arr[i]); //i 0 arr[i] a    i 1 arr[i] b   i 2 arr[i] c   i name arr[i] 小明</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="二、Javascript数据类型"><a href="#二、Javascript数据类型" class="headerlink" title="二、Javascript数据类型"></a>二、Javascript数据类型</h2><p>1、基本数据类型：boolean string number null undefined symbol<br>    注意<br>    a. null属于基本数据类型，但是typeof null = object(JS 存在的一个悠久 Bug)<br>    b. null === null, NaN !== NaN<br>2、对象转原始类型<br>对象在转换类型的时候，会调用内置的 [[ToPrimitive]] 函数，对于该函数来说，算法逻辑一般来说如下：</p>
-<ul>
-<li>如果已经是原始类型了，那就不需要转换了</li>
-<li>调用 x.valueOf()，如果转换为基础类型，就返回转换的值</li>
-<li>调用 x.toString()，如果转换为基础类型，就返回转换的值</li>
-<li>如果都没有返回原始类型，就会报错</li>
-<li>当然你也可以重写 Symbol.toPrimitive ，该方法在转原始类型时调用优先级最高。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> a = &#123;</span><br><span class="line">    <span class="function"><span class="title">valueOf</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> 0</span><br><span class="line">    &#125;,// a条件</span><br><span class="line">    <span class="function"><span class="title">toString</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> <span class="string">'1'</span></span><br><span class="line">    &#125;,// b条件</span><br><span class="line">    [Symbol.toPrimitive]() &#123;</span><br><span class="line">        <span class="built_in">return</span> 2</span><br><span class="line">    &#125;// c条件</span><br><span class="line">&#125;;</span><br><span class="line">1 + a;</span><br><span class="line">若 存在 a b c条件, c优先级最高——3</span><br><span class="line">若 存在 a b, a优先级最高——1</span><br><span class="line">若 a = &#123;&#125;, 结果——1[object Object]</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="三、instanceof-和-Symbol-hasInstance-es6提出"><a href="#三、instanceof-和-Symbol-hasInstance-es6提出" class="headerlink" title="三、instanceof 和 Symbol.hasInstance(es6提出)"></a>三、instanceof 和 Symbol.hasInstance(es6提出)</h2><p>1、 instanceof 判断是否是该构造函数的实例<br>2、 对象的Symbol.hasInstance属性, 指向一个内部方法， 可以实现自定义 instanceof 方法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### example 1:</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">Person</span></span>()&#123;&#125;</span><br><span class="line">const p1 = new Person();</span><br><span class="line">//判断p1 是否是 Person的实例</span><br><span class="line">//执行 p1 instanceof Person, 在语言内部，实际调用的是 Person[Symbol.hasInstance](p1)</span><br><span class="line">p1 instanceof Person;//<span class="literal">true</span>  </span><br><span class="line">Person[Symbol.hasInstance](p1);//<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### example 2: 重写静态方法</span></span><br><span class="line">class Even &#123;</span><br><span class="line">    static [Symbol.hasInstance](obj) &#123;</span><br><span class="line">        <span class="built_in">return</span> Number(obj) % 2 === 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">const x = new Even();</span><br><span class="line">//原本判断x 是否为 Even的实例的方法，被改成了传入的数字%2===0</span><br><span class="line">1 instanceof Even 等价于 Even[Symbol.hasInstance](1);// <span class="literal">false</span></span><br><span class="line">2 instanceof Even 等价于 Even[Symbol.hasInstance](2);// <span class="literal">true</span></span><br><span class="line">x instanceof Even 等价于 Even[Symbol.hasInstance](x);//<span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### example 3: </span></span><br><span class="line">class Even &#123;</span><br><span class="line">    [Symbol.hasInstance](obj) &#123;</span><br><span class="line">        <span class="built_in">return</span> Number(obj) % 2 === 0;</span><br><span class="line">    &#125;</span><br><span class="line">    static [Symbol.hasInstance](obj) &#123;</span><br><span class="line">        <span class="built_in">return</span> typeof obj === <span class="string">'boolean'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">const x = new Even();</span><br><span class="line"></span><br><span class="line">2 instanceof Even 等价于 Even[Symbol.hasInstance](2);// <span class="literal">false</span> 调用 静态方法</span><br><span class="line"><span class="literal">true</span> instanceof Even 等价于 Even[Symbol.hasInstance](<span class="literal">true</span>);// <span class="literal">true</span> 调用 静态方法</span><br><span class="line"></span><br><span class="line">2 instanceof x 等价于 x[Symbol.hasInstance](2);// <span class="literal">true</span>  调用 动态方法</span><br><span class="line"></span><br><span class="line">x instanceof Even 等价于 Even[Symbol.hasInstance](x);//<span class="literal">false</span>  调用静态方法</span><br></pre></td></tr></table></figure></p>
-<h2 id="四、reduce方法的使用"><a href="#四、reduce方法的使用" class="headerlink" title="四、reduce方法的使用"></a>四、reduce方法的使用</h2><p>reduce作用：将数组中的元素通过回调函数最终转换为一个值</p>
-<ul>
-<li><p>用法<br>1.接受2个参数，一个回调, 一个初始值<br>2.回调函数接受4个参数，分别是累计值、当前元素、当前索引、原数组</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> arr = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>];</span><br><span class="line"><span class="built_in">let</span> value = arr.reduce(<span class="keyword">function</span>(acc, item, index, arr)&#123;</span><br><span class="line">    //第一次遍历执行回调函数时，acc为初始值0, item为a, 返回a1, </span><br><span class="line">    //该结果在第二次执行回调函数时会当作第一个参数传入，依次论推</span><br><span class="line">    console.log(<span class="string">'acc'</span>, acc);//0、a1、b1、c1、d1   </span><br><span class="line">    console.log(<span class="string">'item'</span>, item);//a、b、c、d</span><br><span class="line">    console.log(<span class="string">'index'</span>, index);//0、1、2、3</span><br><span class="line">    console.log(<span class="string">'arr'</span>, arr);// [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>]</span><br><span class="line">    <span class="built_in">return</span> item + <span class="string">'1'</span>;</span><br><span class="line">&#125;, 0)</span><br><span class="line">//value 是 最后一次执行回调函数<span class="built_in">return</span>的值</span><br><span class="line">console.log(value);//d1</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>一般方法实现：数组中的元素 求和</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> arr = [1, 2, 3];</span><br><span class="line"><span class="built_in">let</span> sum = 0;</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i=0;i&lt;arr.length;i++)&#123;</span><br><span class="line">    sum += arr[i];</span><br><span class="line">&#125;</span><br><span class="line">console.log(sum);//6</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>reduce实现 数组中的元素 求和</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> arr = [1, 2, 3];</span><br><span class="line"><span class="built_in">let</span> sum = arr.reduce(<span class="keyword">function</span>(sum, item)&#123;</span><br><span class="line">    <span class="built_in">return</span> sum + item</span><br><span class="line">&#125;, 0)</span><br><span class="line">console.log(sum);//6</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>reduce实现 map函数的功能，返回新数组</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> arr = [1, 2, 3];</span><br><span class="line"><span class="built_in">let</span> newArr = arr.reduce(<span class="keyword">function</span>(acc, item)&#123;</span><br><span class="line">    acc.push(item*2);</span><br><span class="line">    <span class="built_in">return</span> acc;</span><br><span class="line">&#125;, [])</span><br><span class="line">console.log(newArr);//[2, 4, 6]</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="五、获取字符串中出现最多的字符"><a href="#五、获取字符串中出现最多的字符" class="headerlink" title="五、获取字符串中出现最多的字符"></a>五、获取字符串中出现最多的字符</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var str=<span class="string">'13rtghgfds'</span>;</span><br><span class="line">var obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i=0;i&lt;=str.length-1;i++)&#123;</span><br><span class="line">    console.log(str[i]);</span><br><span class="line">    <span class="built_in">let</span> key = str[i];</span><br><span class="line">    <span class="keyword">if</span>(obj[key])&#123;</span><br><span class="line">        obj[key]++;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        obj[key] = 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">console.log(<span class="string">'obj'</span>, obj) // &#123;1: 1, 3: 1, d: 1, f: 1, g: 2, h: 1, r: 1, s: 1, t: 1&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="六、parseInt"><a href="#六、parseInt" class="headerlink" title="六、parseInt"></a>六、parseInt</h2><p>区别：parseFloat(string)<br>定义：把一个字符串 解析为 十进制的整数<br>用法：parseInt(str, [radix]), radix可选<br>参数radix：<br>1、表示要解析的数字的基数。该值介于 2 ~ 36 之间。<br>2、如果它以 “0x” 或 “0X” 开头，将以 16 为基数, 将以0x之外的数解析为十进制。<br>3、如果该参数小于 2 或者大于 36，则 parseInt() 将返回 NaN。<br>参数str：<br>1、当传入非字符串时，会先将其转换为字符串。<br>2、字符串转整数时 是一个一个字符依次转换的，遇到不能转为数字的字符，就终止转换，返回已经转换好的部分。<br>3、当字符串的第一个字符不能转为数字时，则返回NaN。<br>4、当 string 前面有空格，会先去除前面的空格。<br>5、当参数 radix 的值为 0，或没有设置该参数时, 如果 string 以 0 开头，将以 8 为基数。<br>6、当参数 radix 的值为 0，或没有设置该参数时, 如果 string 以 1 ~ 9 的数字开头，将以 10 为基础。</p>
-<pre><code class="bash">字符串规则第2、6条: parseInt(<span class="string">'12aa'</span>); //12      
-字符串规则第3条:    parseInt(<span class="string">'a12aa'</span>); //NaN   
-字符串规则第4条:    parseInt(<span class="string">' 122 34'</span>); //122  
-字符串规则第5条:    parseInt(<span class="string">'012'</span>); //10: 2*8^0+1*8^1
-</code></pre>
-<pre><code class="bash">radix规则第1条: parseInt(<span class="string">'12aa'</span>, 3); //5    <span class="string">'12aa'</span>先转成12, 将 三进制 的12 转换成 十进制
-radix规则第1条: parseInt(<span class="string">'1f'</span>, 16); //31     结果将 十六进制 的1f 转换成 十进制
-radix规则第3条: parseInt(<span class="string">'0x10'</span>); //16   结果将 十六进制 的10 转换成 十进制
-radix规则第4条: parseInt(<span class="string">'12'</span>, 1); //NaN    
-radix规则第6条: parseInt(<span class="string">'19'</span>); //19  
-</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/15/jsvascript易混淆点/" data-id="ckbbmf9gj0008iguvqvravqf8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/19/前端开发各类问题总结/" data-id="ckdto5143000iwkuvtjiltn4p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -712,7 +680,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -723,6 +691,10 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/08/14/promise/">promise</a>
+          </li>
         
           <li>
             <a href="/2020/06/12/开机自启动脚本/">开机自启动脚本</a>
@@ -738,10 +710,6 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
         
           <li>
             <a href="/2020/05/22/web网页安全/">web网页安全</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/22/http/">http</a>
           </li>
         
       </ul>
