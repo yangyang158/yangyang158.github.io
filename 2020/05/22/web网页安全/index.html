@@ -7,17 +7,17 @@
   
   <title>web网页安全 | 学无止境</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、XSS 跨站脚本攻击原理：通过在web网页里植入可执行的脚本 盗取信息防御：    1、HttpOnly Cookie    2、不信任用户输入, 对特殊字符进行转义    3、建立白名单, 配置规则, 告诉浏览器可以加载和执行哪些资源, 设置meta标签的方式 或 HTTP Header 中的 Content-Security-Policy 二、CSRF(Cross Site Request">
+  <meta name="description" content="一、XSS 跨站脚本攻击原理：通过在web网页里植入可执行的脚本 盗取信息防御：    1、HttpOnly Cookie    2、不信任用户输入, 对特殊字符进行转义    3、建立白名单, 配置规则, 告诉浏览器可以加载和执行哪些资源, Content-Security-Policy(csp)    开启该规则有两种方式        1、设置meta标签        2、给header设">
 <meta property="og:type" content="article">
 <meta property="og:title" content="web网页安全">
 <meta property="og:url" content="http://yoursite.com/2020/05/22/web网页安全/index.html">
 <meta property="og:site_name" content="学无止境">
-<meta property="og:description" content="一、XSS 跨站脚本攻击原理：通过在web网页里植入可执行的脚本 盗取信息防御：    1、HttpOnly Cookie    2、不信任用户输入, 对特殊字符进行转义    3、建立白名单, 配置规则, 告诉浏览器可以加载和执行哪些资源, 设置meta标签的方式 或 HTTP Header 中的 Content-Security-Policy 二、CSRF(Cross Site Request">
+<meta property="og:description" content="一、XSS 跨站脚本攻击原理：通过在web网页里植入可执行的脚本 盗取信息防御：    1、HttpOnly Cookie    2、不信任用户输入, 对特殊字符进行转义    3、建立白名单, 配置规则, 告诉浏览器可以加载和执行哪些资源, Content-Security-Policy(csp)    开启该规则有两种方式        1、设置meta标签        2、给header设">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-22T07:11:22.096Z">
+<meta property="og:updated_time" content="2020-08-21T01:45:37.090Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="web网页安全">
-<meta name="twitter:description" content="一、XSS 跨站脚本攻击原理：通过在web网页里植入可执行的脚本 盗取信息防御：    1、HttpOnly Cookie    2、不信任用户输入, 对特殊字符进行转义    3、建立白名单, 配置规则, 告诉浏览器可以加载和执行哪些资源, 设置meta标签的方式 或 HTTP Header 中的 Content-Security-Policy 二、CSRF(Cross Site Request">
+<meta name="twitter:description" content="一、XSS 跨站脚本攻击原理：通过在web网页里植入可执行的脚本 盗取信息防御：    1、HttpOnly Cookie    2、不信任用户输入, 对特殊字符进行转义    3、建立白名单, 配置规则, 告诉浏览器可以加载和执行哪些资源, Content-Security-Policy(csp)    开启该规则有两种方式        1、设置meta标签        2、给header设">
   
     <link rel="alternate" href="/atom.xml" title="学无止境" type="application/atom+xml">
   
@@ -86,7 +86,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、XSS-跨站脚本攻击"><a href="#一、XSS-跨站脚本攻击" class="headerlink" title="一、XSS 跨站脚本攻击"></a>一、XSS 跨站脚本攻击</h2><p>原理：通过在web网页里植入可执行的脚本 盗取信息<br>防御：<br>    1、HttpOnly Cookie<br>    2、不信任用户输入, 对特殊字符进行转义<br>    3、建立白名单, 配置规则, 告诉浏览器可以加载和执行哪些资源, 设置meta标签的方式 或 HTTP Header 中的 Content-Security-Policy</p>
+        <h2 id="一、XSS-跨站脚本攻击"><a href="#一、XSS-跨站脚本攻击" class="headerlink" title="一、XSS 跨站脚本攻击"></a>一、XSS 跨站脚本攻击</h2><p>原理：通过在web网页里植入可执行的脚本 盗取信息<br>防御：<br>    1、HttpOnly Cookie<br>    2、不信任用户输入, 对特殊字符进行转义<br>    3、建立白名单, 配置规则, 告诉浏览器可以加载和执行哪些资源, Content-Security-Policy(csp)<br>    开启该规则有两种方式<br>        1、设置meta标签<meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'none'; style-src cdn.example.org third-party.org; child-src https:"><br>        2、给header设置Content-Security-Policy字段<br>场景：当你的脚本被上传到服务端(存在数据库或者缓存中，常见于评论等功能)，当其他人请求此资源时，服务端就会将此脚本下发至客户端，客服端收到请求后，就会自动执行此脚本。</p>
 <h2 id="二、CSRF-Cross-Site-Request-Forgery-，即跨站请求伪造"><a href="#二、CSRF-Cross-Site-Request-Forgery-，即跨站请求伪造" class="headerlink" title="二、CSRF(Cross Site Request Forgery)，即跨站请求伪造"></a>二、CSRF(Cross Site Request Forgery)，即跨站请求伪造</h2><p>原理: 盗用了用户的身份, 以用户的名义发请求<br>场景: 用户登录了某网站且未退出, 被诱惑访问了其他网站<br>防御:<br>    1、检查 header中的refer字段<br>    2、get请求比较好伪造, get请求不要对数据做修改<br>    3、对账户交易的要加上验证码或token</p>
 <p>疑问：cookie是不能跨域访问的，为什么会有csrf攻击？<br>浏览器会依据加载的域名附带上对应域名cookie。<br>就是如果用户在a网站登录且生成了授权的cookies，然后访问b网站，b站故意构造请求a站的请求，用script，img或者iframe之类的加载a站着个地址，浏览器会附带上a站此登录用户的授权cookie信息，这样就构成crsf</p>
 <h2 id="三、点击劫持"><a href="#三、点击劫持" class="headerlink" title="三、点击劫持"></a>三、点击劫持</h2><p>原理：一种视觉上的欺骗手段, 如：在页面上覆盖一个透明的iframe, 此时用户将在不知情的情况下点击透明的iframe里的页面<br>防御：<br>    1、设置请求头的X-FRAME-OPTIONS字段, 控制访问iframe的来源</p>
@@ -95,7 +95,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/22/web网页安全/" data-id="cke0s9san000dq8uv2wqgfj8d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/22/web网页安全/" data-id="cke8bsjdb000fakuv3zllz2n1" class="article-share-link">Share</a>
       
       
     </footer>
