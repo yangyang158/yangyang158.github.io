@@ -10,11 +10,11 @@
   <meta name="description" content="一、数据双向绑定1、标签内：使用{{}} eg：&amp;lt;p&amp;gt;{{message}}&amp;lt;/p&amp;gt; 2、标签的属性值：v-bind:属性名(v-bind可以省略) eg：&amp;lt;p v-bind:title=&amp;quot;message&amp;quot;&amp;gt;热烈欢迎&amp;lt;/p&amp;gt; eg：&amp;lt;p :title=&amp;quot;message&amp;quot;&amp;gt;热烈欢迎&amp;lt;/p&amp;gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue框架">
-<meta property="og:url" content="http://yoursite.com/2020/05/21/vue框架/index.html">
+<meta property="og:url" content="https://yangyang158.github/2020/05/21/vue框架/index.html">
 <meta property="og:site_name" content="学无止境">
 <meta property="og:description" content="一、数据双向绑定1、标签内：使用{{}} eg：&amp;lt;p&amp;gt;{{message}}&amp;lt;/p&amp;gt; 2、标签的属性值：v-bind:属性名(v-bind可以省略) eg：&amp;lt;p v-bind:title=&amp;quot;message&amp;quot;&amp;gt;热烈欢迎&amp;lt;/p&amp;gt; eg：&amp;lt;p :title=&amp;quot;message&amp;quot;&amp;gt;热烈欢迎&amp;lt;/p&amp;gt;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-06-01T09:27:55.647Z">
+<meta property="og:updated_time" content="2020-08-26T09:21:07.542Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue框架">
 <meta name="twitter:description" content="一、数据双向绑定1、标签内：使用{{}} eg：&amp;lt;p&amp;gt;{{message}}&amp;lt;/p&amp;gt; 2、标签的属性值：v-bind:属性名(v-bind可以省略) eg：&amp;lt;p v-bind:title=&amp;quot;message&amp;quot;&amp;gt;热烈欢迎&amp;lt;/p&amp;gt; eg：&amp;lt;p :title=&amp;quot;message&amp;quot;&amp;gt;热烈欢迎&amp;lt;/p&amp;gt;">
@@ -58,7 +58,7 @@
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://yangyang158.github"></form>
       </div>
     </div>
   </div>
@@ -265,11 +265,36 @@ deactivated —— 组件被移除时调用
 6、状态管理-vuex
     Mutation集合：声明一系列方法 操作修改state中的值 .....
 </code></pre><h2 id="十一、-vue文件代码模板"><a href="#十一、-vue文件代码模板" class="headerlink" title="十一、.vue文件代码模板"></a>十一、.vue文件代码模板</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">        &lt;router-view /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    import userImg from <span class="string">'../assets/img/user-unknown.png'</span></span><br><span class="line">    <span class="built_in">export</span> default &#123;</span><br><span class="line">        <span class="string">"name"</span>: <span class="string">'App'</span>,</span><br><span class="line">        // 页面绑定的数据</span><br><span class="line">        data: <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">            <span class="built_in">return</span> &#123;&#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        // 计算属性</span><br><span class="line">        computed: &#123;&#125;,</span><br><span class="line">        // 监听属性</span><br><span class="line">        watch: &#123;&#125;,</span><br><span class="line">        // 方法集合</span><br><span class="line">        methods: &#123;&#125;,</span><br><span class="line">        // 局部自定义指令</span><br><span class="line">        directives: &#123;&#125;,</span><br><span class="line">        // 封装局部组件</span><br><span class="line">        components: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style lang=<span class="string">'less'</span>&gt;</span><br><span class="line">    @import <span class="string">'./index.less'</span>;</span><br><span class="line">    .photo &#123;</span><br><span class="line">        height: 20px;</span><br><span class="line">        background: red;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="十二、页面跳转传参"><a href="#十二、页面跳转传参" class="headerlink" title="十二、页面跳转传参"></a>十二、页面跳转传参</h2><pre><code>1、location.href
+2、link或a标签
+3、this.$route.push(
+    name: &apos;page1&apos;,
+    params: {
+        id: 1723
+    }
+)
+4、this.$route.push(
+    path: &apos;page1&apos;,
+    query: {
+        id: 1723
+    }
+)
+params和query的区别：
+a、query用path引入, url地址显示为：http://localhost:8080/page1?id=1723, 页面大刷新 数据不会丢失
+b、params用name引入, url地址显示为：http://localhost:8080/page1, 页面大刷新 数据会丢失
+</code></pre><h2 id="十三、vuex——管理共享数据"><a href="#十三、vuex——管理共享数据" class="headerlink" title="十三、vuex——管理共享数据"></a>十三、vuex——管理共享数据</h2><pre><code>核心模块：
+state：定义变量，保存数据
+getters：定义一系列方法, 方法的作用类似computed
+mutations：定义一系列更改state数据的回调方法, 不可以含异步回调
+action: 定义一系列更改state数据的回调方法, 可以含异步回调
 
+dispatch(&apos;方法名&apos;) 会触发action里面的方法
+commit(&apos;方法名&apos;) 会触发mutations里面的方法
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">//main.js</span><br><span class="line">const store = new Vuex.Store(&#123;</span><br><span class="line">state:&#123;</span><br><span class="line">    products: [</span><br><span class="line">        &#123;name: <span class="string">'鼠标'</span>, price: 20&#125;,</span><br><span class="line">        &#123;name: <span class="string">'键盘'</span>, price: 40&#125;,</span><br><span class="line">        &#123;name: <span class="string">'耳机'</span>, price: 60&#125;,</span><br><span class="line">        &#123;name: <span class="string">'显示屏'</span>, price: 80&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;,</span><br><span class="line">getters: &#123;</span><br><span class="line">    saleProducts: (state) =&gt; &#123;</span><br><span class="line">        <span class="built_in">let</span> saleProducts = state.products.map( product =&gt; &#123;</span><br><span class="line">            <span class="built_in">return</span> &#123;</span><br><span class="line">            name: product.name,</span><br><span class="line">            price: product.price / 2</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="built_in">return</span> saleProducts;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">mutations:&#123;</span><br><span class="line">    minusPrice (state, payload ) &#123;</span><br><span class="line">        <span class="built_in">let</span> newPrice = state.products.forEach( product =&gt; &#123;</span><br><span class="line">            product.price -= payload</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">actions:&#123; //添加actions</span><br><span class="line">    minusPriceAsync( context, payload ) &#123;</span><br><span class="line">        setTimeout( () =&gt; &#123;</span><br><span class="line">            context.commit( <span class="string">'minusPrice'</span>, payload ); //context提交</span><br><span class="line">        &#125;, 2000)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br><span class="line">// page.vue</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">    <span class="function"><span class="title">data</span></span> () &#123;</span><br><span class="line">        <span class="built_in">return</span> &#123;</span><br><span class="line">            products: this.<span class="variable">$store</span>.state.products</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        <span class="function"><span class="title">minusPrice</span></span>() &#123;</span><br><span class="line">            this.<span class="variable">$store</span>.commit(<span class="string">'minusPrice'</span>, 2);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="title">minusPriceAsync</span></span>() &#123;</span><br><span class="line">            this.<span class="variable">$store</span>.dispatch(<span class="string">'minusPriceAsync'</span>, 5); //分发actions中的minusPriceAsync这个异步函数</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/21/vue框架/" data-id="cke8bsjd4000bakuv300yiokg" class="article-share-link">Share</a>
+      <a data-url="https://yangyang158.github/2020/05/21/vue框架/" data-id="cke7ugv5a0009lkuveklgu6xz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -335,7 +360,7 @@ deactivated —— 组件被移除时调用
           </li>
         
           <li>
-            <a href="/2020/06/08/taro小程序/">taro小程序</a>
+            <a href="/2020/06/08/小程序/">小程序</a>
           </li>
         
           <li>
