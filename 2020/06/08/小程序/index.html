@@ -7,17 +7,17 @@
   
   <title>小程序 | 学无止境</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、给标签设置背景图片在真机上显示不出来，开发者工具可以显示解决： 1、图片使用base64 2、使用在线图片">
+  <meta name="description" content="一、小程序和h5页面的性能对比   类别 运行环境 开发标准 运行流畅度 发布 系统权限     小程序 依赖微信客户端,不能操作dom 有一套自己的开发标准 流畅 有一套发布标准 微信能获取到更多的系统权限，如网络通信状态、数据缓存能力等，这些系统级权限都能与微信小程序无缝衔接   h5 在浏览器里就能运行,可以操作dom 就和写html页面一样 有卡顿的感觉 需要自己部署到服务器上 少">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小程序">
 <meta property="og:url" content="https://yangyang158.github/2020/06/08/小程序/index.html">
 <meta property="og:site_name" content="学无止境">
-<meta property="og:description" content="一、给标签设置背景图片在真机上显示不出来，开发者工具可以显示解决： 1、图片使用base64 2、使用在线图片">
+<meta property="og:description" content="一、小程序和h5页面的性能对比   类别 运行环境 开发标准 运行流畅度 发布 系统权限     小程序 依赖微信客户端,不能操作dom 有一套自己的开发标准 流畅 有一套发布标准 微信能获取到更多的系统权限，如网络通信状态、数据缓存能力等，这些系统级权限都能与微信小程序无缝衔接   h5 在浏览器里就能运行,可以操作dom 就和写html页面一样 有卡顿的感觉 需要自己部署到服务器上 少">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-26T07:03:52.416Z">
+<meta property="og:updated_time" content="2020-08-28T02:42:07.541Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序">
-<meta name="twitter:description" content="一、给标签设置背景图片在真机上显示不出来，开发者工具可以显示解决： 1、图片使用base64 2、使用在线图片">
+<meta name="twitter:description" content="一、小程序和h5页面的性能对比   类别 运行环境 开发标准 运行流畅度 发布 系统权限     小程序 依赖微信客户端,不能操作dom 有一套自己的开发标准 流畅 有一套发布标准 微信能获取到更多的系统权限，如网络通信状态、数据缓存能力等，这些系统级权限都能与微信小程序无缝衔接   h5 在浏览器里就能运行,可以操作dom 就和写html页面一样 有卡顿的感觉 需要自己部署到服务器上 少">
   
     <link rel="alternate" href="/atom.xml" title="学无止境" type="application/atom+xml">
   
@@ -86,14 +86,45 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、给标签设置背景图片在真机上显示不出来，开发者工具可以显示"><a href="#一、给标签设置背景图片在真机上显示不出来，开发者工具可以显示" class="headerlink" title="一、给标签设置背景图片在真机上显示不出来，开发者工具可以显示"></a>一、给标签设置背景图片在真机上显示不出来，开发者工具可以显示</h2><pre><code>解决：
+        <h2 id="一、小程序和h5页面的性能对比"><a href="#一、小程序和h5页面的性能对比" class="headerlink" title="一、小程序和h5页面的性能对比"></a>一、小程序和h5页面的性能对比</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">类别</th>
+<th style="text-align:left">运行环境</th>
+<th style="text-align:left">开发标准</th>
+<th style="text-align:left">运行流畅度</th>
+<th style="text-align:left">发布</th>
+<th style="text-align:left">系统权限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">小程序</td>
+<td style="text-align:left">依赖微信客户端,不能操作dom</td>
+<td style="text-align:left">有一套自己的开发标准</td>
+<td style="text-align:left">流畅</td>
+<td style="text-align:left">有一套发布标准</td>
+<td style="text-align:left">微信能获取到更多的系统权限，如网络通信状态、数据缓存能力等，这些系统级权限都能与微信小程序无缝衔接</td>
+</tr>
+<tr>
+<td style="text-align:left">h5</td>
+<td style="text-align:left">在浏览器里就能运行,可以操作dom</td>
+<td style="text-align:left">就和写html页面一样</td>
+<td style="text-align:left">有卡顿的感觉</td>
+<td style="text-align:left">需要自己部署到服务器上</td>
+<td style="text-align:left">少</td>
+</tr>
+</tbody>
+</table>
+<h2 id="二、小程序性能优化"><a href="#二、小程序性能优化" class="headerlink" title="二、小程序性能优化"></a>二、小程序性能优化</h2><p>小程序的启动过程：<br>初始化小程序——下载小程序代码——加载小程序代码——初始化小程序首页<br>针对启动过程进行优化：<br>1、初始化小程序我们无法控制<br>2、针对下载和加载小程序代码环节，常见的控制代码包大小的方法如下：<br>    精简代码，清除无用代码<br>    减少在代码包中直接嵌入的资源文件<br>    图片放在cdn，使用适当的图片格式<br>    分包<br>3、针对初始化首页环节<br>    提前请求：在页面 onLoad 阶段就可以发起异步请求，不用等页面 ready<br>    善用缓存：对一些变动频率很低的异步数据进行缓存，下次启动时可以直接利用<br>    优化交互：在首屏渲染的期间，利用 loading 效果或展示骨架图，来缓解用户等待的焦虑<br>4、不要频繁调用setData,与界面渲染无关的数据最好不要设置在 data 中</p>
+<h2 id="三、给标签设置背景图片在真机上显示不出来，开发者工具可以显示"><a href="#三、给标签设置背景图片在真机上显示不出来，开发者工具可以显示" class="headerlink" title="三、给标签设置背景图片在真机上显示不出来，开发者工具可以显示"></a>三、给标签设置背景图片在真机上显示不出来，开发者工具可以显示</h2><pre><code>解决：
 1、图片使用base64
 2、使用在线图片
 </code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yangyang158.github/2020/06/08/小程序/" data-id="ckeb67srm00001suvsrp2iccl" class="article-share-link">Share</a>
+      <a data-url="https://yangyang158.github/2020/06/08/小程序/" data-id="ckeb185ul0000nouvj4man8w4" class="article-share-link">Share</a>
       
       
     </footer>
