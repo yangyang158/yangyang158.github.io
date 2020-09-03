@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="学无止境">
 <meta property="og:description" content="一、数据双向绑定1、标签内：使用{{}} eg：&amp;lt;p&amp;gt;{{message}}&amp;lt;/p&amp;gt; 2、标签的属性值：v-bind:属性名(v-bind可以省略) eg：&amp;lt;p v-bind:title=&amp;quot;message&amp;quot;&amp;gt;热烈欢迎&amp;lt;/p&amp;gt; eg：&amp;lt;p :title=&amp;quot;message&amp;quot;&amp;gt;热烈欢迎&amp;lt;/p&amp;gt;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-26T09:21:07.542Z">
+<meta property="og:updated_time" content="2020-09-02T10:18:21.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue框架">
 <meta name="twitter:description" content="一、数据双向绑定1、标签内：使用{{}} eg：&amp;lt;p&amp;gt;{{message}}&amp;lt;/p&amp;gt; 2、标签的属性值：v-bind:属性名(v-bind可以省略) eg：&amp;lt;p v-bind:title=&amp;quot;message&amp;quot;&amp;gt;热烈欢迎&amp;lt;/p&amp;gt; eg：&amp;lt;p :title=&amp;quot;message&amp;quot;&amp;gt;热烈欢迎&amp;lt;/p&amp;gt;">
@@ -92,14 +92,14 @@ eg：&lt;p&gt;{{message}}&lt;/p&gt;
 eg：&lt;p v-bind:title=&quot;message&quot;&gt;热烈欢迎&lt;/p&gt;
 eg：&lt;p :title=&quot;message&quot;&gt;热烈欢迎&lt;/p&gt;
 eg：&lt;p :title=&quot;index === 0 ? &apos;我是title&apos; : &apos;&apos;&quot;&gt;热烈欢迎&lt;/p&gt;
-</code></pre><h2 id="二、条件渲染"><a href="#二、条件渲染" class="headerlink" title="二、条件渲染"></a>二、条件渲染</h2><pre><code>1、控制元素显示与隐藏: 使用v-if、v-else、v-else-if
+</code></pre><h2 id="二、条件渲染"><a href="#二、条件渲染" class="headerlink" title="二、条件渲染"></a>二、条件渲染</h2><pre><code>1、控制元素显示与隐藏(dom节点不会生成): 使用v-if、v-else、v-else-if
 eg：
 &lt;div&gt;
     &lt;div v-if=&quot;num &gt; 5&quot;&gt;{{num}}大于5&lt;/div&gt;
     &lt;div v-else-if=&quot;num &gt; 2&quot;&gt;{{num}}大于2小于5&lt;/div&gt;
     &lt;div v-else&gt;{{num}}小于2&lt;/div&gt;
 &lt;/div&gt;
-2、控制元素显示与隐藏: v-show
+2、控制元素显示与隐藏(dom节点会生成，通过display为none或block进行隐藏): v-show
 eg: 
 &lt;p v-show=&quot;false&quot;&gt;隐藏&lt;/p&gt;
 &lt;p v-show=&quot;true&quot;&gt;显示&lt;/p&gt;
@@ -140,7 +140,7 @@ v-on:click.stop: 阻止事件冒泡
 v-on:click.self: 只当事件在该元素本身（而不是子元素）时触发 
 v-on:click.prevent
 v-on:click.capture
-</code></pre><h2 id="五、表单与业务数据的双向绑定"><a href="#五、表单与业务数据的双向绑定" class="headerlink" title="五、表单与业务数据的双向绑定"></a>五、表单与业务数据的双向绑定</h2><pre><code>使用: v-modal
+</code></pre><h2 id="五、表单与业务数据的双向绑定"><a href="#五、表单与业务数据的双向绑定" class="headerlink" title="五、表单与业务数据的双向绑定"></a>五、表单与业务数据的双向绑定</h2><pre><code>使用: v-model
 eg:
 &lt;div&gt;
     &lt;p&gt;{{ test }}&lt;/p&gt;
@@ -179,7 +179,7 @@ eg:
 
 computed vs methods 
 我们可以使用 methods 来替代 computed，效果上两个都是一样的，但是 computed 是基于它的依赖缓存，只有相关依赖发生改变时才会重新取值。而使用 methods ，在重新渲染的时候，函数总会重新调用执行。
-</code></pre><h2 id="七、监听属性watch"><a href="#七、监听属性watch" class="headerlink" title="七、监听属性watch"></a>七、监听属性watch</h2><pre><code>eg：监听数据变化, 做出响应
+</code></pre><h2 id="七、监听属性watch"><a href="#七、监听属性watch" class="headerlink" title="七、监听属性watch"></a>七、监听属性watch</h2><pre><code>eg：监听数据变化, 执行对应操作
 &lt;template&gt;
     &lt;div&gt;
         &lt;input v-model=&quot;meters&quot; type=&quot;text&quot;&gt;米
@@ -266,22 +266,27 @@ deactivated —— 组件被移除时调用
     Mutation集合：声明一系列方法 操作修改state中的值 .....
 </code></pre><h2 id="十一、-vue文件代码模板"><a href="#十一、-vue文件代码模板" class="headerlink" title="十一、.vue文件代码模板"></a>十一、.vue文件代码模板</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">        &lt;router-view /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    import userImg from <span class="string">'../assets/img/user-unknown.png'</span></span><br><span class="line">    <span class="built_in">export</span> default &#123;</span><br><span class="line">        <span class="string">"name"</span>: <span class="string">'App'</span>,</span><br><span class="line">        // 页面绑定的数据</span><br><span class="line">        data: <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">            <span class="built_in">return</span> &#123;&#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        // 计算属性</span><br><span class="line">        computed: &#123;&#125;,</span><br><span class="line">        // 监听属性</span><br><span class="line">        watch: &#123;&#125;,</span><br><span class="line">        // 方法集合</span><br><span class="line">        methods: &#123;&#125;,</span><br><span class="line">        // 局部自定义指令</span><br><span class="line">        directives: &#123;&#125;,</span><br><span class="line">        // 封装局部组件</span><br><span class="line">        components: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style lang=<span class="string">'less'</span>&gt;</span><br><span class="line">    @import <span class="string">'./index.less'</span>;</span><br><span class="line">    .photo &#123;</span><br><span class="line">        height: 20px;</span><br><span class="line">        background: red;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="十二、页面跳转传参"><a href="#十二、页面跳转传参" class="headerlink" title="十二、页面跳转传参"></a>十二、页面跳转传参</h2><pre><code>1、location.href
-2、link或a标签
-3、this.$route.push(
-    name: &apos;page1&apos;,
+2、router-link或a标签
+3、this.$router.push({
+    name: &apos;page1&apos;, // 用path接的话，获取不到参数
     params: {
         id: 1723
     }
-)
-4、this.$route.push(
-    path: &apos;page1&apos;,
+})
+4、this.$router.push({
+    path: &apos;/main/role&apos;,// 或者name: &apos;Role
     query: {
         id: 1723
     }
-)
+})
+在页面里通过this.$route获取url的参数
 params和query的区别：
-a、query用path引入, url地址显示为：http://localhost:8080/page1?id=1723, 页面大刷新 数据不会丢失
+a、query用path或name引入, url地址显示为：http://localhost:8080/page1?id=1723, 页面大刷新 数据不会丢失
 b、params用name引入, url地址显示为：http://localhost:8080/page1, 页面大刷新 数据会丢失
+
+route和router的区别：
+a、route：获取当前页面的路由信息，解析参数
+b、router：是全局路由VueRouter的一个实例，可以跳转页面
 </code></pre><h2 id="十三、vuex——管理共享数据"><a href="#十三、vuex——管理共享数据" class="headerlink" title="十三、vuex——管理共享数据"></a>十三、vuex——管理共享数据</h2><pre><code>核心模块：
 state：定义变量，保存数据
 getters：定义一系列方法, 方法的作用类似computed
@@ -291,10 +296,86 @@ action: 定义一系列更改state数据的回调方法, 可以含异步回调
 dispatch(&apos;方法名&apos;) 会触发action里面的方法
 commit(&apos;方法名&apos;) 会触发mutations里面的方法
 </code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">//main.js</span><br><span class="line">const store = new Vuex.Store(&#123;</span><br><span class="line">state:&#123;</span><br><span class="line">    products: [</span><br><span class="line">        &#123;name: <span class="string">'鼠标'</span>, price: 20&#125;,</span><br><span class="line">        &#123;name: <span class="string">'键盘'</span>, price: 40&#125;,</span><br><span class="line">        &#123;name: <span class="string">'耳机'</span>, price: 60&#125;,</span><br><span class="line">        &#123;name: <span class="string">'显示屏'</span>, price: 80&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;,</span><br><span class="line">getters: &#123;</span><br><span class="line">    saleProducts: (state) =&gt; &#123;</span><br><span class="line">        <span class="built_in">let</span> saleProducts = state.products.map( product =&gt; &#123;</span><br><span class="line">            <span class="built_in">return</span> &#123;</span><br><span class="line">            name: product.name,</span><br><span class="line">            price: product.price / 2</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="built_in">return</span> saleProducts;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">mutations:&#123;</span><br><span class="line">    minusPrice (state, payload ) &#123;</span><br><span class="line">        <span class="built_in">let</span> newPrice = state.products.forEach( product =&gt; &#123;</span><br><span class="line">            product.price -= payload</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">actions:&#123; //添加actions</span><br><span class="line">    minusPriceAsync( context, payload ) &#123;</span><br><span class="line">        setTimeout( () =&gt; &#123;</span><br><span class="line">            context.commit( <span class="string">'minusPrice'</span>, payload ); //context提交</span><br><span class="line">        &#125;, 2000)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br><span class="line">// page.vue</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">    <span class="function"><span class="title">data</span></span> () &#123;</span><br><span class="line">        <span class="built_in">return</span> &#123;</span><br><span class="line">            products: this.<span class="variable">$store</span>.state.products</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        <span class="function"><span class="title">minusPrice</span></span>() &#123;</span><br><span class="line">            this.<span class="variable">$store</span>.commit(<span class="string">'minusPrice'</span>, 2);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="title">minusPriceAsync</span></span>() &#123;</span><br><span class="line">            this.<span class="variable">$store</span>.dispatch(<span class="string">'minusPriceAsync'</span>, 5); //分发actions中的minusPriceAsync这个异步函数</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="十四、vue-双向绑定的原理"><a href="#十四、vue-双向绑定的原理" class="headerlink" title="十四、vue 双向绑定的原理"></a>十四、vue 双向绑定的原理</h2><p>通过重写Object.defineProperty的set和get方法去更改属性值。</p>
+<pre><code>let Person = {}
+Object.defineProperty(Person, &apos;name&apos;, {
+    value: &apos;杨洋&apos;
+})
+Person.name = &apos;小刚&apos;
+// Person = {name: &apos;杨洋&apos;} name值不可改
+// delete Person.name  false 不能删除
+// Object.keys(Person) []
+Object.defineProperty(Person, &apos;name&apos;, {
+    value: &apos;杨洋&apos;,
+    writable: true,
+    configurable: true,
+    enumerable: true
+}) 
+Person.name = &apos;小红&apos;
+// Person = {name: &apos;小红&apos;} name值可改
+// Object.keys(Person) [&apos;name&apos;]
+// delete Person.name  true 可删除
+let age = 12
+Object.defineProperty(Person, &apos;age&apos;, {
+    writable: true,
+    get: function() { 
+        console.log(&apos;获取属性值&apos;)
+        return value 
+    },
+    set: function(value ) { 
+        console.log(&apos;设置属性值&apos;, value)
+        age = value 
+    },
+}) 
+// Person.age  12
+Person.age = 80
+// Person.age  80
+</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:left">描述符</th>
+<th style="text-align:left">作用</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">writable</td>
+<td style="text-align:left">属性值是否可修改</td>
+<td style="text-align:left">false</td>
+</tr>
+<tr>
+<td style="text-align:left">value</td>
+<td style="text-align:left">设置属性值</td>
+<td style="text-align:left">undefined</td>
+</tr>
+<tr>
+<td style="text-align:left">configurable</td>
+<td style="text-align:left">属性值是否可删除、可配置</td>
+<td style="text-align:left">false</td>
+</tr>
+<tr>
+<td style="text-align:left">enumerable</td>
+<td style="text-align:left">描述属性是否会出现在for in 或者 Object.keys()的遍历中</td>
+<td style="text-align:left">false</td>
+</tr>
+<tr>
+<td style="text-align:left">get</td>
+<td style="text-align:left">获取属性值</td>
+<td style="text-align:left">undefined</td>
+</tr>
+<tr>
+<td style="text-align:left">set</td>
+<td style="text-align:left">设置属性值</td>
+<td style="text-align:left">undefined</td>
+</tr>
+</tbody>
+</table>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yangyang158.github/2020/05/21/vue框架/" data-id="cke7ugv5a0009lkuveklgu6xz" class="article-share-link">Share</a>
+      <a data-url="https://yangyang158.github/2020/05/21/vue框架/" data-id="ckehtx79i000jekuvyhn4x3pa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -339,7 +420,7 @@ commit(&apos;方法名&apos;) 会触发mutations里面的方法
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -350,6 +431,10 @@ commit(&apos;方法名&apos;) 会触发mutations里面的方法
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/09/01/框架/">框架</a>
+          </li>
         
           <li>
             <a href="/2020/08/14/promise/">promise</a>
@@ -365,10 +450,6 @@ commit(&apos;方法名&apos;) 会触发mutations里面的方法
         
           <li>
             <a href="/2020/06/03/javascript页面容错处理/">javascript页面容错处理</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/22/web网页安全/">web网页安全</a>
           </li>
         
       </ul>
