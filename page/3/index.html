@@ -94,7 +94,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yangyang158.github/2019/01/19/前端开发各类问题总结/" data-id="ckehtx78w000cekuv4qxh1o8p" class="article-share-link">Share</a>
+      <a data-url="https://yangyang158.github/2019/01/19/前端开发各类问题总结/" data-id="ckgujwhq4000awsuvupwuubr8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -179,7 +179,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yangyang158.github/2019/01/15/jsvascript易混淆点/" data-id="ckehtx78j0004ekuvsi7okx75" class="article-share-link">Share</a>
+      <a data-url="https://yangyang158.github/2019/01/15/jsvascript易混淆点/" data-id="ckgujwhpx0004wsuvmxxvnb80" class="article-share-link">Share</a>
       
       
     </footer>
@@ -217,7 +217,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yangyang158.github/2019/01/15/浏览器渲染机制/" data-id="ckehtx79y000lekuv81jhcm2n" class="article-share-link">Share</a>
+      <a data-url="https://yangyang158.github/2019/01/15/浏览器渲染机制/" data-id="ckgujwhrg000mwsuvufkrnaks" class="article-share-link">Share</a>
       
       
     </footer>
@@ -301,7 +301,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yangyang158.github/2019/01/15/js中的作用域/" data-id="ckehtx78p0008ekuv63q9zaii" class="article-share-link">Share</a>
+      <a data-url="https://yangyang158.github/2019/01/15/js中的作用域/" data-id="ckgujwhq20008wsuviuvk408z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -349,16 +349,16 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
 <tr>
 <td style="text-align:left">Cache-Control: max-age=60</td>
 <td style="text-align:left">相对时间,60s之后过期(相对于请求时间), 优先级&gt;Expires</td>
-<td style="text-align:left">200 (from disk cache)</td>
+<td style="text-align:left">200 (from disk cache or from memory cache)</td>
 </tr>
 <tr>
 <td style="text-align:left">Expires: Tue, 08 Jan 2019 06:47:35 GMT</td>
 <td style="text-align:left">缓存过期的时间（绝对时间，以服务器上的时间为准)</td>
-<td style="text-align:left">200 (from disk cache）</td>
+<td style="text-align:left">200 (from disk cache or from memory cache）</td>
 </tr>
 </tbody>
 </table>
-<p>区别：<br>Expires 是http1.0的产物，Cache-Control是http1.1的产物两者同时存在的话，Cache-Control优先级高于Expires,<br>Expires其实是过时的产物，现阶段它的存在只是一种兼容性的写法<br>2、协商缓存</p>
+<p>区别：<br>Expires 是http1.0的产物，Cache-Control是http1.1的产物两者同时存在的话，Cache-Control优先级高于Expires,<br>Expires其实是过时的产物，现阶段它的存在只是一种兼容性的写法<br>from disk cache 和 from memory cache的区别<br>from memory cache：内存缓存, 具有时效性，读取快<br>from disk cache：存在硬盘上, 持久缓存，读取慢<br>浏览器读取命中强缓存资源的顺序为memory cache -&gt; disk cache<br>浏览器会把哪些文件丢进内存中？哪些丢进硬盘中？<br>在浏览器中，浏览器会在js和图片等文件解析执行后直接存入内存缓存中，那么当刷新页面时只需直接从内存缓存中读取(from memory cache)；而css文件则会存入硬盘文件中，所以每次渲染页面都需要从硬盘读取缓存(from disk cache)。因为css一般不变，js脚本随时会执行，从硬盘里读取，比较慢<br>2、协商缓存</p>
 <table>
 <thead>
 <tr>
@@ -399,7 +399,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yangyang158.github/2019/01/08/http缓存/" data-id="ckehtx7ev000oekuvrwtpk765" class="article-share-link">Share</a>
+      <a data-url="https://yangyang158.github/2019/01/08/http缓存/" data-id="ckgujwhrp000pwsuv61cedh9x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -503,7 +503,7 @@ radix规则第6条: parseInt(<span class="string">'19'</span>); //19
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yangyang158.github/2019/01/05/markdown-grammar/" data-id="ckehtx78n0007ekuvua9kl9m8" class="article-share-link">Share</a>
+      <a data-url="https://yangyang158.github/2019/01/05/markdown-grammar/" data-id="ckgujwhq30009wsuvzn5xx8dp" class="article-share-link">Share</a>
       
       
     </footer>
